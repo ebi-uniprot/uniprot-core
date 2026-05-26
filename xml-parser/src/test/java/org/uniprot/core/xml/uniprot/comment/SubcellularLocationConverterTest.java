@@ -50,9 +50,6 @@ public class SubcellularLocationConverterTest extends AbstractConverterTest {
                 new SubcellularLocationConverter(
                         new EvidenceIndexMapper(), new SubcellLocationNameMapImpl());
         SubcellularLocationType xmlsubcelLocation = converter.toXml(subcelLocation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(
-                        xmlsubcelLocation, SubcellularLocationType.class, "subcellularLocation"));
 
         SubcellularLocation converted = converter.fromXml(xmlsubcelLocation);
         assertEquals(subcelLocation, converted);

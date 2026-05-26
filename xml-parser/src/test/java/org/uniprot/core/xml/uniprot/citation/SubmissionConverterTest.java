@@ -17,8 +17,6 @@ class SubmissionConverterTest {
         Submission citation = create();
         SubmissionConverter converter = new SubmissionConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Submission converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -28,8 +26,6 @@ class SubmissionConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }

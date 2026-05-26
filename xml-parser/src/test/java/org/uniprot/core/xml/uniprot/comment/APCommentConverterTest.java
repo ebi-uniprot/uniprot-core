@@ -37,8 +37,6 @@ class APCommentConverterTest {
         APCommentConverter converter = new APCommentConverter(new EvidenceIndexMapper());
 
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         AlternativeProductsComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

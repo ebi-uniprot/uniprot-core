@@ -27,6 +27,9 @@
 		<java.version>17</java.version>
 		<skipITs>false</skipITs>
 		<skipUTs>false</skipUTs>
+		<test.forkCount>1</test.forkCount>
+		<test.reuseForks>true</test.reuseForks>
+		<test.jvm.argLine>--add-opens java.base/java.time=ALL-UNNAMED</test.jvm.argLine>
 		<guava.version>30.0-jre</guava.version>
 
 		<!-- Auto-formatting -->
@@ -132,6 +135,17 @@
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>${surefire-version}</version>
 					<configuration>
+						<forkCount>${test.forkCount}</forkCount>
+						<reuseForks>${test.reuseForks}</reuseForks>
+						<skipTests>${skipUTs}</skipTests>
+						<excludes>
+							<exclude>**/*IT.java</exclude>
+							<exclude>**/IT*.java</exclude>
+						</excludes>
+						<argLine>
+							${argLine}
+							${test.jvm.argLine}
+						</argLine>
 						<systemProperties>
 							<property>
 								<name>http.proxyHost</name>
@@ -155,6 +169,13 @@
 					<artifactId>maven-failsafe-plugin</artifactId>
 					<version>${failsafe-version}</version>
 					<configuration>
+						<forkCount>${test.forkCount}</forkCount>
+						<reuseForks>${test.reuseForks}</reuseForks>
+						<skipITs>${skipITs}</skipITs>
+						<argLine>
+							${argLine}
+							${test.jvm.argLine}
+						</argLine>
 						<systemProperties>
 							<property>
 								<name>http.proxyHost</name>
@@ -183,11 +204,39 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<configuration>
-					<includes>
-						<include>*</include>
-					</includes>
-					<argLine>${argLine} --add-opens java.base/java.time=ALL-UNNAMED</argLine>
+					<forkCount>${test.forkCount}</forkCount>
+					<reuseForks>${test.reuseForks}</reuseForks>
+					<skipTests>${skipUTs}</skipTests>
+					<excludes>
+						<exclude>**/*IT.java</exclude>
+						<exclude>**/IT*.java</exclude>
+					</excludes>
+					<argLine>
+						${argLine}
+						${test.jvm.argLine}
+					</argLine>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<configuration>
+					<forkCount>${test.forkCount}</forkCount>
+					<reuseForks>${test.reuseForks}</reuseForks>
+					<skipITs>${skipITs}</skipITs>
+					<argLine>
+						${argLine}
+						${test.jvm.argLine}
+					</argLine>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>integration-test</goal>
+							<goal>verify</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.jacoco</groupId>

@@ -570,23 +570,18 @@ class CCAlternativeProductBuildTest extends CCBuildTestAbstr {
     private void doTest(String ccLine, AlternativeProductsComment comment) {
         FFLine ffLine = ccLineBuilder.buildWithEvidence(comment);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        // System.out.println(ccLine);
         assertEquals(ccLine, resultString);
     }
 
     private void doTestString(String ccLine, AlternativeProductsComment comment) {
         String value = ccLineBuilder.buildString(comment);
 
-        System.out.println(value);
         assertEquals(ccLine, value);
     }
 
     private void doTestStringEv(String ccLine, AlternativeProductsComment comment) {
         String value = ccLineBuilder.buildStringWithEvidence(comment);
 
-        System.out.println(value);
         assertEquals(ccLine, value);
     }
 }

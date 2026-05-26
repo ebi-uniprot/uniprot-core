@@ -33,7 +33,6 @@ class KeywordConverterTest {
         assertEquals(id, xmlObj.getId());
         assertEquals(val, xmlObj.getValue());
         assertEquals(Arrays.asList(1, 2), xmlObj.getEvidence());
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, KeywordType.class, "keyword"));
 
         Keyword converted = converter.fromXml(xmlObj);
         assertEquals(keyword, converted);

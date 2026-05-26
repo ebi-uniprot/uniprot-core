@@ -158,8 +158,6 @@ class CatalyticActivityCommentConverterTest {
         assertEquals(1, evs.get(0).intValue());
         assertEquals(3, evs.get(1).intValue());
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(commentType, CommentType.class, "comment"));
     }
 
     @Test

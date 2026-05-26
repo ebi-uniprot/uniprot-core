@@ -287,7 +287,6 @@ public class ProteomeTest {
         try {
             ObjectMapper mapper = ProteomeJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(proteome);
-            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

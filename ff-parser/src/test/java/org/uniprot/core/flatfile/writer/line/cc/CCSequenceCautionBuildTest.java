@@ -120,22 +120,18 @@ class CCSequenceCautionBuildTest extends CCBuildTestAbstr {
     private void doTest(String ccLine, SequenceCautionComment comment) {
         FFLine ffLine = builder.buildWithEvidence(comment);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(ccLine);
         assertEquals(ccLine, resultString);
     }
 
     private void doTestString(String ccLine, SequenceCautionComment comment) {
         String value = builder.buildString(comment);
 
-        System.out.println(value);
         assertEquals(ccLine, value);
     }
 
     private void doTestStringEv(String ccLine, SequenceCautionComment comment) {
         String value = builder.buildStringWithEvidence(comment);
 
-        System.out.println(value);
         assertEquals(ccLine, value);
     }
 }

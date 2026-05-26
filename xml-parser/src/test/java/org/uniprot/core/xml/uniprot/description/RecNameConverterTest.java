@@ -41,8 +41,6 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
     }
@@ -61,8 +59,6 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
     }
@@ -81,8 +77,6 @@ class RecNameConverterTest {
 
         RecommendedName xmlObj = converter.toXml(recName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, RecommendedName.class, "recommendedName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(recName, converted);
     }

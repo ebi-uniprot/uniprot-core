@@ -124,7 +124,6 @@ public class UniProtKBEntryConverterTest {
                         .build();
         UniProtEntryConverter converter = new UniProtEntryConverter();
         Entry xmlEntry = converter.toXml(entry);
-        System.out.println(UniProtXmlTestHelper.toXmlString(xmlEntry, Entry.class, "entry"));
         UniProtKBEntry converted = converter.fromXml(xmlEntry);
         assertEquals(entry, converted);
     }

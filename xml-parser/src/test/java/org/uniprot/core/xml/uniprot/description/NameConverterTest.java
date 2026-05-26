@@ -27,8 +27,6 @@ class NameConverterTest {
         assertEquals(val, xmlObj.getValue());
         assertEquals(Arrays.asList(1, 2), xmlObj.getEvidence());
         Name converted = converter.fromXml(xmlObj);
-        System.out.println(nameObj.toString());
-        System.out.println(converted.toString());
         assertEquals(nameObj, converted);
     }
 }

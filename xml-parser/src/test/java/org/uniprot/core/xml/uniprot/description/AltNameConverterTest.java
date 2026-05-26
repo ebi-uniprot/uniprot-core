@@ -31,8 +31,6 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);
     }
@@ -51,8 +49,6 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);
     }
@@ -71,8 +67,6 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);
     }
@@ -90,8 +84,6 @@ class AltNameConverterTest {
 
         AlternativeName xmlObj = converter.toXml(altName);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, AlternativeName.class, "alternativeName"));
         ProteinName converted = converter.fromXml(xmlObj);
         assertEquals(altName, converted);
     }

@@ -16,8 +16,6 @@ class ThesisConverterTest {
         Thesis citation = create();
         ThesisConverter converter = new ThesisConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Thesis converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -28,8 +26,6 @@ class ThesisConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }

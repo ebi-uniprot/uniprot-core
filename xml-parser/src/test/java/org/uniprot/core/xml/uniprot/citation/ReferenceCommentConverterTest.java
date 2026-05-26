@@ -34,8 +34,6 @@ class ReferenceCommentConverterTest {
                 new ReferenceCommentConverter(new EvidenceIndexMapper());
 
         SourceDataType sourceType = converter.toXml(refComments);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(sourceType, SourceDataType.class, "source"));
         List<ReferenceComment> converted = converter.fromXml(sourceType);
         assertEquals(refComments, converted);
     }

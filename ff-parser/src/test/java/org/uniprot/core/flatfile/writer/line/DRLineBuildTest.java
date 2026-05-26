@@ -28,9 +28,6 @@ class DRLineBuildTest {
         xrefs.add(createUniProtDBCrossReference("MINT", "MINT-1356407", "-"));
         FFLine ffLine = builder.build(xrefs);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(drLine);
         assertEquals(drLine, resultString);
     }
 
@@ -135,9 +132,6 @@ class DRLineBuildTest {
 
         FFLine ffLine = builder.build(xrefs);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(drLine);
         assertEquals(drLine, resultString);
     }
 
@@ -172,9 +166,6 @@ class DRLineBuildTest {
                         "PROSITE", "PS00157", "RUBISCO_LARGE", "1", null, "P21235-2"));
         FFLine ffLine = builder.build(xrefs);
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println("\n");
-        System.out.println(drLine);
         assertEquals(drLine, resultString);
     }
 

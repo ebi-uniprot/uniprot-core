@@ -38,8 +38,6 @@ class RnaEditingCommentConverterTest {
 
         LocationType xmlLocation = converter.toXml(position);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlLocation, LocationType.class, "location"));
         RnaEdPosition converted = converter.fromXml(xmlLocation);
         assertEquals(position, converted);
     }
@@ -69,8 +67,6 @@ class RnaEditingCommentConverterTest {
                 new RnaEditingCommentConverter(new EvidenceIndexMapper());
 
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         RnaEditingComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

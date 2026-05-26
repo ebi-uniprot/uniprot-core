@@ -26,8 +26,6 @@ class SCCommentConverterTest {
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         SequenceCautionComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -42,8 +40,6 @@ class SCCommentConverterTest {
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         SequenceCautionComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -61,8 +57,6 @@ class SCCommentConverterTest {
         SequenceCautionComment comment = builder.build();
         SCCommentConverter converter = new SCCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         SequenceCautionComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

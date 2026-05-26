@@ -16,8 +16,6 @@ class ElectronicArticleConverterTest {
         ElectronicArticle citation = create();
         ElectronicArticleConverter converter = new ElectronicArticleConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         ElectronicArticle converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -28,8 +26,6 @@ class ElectronicArticleConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }

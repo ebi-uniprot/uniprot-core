@@ -35,9 +35,6 @@ class OGLineBuildTest {
         FFLine ffLine = builder.buildWithEvidence(organelles);
         String resultString = ffLine.toString();
 
-        System.out.println(resultString);
-        System.out.println();
-        System.out.println(ogLine);
         assertEquals(ogLine, resultString);
     }
 

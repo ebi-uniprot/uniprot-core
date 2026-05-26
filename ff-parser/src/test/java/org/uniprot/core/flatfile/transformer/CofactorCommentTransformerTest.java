@@ -325,7 +325,6 @@ class CofactorCommentTransformerTest {
         String refsStr1 = "Name=" + nameStr1 + "; Xref=ChEBI:" + refStr1 + ";";
 
         String val = "[" + moleculeStr + "]:\n" + refsStr1;
-        System.out.println(val);
         CofactorComment comment = transformer.transform(CommentType.COFACTOR, val);
         assertNotNull(comment);
     }

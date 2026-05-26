@@ -34,7 +34,6 @@ class UniProtParserIT {
         String entryStr = readEntryFromFile(filename);
         UniProtKBEntry entry = UniProtParserHelper.parse(entryStr);
         assertNotNull(entry);
-        System.out.println(UniProtFlatfileWriter.write(entry));
         assertEquals("Q6P2Q9", entry.getPrimaryAccession().getValue());
     }
 
@@ -81,7 +80,6 @@ class UniProtParserIT {
         try {
             return charSource.read();
         } catch (IOException e) {
-            System.out.println("io exceptions.");
             return "";
         }
     }

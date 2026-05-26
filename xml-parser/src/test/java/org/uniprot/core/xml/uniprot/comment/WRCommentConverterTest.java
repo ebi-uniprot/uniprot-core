@@ -21,8 +21,6 @@ class WRCommentConverterTest {
                         .build();
         WRCommentConverter converter = new WRCommentConverter();
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         WebResourceComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -36,8 +34,6 @@ class WRCommentConverterTest {
                         .build();
         WRCommentConverter converter = new WRCommentConverter();
         CommentType xmlComment = converter.toXml(comment);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         WebResourceComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

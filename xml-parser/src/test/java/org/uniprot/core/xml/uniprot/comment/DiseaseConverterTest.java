@@ -52,8 +52,6 @@ class DiseaseConverterTest {
         assertEquals("CSTNU", xmlObj.getAcronym());
         assertEquals("DI-01465", xmlObj.getId());
         assertEquals("Cystathioninuria", xmlObj.getName());
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.Disease.class, "disease"));
     }
 
     private CrossReference<DiseaseDatabase> createDBCrossReference(

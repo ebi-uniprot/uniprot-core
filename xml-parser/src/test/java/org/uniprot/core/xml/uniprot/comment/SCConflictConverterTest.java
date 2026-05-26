@@ -14,7 +14,6 @@ class SCConflictConverterTest {
         SCConflictConverter converter = new SCConflictConverter();
         Conflict conflict = converter.toXml(sequence);
         conflict.setType("erroneous initiation");
-        System.out.println(UniProtXmlTestHelper.toXmlString(conflict, Conflict.class, "confict"));
         String converted = converter.fromXml(conflict);
         assertEquals(sequence, converted);
     }
@@ -25,7 +24,6 @@ class SCConflictConverterTest {
         SCConflictConverter converter = new SCConflictConverter();
         Conflict conflict = converter.toXml(sequence);
         conflict.setType("erroneous initiation");
-        System.out.println(UniProtXmlTestHelper.toXmlString(conflict, Conflict.class, "confict"));
         String converted = converter.fromXml(conflict);
         assertEquals(sequence, converted);
     }

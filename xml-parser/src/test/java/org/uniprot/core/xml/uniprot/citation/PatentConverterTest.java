@@ -16,8 +16,6 @@ class PatentConverterTest {
         Patent citation = create();
         PatentConverter converter = new PatentConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Patent converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -28,8 +26,6 @@ class PatentConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }

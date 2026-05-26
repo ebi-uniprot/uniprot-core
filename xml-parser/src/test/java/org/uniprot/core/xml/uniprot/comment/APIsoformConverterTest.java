@@ -26,8 +26,6 @@ class APIsoformConverterTest {
         APIsoform apisoform = createAPIsoform();
         APIsoformConverter converter = new APIsoformConverter(new EvidenceIndexMapper());
         IsoformType xmlIsoform = converter.toXml(apisoform);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlIsoform, IsoformType.class, "isoform"));
         APIsoform converted = converter.fromXml(xmlIsoform);
         assertEquals(apisoform, converted);
     }

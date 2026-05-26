@@ -28,8 +28,6 @@ class OrganelleConverterTest {
                         .build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xml, GeneLocationType.class, "geneLocation"));
 
         GeneLocation converted = converter.fromXml(xml);
         assertEquals(organelle, converted);
@@ -48,8 +46,6 @@ class OrganelleConverterTest {
                         .build();
         OrganelleConverter converter = new OrganelleConverter(new EvidenceIndexMapper());
         GeneLocationType xml = converter.toXml(organelle);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xml, GeneLocationType.class, "geneLocation"));
 
         GeneLocation converted = converter.fromXml(xml);
         assertEquals(organelle, converted);

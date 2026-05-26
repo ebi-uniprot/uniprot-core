@@ -18,8 +18,6 @@ class IDLineBuildTest {
         FFLine ffLine = builder.build(idObj);
 
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(idLine);
         assertEquals(idLine, resultString);
     }
 
@@ -32,8 +30,6 @@ class IDLineBuildTest {
         FFLine ffLine = builder.build(idObj);
 
         String resultString = ffLine.toString();
-        System.out.println(resultString);
-        System.out.println(idLine);
         assertEquals(idLine, resultString);
     }
 }

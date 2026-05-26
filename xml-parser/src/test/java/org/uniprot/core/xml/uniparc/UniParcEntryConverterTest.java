@@ -26,7 +26,6 @@ class UniParcEntryConverterTest {
         UniParcEntry uniparcEntry = createEntry();
         UniParcEntryConverter converter = new UniParcEntryConverter();
         Entry xmlObj = converter.toXml(uniparcEntry);
-        System.out.println(UniParcXmlTestHelper.toXmlString(xmlObj, Entry.class, "entry"));
         UniParcEntry converted = converter.fromXml(xmlObj);
         assertEquals(uniparcEntry, converted);
     }

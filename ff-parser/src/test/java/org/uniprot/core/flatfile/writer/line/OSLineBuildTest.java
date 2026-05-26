@@ -22,8 +22,6 @@ class OSLineBuildTest {
                         createOrganism("Rous sarcoma virus (strain Schmidt-Ruppin B) (RSV-SRB)"));
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(osLine, resultString);
     }
 
@@ -50,8 +48,6 @@ class OSLineBuildTest {
                                         + " (Protomonas extorquens)"));
 
         String resultString = ffLine.toString();
-        System.out.println(osLine);
-        System.out.println(resultString);
         assertEquals(osLine, resultString);
     }
 }

@@ -29,7 +29,6 @@ class ProteomeConverterTest {
         ProteomeEntry proteome = create();
         Proteome xml = converter.toXml(proteome);
         ProteomeEntry converted = converter.fromXml(xml);
-        System.out.println(ProteomeXMLTestHelper.toXmlString(xml, Proteome.class, "proteome"));
         assertEquals(proteome, converted);
     }
 

@@ -37,8 +37,6 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(evidenceLines);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -65,8 +63,6 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(internalLines);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -83,8 +79,6 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(sourceLines);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -114,8 +108,6 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(is);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(ssLines, resultString);
     }
 
@@ -153,8 +145,6 @@ class SSLineBuildTest {
         FFLine ffLine = builder.build(is);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(ssLines, resultString);
     }
 

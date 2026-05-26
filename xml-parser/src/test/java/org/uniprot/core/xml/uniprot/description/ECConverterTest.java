@@ -45,8 +45,5 @@ class ECConverterTest {
         EC converted = converter.fromXml(xmlObj);
         assertEquals(ecObj, converted);
         DbReferenceType dbReference = converter.toXmlDbReference(ecObj);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(
-                        dbReference, DbReferenceType.class, "dbReference"));
     }
 }

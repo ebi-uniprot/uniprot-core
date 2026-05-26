@@ -174,7 +174,6 @@ public class UniProtKBCrossReferenceConverterTest extends AbstractConverterTest 
 
     private void verifyXml(DbReferenceType xmlObj, String db, String id) {
         String xml = UniProtXmlTestHelper.toXmlString(xmlObj, DbReferenceType.class, "dbReference");
-        System.out.println(xml);
         assertEquals(db, xmlObj.getType());
         assertEquals(id, xmlObj.getId());
     }

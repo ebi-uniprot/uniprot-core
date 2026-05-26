@@ -20,8 +20,6 @@ class OXLineBuildTest {
         FFLine ffLine = builder.build(taxId);
 
         String resultString = ffLine.toString();
-        // System.out.println(text.getText());
-        System.out.println(resultString);
         assertEquals(oxLine, resultString);
     }
 }

@@ -81,8 +81,6 @@ class CAReactionConverterTest {
 
         ReactionType reactionType = converter.toXml(reaction);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
 
         assertEquals("Some value", reactionType.getText());
         assertEquals(4, reactionType.getDbReference().size());
@@ -118,8 +116,6 @@ class CAReactionConverterTest {
         CAReactionConverter converter = new CAReactionConverter(new EvidenceIndexMapper());
 
         ReactionType reactionType = converter.toXml(reaction);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(reactionType, ReactionType.class, "reaction"));
         Reaction converted = converter.fromXml(reactionType);
         assertEquals(reaction, converted);
     }

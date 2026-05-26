@@ -361,7 +361,6 @@ class CcLineAPCommentParserTest {
         UniprotKBLineParser<CcLineObject> parser =
                 new DefaultUniprotKBLineParserFactory().createCcLineParser();
         String lines = formater.format(ccLineStringEvidence);
-        System.out.println(lines);
         CcLineObject obj = parser.parse(lines);
         assertNotNull(obj);
     }

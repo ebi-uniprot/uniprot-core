@@ -55,10 +55,8 @@ class FtLineConverterUtilTest {
     private void printMatcher(Matcher matcher) {
         if (matcher.matches()) {
             for (int i = 0; i <= matcher.groupCount(); i++) {
-                System.out.println(i + "\t" + matcher.group(i));
             }
         } else {
-            System.out.println("NOT MATCHED");
         }
     }
 

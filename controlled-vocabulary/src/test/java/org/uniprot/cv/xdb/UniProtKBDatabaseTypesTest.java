@@ -19,7 +19,6 @@ class UniProtKBDatabaseTypesTest {
     void testGetAllTypes() {
         List<UniProtDatabaseDetail> types = UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes();
         assertFalse(types.isEmpty());
-        System.out.println(types.size());
     }
 
     @Test

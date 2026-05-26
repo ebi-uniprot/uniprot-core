@@ -41,8 +41,6 @@ class ReferenceConverterTest {
                         submission, referencePositions, refComments, Collections.emptyList());
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
         UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
@@ -84,8 +82,6 @@ class ReferenceConverterTest {
                 createUniProtReference(3, citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
         UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }
@@ -105,8 +101,6 @@ class ReferenceConverterTest {
                 createUniProtReference(4, citation, referencePositions, refComments, evidences);
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlReference, ReferenceType.class, "reference"));
         UniProtKBReference converted = converter.fromXml(xmlReference);
         assertEquals(uniReference, converted);
     }

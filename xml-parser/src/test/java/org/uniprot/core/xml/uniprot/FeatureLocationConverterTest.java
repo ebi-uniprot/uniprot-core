@@ -18,8 +18,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -33,8 +31,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -49,8 +45,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -64,8 +58,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -79,8 +71,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -94,8 +84,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -109,8 +97,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -124,8 +110,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -139,8 +123,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);
@@ -154,8 +136,6 @@ class FeatureLocationConverterTest {
 
         LocationType xmlObj = converter.toXml(location);
 
-        System.out.println(
-                UniProtXmlTestHelper.toXmlString(xmlObj, LocationType.class, "location"));
 
         Range converted = converter.fromXml(xmlObj);
         assertEquals(location, converted);

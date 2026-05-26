@@ -83,7 +83,6 @@ class PropertyObjectTest {
             }
         }
         final long elapsedNano1 = System.nanoTime() - startTime;
-        System.out.println("new BigDecimal(testData[]) : " + elapsedNano1 / 1000000 + " ms");
 
         startTime = System.nanoTime();
         for (int i = 0; i < iterations; i++) {
@@ -96,8 +95,6 @@ class PropertyObjectTest {
             }
         }
         final long elapsedNano2 = System.nanoTime() - startTime;
-        System.out.println(
-                "NUMBER_PATTERN.matcher(testData[]).matches() : " + elapsedNano2 / 1000000 + " ms");
         // don't assert normally as the testing is machine dependent.
         // assertTrue("Expected Pattern matching to be faster than BigDecimal
         // constructor",elapsedNano2<elapsedNano1);
