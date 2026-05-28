@@ -49,6 +49,9 @@ class SequenceFeatureConverterTest {
     private void verify(SequenceFeature sf) {
         SequenceFeatureConverter converter = new SequenceFeatureConverter();
         SeqFeatureType xmlObj = converter.toXml(sf);
+        System.out.println(
+                UniParcXmlTestHelper.toXmlString(
+                        xmlObj, SeqFeatureType.class, "signatureSequenceMatch"));
         SequenceFeature converted = converter.fromXml(xmlObj);
         assertEquals(sf, converted);
     }

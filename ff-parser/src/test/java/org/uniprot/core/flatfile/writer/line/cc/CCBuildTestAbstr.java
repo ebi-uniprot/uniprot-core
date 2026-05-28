@@ -34,6 +34,8 @@ abstract class CCBuildTestAbstr {
 
         FFLine ffLine = builder.buildWithEvidence(comment);
         String resultString = ffLine.toString();
+        System.out.println(resultString);
+        System.out.println(ftLine);
         assertEquals(ftLine, resultString);
     }
 
@@ -41,6 +43,7 @@ abstract class CCBuildTestAbstr {
         FFLineBuilder<T> builder = CCLineBuilderFactory.create(comment);
         String value = builder.buildString(comment);
 
+        System.out.println(value);
         assertEquals(ccLine, value);
     }
 
@@ -48,6 +51,7 @@ abstract class CCBuildTestAbstr {
         FFLineBuilder<Comment> builder = CCLineBuilderFactory.create(comment);
         String value = builder.buildStringWithEvidence(comment);
 
+        System.out.println(value);
         assertEquals(ccLine, value);
     }
 
@@ -59,7 +63,10 @@ abstract class CCBuildTestAbstr {
         List<Comment> comments = converter.convert(obj);
         FFLine ffLine = builder.buildWithEvidence(comments);
         String resultString = ffLine.toString();
+        System.out.println(resultString);
+        System.out.println(ccLine);
         assertEquals(ccLine, resultString);
+        System.out.println(builder.buildString(comments));
     }
 
     protected List<Evidence> createEvidence(List<String> evIds) {

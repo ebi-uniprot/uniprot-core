@@ -30,6 +30,7 @@ class CrossReferenceReaderIT {
         String ftpUrl =
                 Optional.ofNullable(getDatabaseTypesLocation())
                         .orElse(CrossReferenceValidator.DBREF_FTP);
+        System.out.println("FTP location found: " + ftpUrl);
         try (CrossReferenceReader reader = new CrossReferenceReader(ftpUrl)) {
             DBXRef dbxRef;
             while ((dbxRef = reader.read()) != null) {
@@ -41,6 +42,7 @@ class CrossReferenceReaderIT {
     }
 
     private void verifyDBXRef(DBXRef dbxRef) {
+        System.out.println(dbxRef.toString());
         assertNotNull(dbxRef.getAccession(), "Accession is null");
         assertNotNull(dbxRef.getAbbr(), "Abbr is null");
         assertNotNull(dbxRef.getName(), "Name is null");

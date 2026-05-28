@@ -39,6 +39,8 @@ class BPCPConverterTest {
         BPCPComment comment = builder.absorption(absorption).kineticParameters(kp).build();
         BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         BPCPComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -67,6 +69,8 @@ class BPCPConverterTest {
                         .build();
         BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         BPCPComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -96,6 +100,8 @@ class BPCPConverterTest {
                         .build();
         BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         BPCPComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -126,6 +132,8 @@ class BPCPConverterTest {
                         .build();
         BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         BPCPComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -140,12 +148,17 @@ class BPCPConverterTest {
                 new BPCPAbsorptionConverter(new EvidenceIndexMapper());
 
         CommentType.Absorption xmlAbsorption = absorptionConverter.toXml(absorption);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlAbsorption, CommentType.Absorption.class, "absorption"));
         Absorption absorptionConverted = absorptionConverter.fromXml(xmlAbsorption);
         assertEquals(absorption, absorptionConverted);
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
         BPCPComment comment = builder.absorption(absorption).build();
         BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         BPCPComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -161,12 +174,17 @@ class BPCPConverterTest {
                 new BPCPAbsorptionConverter(new EvidenceIndexMapper());
 
         CommentType.Absorption xmlAbsorption = absorptionConverter.toXml(absorption);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlAbsorption, CommentType.Absorption.class, "absorption"));
         Absorption absorptionConverted = absorptionConverter.fromXml(xmlAbsorption);
         assertEquals(absorption, absorptionConverted);
         BPCPCommentBuilder builder = new BPCPCommentBuilder();
         BPCPComment comment = builder.absorption(absorption).molecule(molecule).build();
         BPCPCommentConverter converter = new BPCPCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         BPCPComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

@@ -530,6 +530,7 @@ class Q04756ScoredTest {
         UniProtKBEntry entry =
                 new DefaultUniProtParser(new SupportingDataMapImpl(), true).parse(this.entry);
         UniProtEntryScored scored = new UniProtEntryScored(entry);
+        System.out.println(scored.score());
         assertTrue(scored.score() > 0);
     }
 }

@@ -26,6 +26,8 @@ class FTBuildTestAbstr {
 
         FFLine ffLine = builder.buildWithEvidence(feature);
         String resultString = ffLine.toString();
+        System.out.println(resultString);
+        System.out.println(ftLine);
         assertEquals(ftLine, resultString);
     }
 
@@ -33,6 +35,7 @@ class FTBuildTestAbstr {
 
         FFLineBuilder<UniProtKBFeature> builder = FeatureLineBuilderFactory.create(feature);
         String value = builder.buildString(feature);
+        System.out.println(value);
         assertEquals(ftLine, value);
     }
 
@@ -41,6 +44,7 @@ class FTBuildTestAbstr {
         FFLineBuilder<UniProtKBFeature> builder = FeatureLineBuilderFactory.create(feature);
         String value = builder.buildStringWithEvidence(feature);
 
+        System.out.println(value);
         assertEquals(ccLine, value);
     }
 

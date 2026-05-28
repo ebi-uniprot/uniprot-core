@@ -90,6 +90,9 @@ class DELineBuildTest {
     private void doTest(String deLine, ProteinDescription pd) {
         FFLine ffLine = builder.buildWithEvidence(pd);
         String resultString = ffLine.toString();
+        System.out.println(resultString);
+        System.out.println("\n");
+        System.out.println(deLine);
         assertEquals(deLine, resultString);
     }
 

@@ -33,6 +33,8 @@ class SubNameConverterTest {
         SubNameConverter converter = new SubNameConverter(nameConverter, ecConverter);
         SubmittedName xmlObj = converter.toXml(subName);
 
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, SubmittedName.class, "submittedName"));
         ProteinSubName converted = converter.fromXml(xmlObj);
         assertEquals(subName, converted);
     }

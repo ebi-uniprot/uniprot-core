@@ -46,6 +46,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.VARIANT, 67, 67, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 67, 67, description2, ftid, "T", Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -80,6 +83,9 @@ class FeatureConverterTest {
                         Collections.emptyList());
 
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 67, 67, description2, ftid, "T", Collections.emptyList());
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -115,6 +121,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.VARIANT, 67, 67, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 67, 67, description2, ftid, "T", Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -161,6 +170,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.VAR_SEQ, 153, 196, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 153, 196, description2, ftid, null, Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -178,6 +190,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.HELIX, 18, 24, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 18, 24, null, ftid, null, Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -196,6 +211,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.DOMAIN, 109, 322, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 109, 322, description, ftid, null, Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -214,6 +232,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.CHAIN, 1, 405, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 1, 405, description, ftid, null, Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -234,6 +255,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.CONFLICT, 658, 658, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 658, 658, description2, null, "C", Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -254,6 +278,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.CONFLICT, 658, 658, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 658, 658, description2, null, "C", Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -274,6 +301,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.CONFLICT, 658, 658, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 658, 658, description2, null, null, Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -297,6 +327,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.MUTAGEN, 188, 188, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 188, 188, description2, null, "G", Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -322,6 +355,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.VAR_SEQ, 1158, 1202, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(
                 xmlObj,
                 1158,
@@ -351,6 +387,7 @@ class FeatureConverterTest {
     private void parseDescription(String description) {
         String regex = ", | and ";
         String[] tokens = description.split(regex);
+        System.out.println(Arrays.asList(tokens));
     }
 
     @Test
@@ -405,6 +442,9 @@ class FeatureConverterTest {
         UniProtKBFeature feature =
                 createFeature(UniprotKBFeatureType.CARBOHYD, 96, 96, description, ftid, altSeq);
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 96, 96, description, ftid, null, Arrays.asList(1, 2));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);
@@ -439,6 +479,9 @@ class FeatureConverterTest {
                         ligandPart);
 
         org.uniprot.core.xml.jaxb.uniprot.FeatureType xmlObj = converter.toXml(feature);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(
+                        xmlObj, org.uniprot.core.xml.jaxb.uniprot.FeatureType.class, "feature"));
         verify(xmlObj, 313, 317, description, ftid, null, Arrays.asList(1));
         UniProtKBFeature converted = converter.fromXml(xmlObj);
         assertEquals(feature, converted);

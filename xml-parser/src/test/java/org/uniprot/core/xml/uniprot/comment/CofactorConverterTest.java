@@ -75,6 +75,8 @@ class CofactorConverterTest {
         assertEquals(2, evs.size());
         assertEquals(1, evs.get(0).intValue());
         assertEquals(3, evs.get(1).intValue());
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(cofactorType, CofactorType.class, "cofactor"));
 
         Cofactor converted = converter.fromXml(cofactorType);
         assertEquals(cofactor, converted);

@@ -71,6 +71,8 @@ class SCLCommentConverterTest {
         SCLCommentConverter converter =
                 new SCLCommentConverter(new EvidenceIndexMapper(), subcellLocationNameMap);
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
 
         SubcellularLocationComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
@@ -95,6 +97,8 @@ class SCLCommentConverterTest {
         SCLCommentConverter converter =
                 new SCLCommentConverter(new EvidenceIndexMapper(), subcellLocationNameMap);
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         SubcellularLocationComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

@@ -24,6 +24,7 @@ class UniParcCrossRefJsonConfigTest {
         try {
             ObjectMapper mapper = UniParcCrossRefJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

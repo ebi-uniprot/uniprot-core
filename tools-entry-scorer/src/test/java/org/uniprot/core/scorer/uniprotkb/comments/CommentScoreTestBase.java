@@ -68,5 +68,6 @@ class CommentScoreTestBase {
         CcLineTransformer ccLineTransformer = new CcLineTransformer("", "");
         String line = "ALLERGEN: Causes an allergic reaction in human. Binds to IgE and\n" + "IgG.";
         List<Comment> comments = ccLineTransformer.transformNoHeader(line);
+        System.out.println(comments);
     }
 }

@@ -178,7 +178,9 @@ class CommentTransformerTest {
         String converted = null;
         if (evidence) converted = fbuilder.buildStringWithEvidence(comment);
         else converted = fbuilder.buildString(comment);
+        System.out.println(tString);
 
+        System.out.println(converted);
         assertEquals(tString, converted);
     }
 

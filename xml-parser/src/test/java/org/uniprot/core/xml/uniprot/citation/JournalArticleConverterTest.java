@@ -22,6 +22,8 @@ class JournalArticleConverterTest {
         JournalArticle citation = create();
         JournalArticleConverter converter = new JournalArticleConverter();
         CitationType xmlCitation = converter.toXml(citation);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         JournalArticle converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -32,6 +34,8 @@ class JournalArticleConverterTest {
         JournalArticle citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -45,6 +49,8 @@ class JournalArticleConverterTest {
         assertNull(xmlCitation.getVolume());
         assertNull(xmlCitation.getFirst());
         assertNull(xmlCitation.getLast());
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         JournalArticle converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }

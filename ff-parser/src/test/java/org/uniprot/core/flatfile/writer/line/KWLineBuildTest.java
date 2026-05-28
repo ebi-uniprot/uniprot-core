@@ -256,6 +256,8 @@ class KWLineBuildTest {
     private void doTest(String deLine, List<Keyword> genes) {
         FFLine ffLine = builder.buildWithEvidence(genes);
         String resultString = ffLine.toString();
+        System.out.println(resultString);
+        System.out.println("\n");
         assertEquals(deLine, resultString);
     }
 

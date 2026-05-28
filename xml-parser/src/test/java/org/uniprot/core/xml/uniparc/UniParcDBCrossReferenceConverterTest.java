@@ -99,6 +99,8 @@ class UniParcDBCrossReferenceConverterTest {
     private void verify(UniParcCrossReference xref) {
         UniParcDBCrossReferenceConverter converter = new UniParcDBCrossReferenceConverter();
         DbReferenceType xmlObj = converter.toXml(xref);
+        System.out.println(
+                UniParcXmlTestHelper.toXmlString(xmlObj, DbReferenceType.class, "dbReference"));
         UniParcCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(xref, converted);
     }

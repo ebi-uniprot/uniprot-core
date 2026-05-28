@@ -22,6 +22,8 @@ class SequenceConverterTest {
         Sequence uniSeq = new SequenceBuilder(sequence).build();
         SequenceConverter converter = new SequenceConverter();
         SequenceType xmlSeq = converter.toXml(uniSeq);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlSeq, SequenceType.class, "sequence"));
         Sequence converted = converter.fromXml(xmlSeq);
         assertEquals(uniSeq, converted);
     }

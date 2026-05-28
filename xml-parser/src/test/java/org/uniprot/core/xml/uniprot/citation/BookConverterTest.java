@@ -16,6 +16,8 @@ class BookConverterTest {
         Book citation = create();
         BookConverter converter = new BookConverter();
         CitationType xmlCitation = converter.toXml(citation);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Book converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }
@@ -26,6 +28,8 @@ class BookConverterTest {
         Citation citation = create();
         CitationConverter converter = new CitationConverter();
         CitationType xmlCitation = converter.toXml(citation);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlCitation, CitationType.class, "citation"));
         Citation converted = converter.fromXml(xmlCitation);
         assertEquals(citation, converted);
     }

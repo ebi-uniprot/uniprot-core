@@ -88,6 +88,7 @@ class CofactorCommentConverterTest {
         assertEquals(comment, convertedComment);
         String createdXmlText =
                 UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment");
+        System.out.println(createdXmlText);
     }
 
     private void assertCofactorType(

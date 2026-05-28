@@ -22,6 +22,7 @@ public class CommentTransformerHelperTest {
                         + " hypermutation mechanism resulting in nucleotide transitions.";
         List<EvidencedValue> evValues = CommentTransformerHelper.parseEvidencedValues(value, true);
         for (EvidencedValue ev : evValues) {
+            System.out.println(ev.getValue());
         }
     }
 

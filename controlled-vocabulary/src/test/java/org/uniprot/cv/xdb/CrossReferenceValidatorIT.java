@@ -89,6 +89,7 @@ class CrossReferenceValidatorIT {
         // check if all the drlineconfig.json is in sync with dbxref.txt
         for (UniProtDatabaseDetail dbTypeDetail : UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes()) {
             if (!NEW_DBS.contains(dbTypeDetail.getName())) {
+                System.out.println(dbTypeDetail.getName());
                 List<Pair<String, String>> mismatches =
                         CrossReferenceValidator.validate(dbTypeDetail);
                 assertTrue(

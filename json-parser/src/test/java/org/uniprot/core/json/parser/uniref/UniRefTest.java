@@ -38,6 +38,7 @@ public class UniRefTest {
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(member);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -78,6 +79,7 @@ public class UniRefTest {
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(member);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -123,6 +125,7 @@ public class UniRefTest {
         try {
             ObjectMapper mapper = UniRefEntryJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

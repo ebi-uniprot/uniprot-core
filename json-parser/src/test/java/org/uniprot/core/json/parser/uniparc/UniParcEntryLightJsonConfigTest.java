@@ -34,6 +34,7 @@ class UniParcEntryLightJsonConfigTest {
         try {
             ObjectMapper mapper = UniParcEntryLightJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(entry);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

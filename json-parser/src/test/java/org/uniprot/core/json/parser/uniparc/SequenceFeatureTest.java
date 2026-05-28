@@ -29,6 +29,7 @@ class SequenceFeatureTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(domain);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -56,6 +57,7 @@ class SequenceFeatureTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(sf);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

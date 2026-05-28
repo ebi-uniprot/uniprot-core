@@ -14,6 +14,8 @@ class OrganismHostConverterTest {
         OrganismHost organismHost = createOrganismHost();
         OrganismHostConverter converter = new OrganismHostConverter();
         OrganismType xmlOrganism = converter.toXml(organismHost);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlOrganism, OrganismType.class, "organism"));
         OrganismHost converted = converter.fromXml(xmlOrganism);
         assertEquals(organismHost, converted);
     }

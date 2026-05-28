@@ -18,6 +18,8 @@ class OrganismConverterTest {
         EvidenceIndexMapper evRefMapper = new EvidenceIndexMapper();
         OrganismConverter converter = new OrganismConverter(evRefMapper);
         OrganismType xmlOrganism = converter.toXml(organism);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlOrganism, OrganismType.class, "organism"));
         Organism converted = converter.fromXml(xmlOrganism);
         assertEquals(organism, converted);
     }

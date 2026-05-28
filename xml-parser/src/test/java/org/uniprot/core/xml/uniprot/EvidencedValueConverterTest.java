@@ -34,6 +34,8 @@ class EvidencedValueConverterTest {
         converter =
                 new EvidencedValueConverter(new EvidenceIndexMapper(), new ObjectFactory(), true);
         xmlObj = converter.toXml(evValue);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlObj, EvidencedStringType.class, "text"));
         assertEquals(text + ".", xmlObj.getValue());
 
         assertEquals(Arrays.asList(1, 2), xmlObj.getEvidence());

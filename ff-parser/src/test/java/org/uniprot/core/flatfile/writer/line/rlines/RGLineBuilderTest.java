@@ -16,6 +16,7 @@ class RGLineBuilderTest {
         List<String> ags = build();
         List<String> lines = builder.buildLine(ags, true, true);
         for (String line : lines) {
+            System.out.println(line);
         }
         assertEquals(3, lines.size());
         String expected = "RG   Institute for Genomic Research;";
@@ -27,6 +28,7 @@ class RGLineBuilderTest {
         List<String> ags = build();
         List<String> lines = builder.buildLine(ags, false, true);
         for (String line : lines) {
+            System.out.println(line);
         }
         assertEquals(1, lines.size());
         String expected =

@@ -25,6 +25,9 @@ class SequenceConverterTest {
         SequenceConverter converter = new SequenceConverter();
         org.uniprot.core.xml.jaxb.uniparc.Sequence xmlSeq = converter.toXml(uniSeq);
 
+        System.out.println(
+                UniParcXmlTestHelper.toXmlString(
+                        xmlSeq, org.uniprot.core.xml.jaxb.uniparc.Sequence.class, "sequence"));
         Sequence converted = converter.fromXml(xmlSeq);
         assertEquals(uniSeq, converted);
     }

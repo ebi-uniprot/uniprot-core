@@ -48,6 +48,9 @@ class GNLineBuildTest {
     private void doTest(String deLine, List<Gene> genes) {
         FFLine ffLine = builder.buildWithEvidence(genes);
         String resultString = ffLine.toString();
+        System.out.println(resultString);
+        System.out.println("\n");
+        //	System.out.println(deLine);
         assertEquals(deLine, resultString);
     }
 

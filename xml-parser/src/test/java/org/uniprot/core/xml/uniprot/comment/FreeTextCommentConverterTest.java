@@ -45,6 +45,8 @@ class FreeTextCommentConverterTest {
         FreeTextCommentConverter converter =
                 new FreeTextCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         FreeTextComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -76,6 +78,8 @@ class FreeTextCommentConverterTest {
         FreeTextCommentConverter converter =
                 new FreeTextCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         FreeTextComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

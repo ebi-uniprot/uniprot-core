@@ -32,6 +32,8 @@ class MSCommentConverterTest {
 
         MSCommentConverter converter = new MSCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         MassSpectrometryComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }
@@ -54,6 +56,8 @@ class MSCommentConverterTest {
 
         MSCommentConverter converter = new MSCommentConverter(new EvidenceIndexMapper());
         CommentType xmlComment = converter.toXml(comment);
+        System.out.println(
+                UniProtXmlTestHelper.toXmlString(xmlComment, CommentType.class, "comment"));
         MassSpectrometryComment converted = converter.fromXml(xmlComment);
         assertEquals(comment, converted);
     }

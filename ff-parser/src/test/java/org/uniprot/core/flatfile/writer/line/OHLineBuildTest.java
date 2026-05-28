@@ -45,6 +45,9 @@ class OHLineBuildTest {
         FFLine ffLine = builder.build(hosts);
         String resultString = ffLine.toString();
 
+        System.out.println(resultString);
+        System.out.println();
+        System.out.println(ogLine);
         assertEquals(ogLine, resultString);
     }
 

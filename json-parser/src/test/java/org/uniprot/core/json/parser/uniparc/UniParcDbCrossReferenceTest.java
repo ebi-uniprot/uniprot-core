@@ -65,6 +65,7 @@ class UniParcDbCrossReferenceTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(xref);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }
@@ -86,6 +87,7 @@ class UniParcDbCrossReferenceTest {
         try {
             ObjectMapper mapper = UniParcJsonConfig.getInstance().getSimpleObjectMapper();
             String json = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(xref);
+            System.out.println(json);
         } catch (Exception e) {
             fail(e.getMessage());
         }

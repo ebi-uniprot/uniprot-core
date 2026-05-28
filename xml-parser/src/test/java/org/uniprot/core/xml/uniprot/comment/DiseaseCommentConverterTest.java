@@ -64,6 +64,7 @@ class DiseaseCommentConverterTest {
         DiseaseCommentConverter converter = new DiseaseCommentConverter(new EvidenceIndexMapper());
         CommentType xmlObj = converter.toXml(comment);
 
+        System.out.println(UniProtXmlTestHelper.toXmlString(xmlObj, CommentType.class, "comment"));
         DiseaseComment converted = converter.fromXml(xmlObj);
         assertEquals(comment, converted);
     }

@@ -69,6 +69,7 @@ class CofactorMapTest {
         Map<String, String> mappedCofactor = cofactorMap.attributeValues();
         assertNotNull(mappedCofactor);
         String value = mappedCofactor.get("cc_cofactor");
+        System.out.println(value);
         String expectedValue =
                 "COFACTOR: [Serine protease NS3]: Name=Zn(2+); Xref=ChEBI:CHEBI:29105;"
                         + " Evidence={ECO:0000269|PubMed:9060645}; Note=Binds 1 zinc ion."
