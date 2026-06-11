@@ -1340,7 +1340,7 @@
 		"name": "Reactome",
 		"displayName": "Reactome",
 		"category": "EAP",
-		"uriLink": "https://www.reactome.org/PathwayBrowser/#%id&FLG=%primaryAccession",
+		"uriLink": "https://reactome.org/PathwayBrowser/#%id&FLG=%primaryAccession",
         "idMappingName": "REACTOME_ID",
 		"attributes": [		
 			{	"name": "PathwayName",
