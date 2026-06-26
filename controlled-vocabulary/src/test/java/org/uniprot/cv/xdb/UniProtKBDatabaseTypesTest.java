@@ -200,7 +200,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("Reactome", opType.getDisplayName());
         assertEquals(ENZYME_AND_PATHWAY_DATABASES, opType.getCategory());
         assertEquals(
-                "https://www.reactome.org/PathwayBrowser/#%id&FLG=%primaryAccession",
+                "https://reactome.org/PathwayBrowser/#%id&FLG=%primaryAccession",
                 opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "PathwayName", "pathway name", null);
@@ -271,7 +271,7 @@ class UniProtKBDatabaseTypesTest {
     void testDatabaseFieldSize() {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 7);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 13);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 14);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTEIN_PROTEIN_INTERACTION_DATABASES),
@@ -341,7 +341,7 @@ class UniProtKBDatabaseTypesTest {
             String source =
                     UniProtDatabaseTypes.INSTANCE.getSourceAsString();
             List<Property> jsonArray = Property.parseJsonArray(source);
-            assertEquals(200, jsonArray.size());
+            assertEquals(201, jsonArray.size());
             Property property = jsonArray.get(0);
             assertEquals("EMBL",  property.getString("name"));
     }
@@ -357,7 +357,7 @@ class UniProtKBDatabaseTypesTest {
     @Test
     void testWithUniProtKBDbs() {
         List<UniProtDatabaseDetail> diseaseDbTypes = UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes();
-        assertEquals(198, diseaseDbTypes.size());
+        assertEquals(199, diseaseDbTypes.size());
         List<String> dbNames = diseaseDbTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.containsAll(List.of("EMBL", "EMDB", "CARD")));
     }
