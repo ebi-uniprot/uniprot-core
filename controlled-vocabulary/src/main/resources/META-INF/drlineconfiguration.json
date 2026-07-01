@@ -1904,6 +1904,12 @@
 		"uriLink":"https://mdposit.mddbr.eu/#/pointer?ref=proteins&id=%id"
 	},
 	{
+		"name":"MDRepo",
+		"displayName":"MDRepo",
+		"category":"3DS",
+		"uriLink":"https://mdrepo.org/uniprot/view/%id"
+	},
+	{
 		"name":"JaponicusDB",
 		"displayName":"JaponicusDB",
 		"category":"ORG",
