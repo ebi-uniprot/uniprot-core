@@ -271,7 +271,7 @@ class UniProtKBDatabaseTypesTest {
     void testDatabaseFieldSize() {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 7);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 14);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 15);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTEIN_PROTEIN_INTERACTION_DATABASES),
@@ -341,7 +341,7 @@ class UniProtKBDatabaseTypesTest {
             String source =
                     UniProtDatabaseTypes.INSTANCE.getSourceAsString();
             List<Property> jsonArray = Property.parseJsonArray(source);
-            assertEquals(201, jsonArray.size());
+            assertEquals(202, jsonArray.size());
             Property property = jsonArray.get(0);
             assertEquals("EMBL",  property.getString("name"));
     }
@@ -357,7 +357,7 @@ class UniProtKBDatabaseTypesTest {
     @Test
     void testWithUniProtKBDbs() {
         List<UniProtDatabaseDetail> diseaseDbTypes = UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes();
-        assertEquals(199, diseaseDbTypes.size());
+        assertEquals(200, diseaseDbTypes.size());
         List<String> dbNames = diseaseDbTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.containsAll(List.of("EMBL", "EMDB", "CARD")));
     }
