@@ -5,7 +5,9 @@ import org.uniprot.core.cv.keyword.KeywordId;
 import org.uniprot.core.cv.keyword.impl.KeywordIdBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class KeywordTest {
 
     @Test

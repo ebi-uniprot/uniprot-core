@@ -5,7 +5,9 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.literature.impl.LiteratureMappedReferenceBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class LiteratureMappedReferenceTest {
 
     @Test

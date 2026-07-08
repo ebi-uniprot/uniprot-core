@@ -6,7 +6,9 @@ import org.uniprot.core.citation.*;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureEntryImpl implements LiteratureEntry {
 
     private static final long serialVersionUID = -1925700851366460681L;

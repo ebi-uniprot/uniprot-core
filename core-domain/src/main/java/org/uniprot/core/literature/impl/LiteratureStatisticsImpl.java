@@ -5,7 +5,9 @@ import java.util.Objects;
 import org.uniprot.core.impl.StatisticsImpl;
 import org.uniprot.core.literature.LiteratureStatistics;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureStatisticsImpl extends StatisticsImpl implements LiteratureStatistics {
 
     private long computationallyMappedProteinCount;

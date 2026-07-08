@@ -5,7 +5,9 @@ import org.uniprot.core.json.parser.ValidateJson;
 import org.uniprot.core.literature.LiteratureStatistics;
 import org.uniprot.core.literature.impl.LiteratureStatisticsBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class LiteratureStatisticsTest {
 
     @Test

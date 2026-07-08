@@ -83,7 +83,6 @@ class FlatfileRoundTripIT {
         "/entryIT/P09230.txl, false",
         "/entryIT/P0CH48.txl, false",
         "/entryIT/P09919.txl, false",
-       
         "/entryIT/Q9FK72.txl, false",
         "/entryIT/Q00731.txl, false",
         "/entryIT/P54757.txl, false",

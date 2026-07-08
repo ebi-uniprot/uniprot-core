@@ -14,7 +14,8 @@ public class DefaultUniProtParser implements UniProtParser {
     public DefaultUniProtParser(SupportingDataMap supportingDataMap, boolean ignoreWrongDr) {
         this.parser = new DefaultUniprotKBLineParserFactory().createEntryParser();
         this.converter = new EntryObjectConverter(supportingDataMap, ignoreWrongDr);
-    };
+    }
+    ;
 
     @Override
     public UniProtKBEntry parse(String entryff) {

@@ -7,7 +7,9 @@ import org.uniprot.core.uniprotkb.comment.Interactant;
 import org.uniprot.core.uniprotkb.comment.Interaction;
 import org.uniprot.core.uniprotkb.comment.InteractionComment;
 
-/** @author jieluo */
+/**
+ * @author jieluo
+ */
 public class CCInteractionCommentLineBuilder extends CCLineBuilderAbstr<InteractionComment> {
 
     @Override

@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.CommonOrganism;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CommonOrganismImplTest {
 

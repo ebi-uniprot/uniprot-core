@@ -1,5 +1,10 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
@@ -15,11 +20,6 @@ import org.uniprot.core.uniprotkb.description.impl.ProteinNameBuilder;
 import org.uniprot.core.uniprotkb.description.impl.ProteinSubNameBuilder;
 import org.uniprot.core.uniprotkb.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author lgonzales
@@ -222,8 +222,12 @@ class UniProtKBFastaParserTest {
     }
 
     @Test
-    void testToUniProtKBFasta(){
-        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+    void testToUniProtKBFasta() {
+        List<Gene> genes =
+                List.of(
+                        new GeneBuilder()
+                                .orfNamesAdd(new ORFNameBuilder().value("ORF 1").build())
+                                .build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry);
         assertNotNull(result);
@@ -241,8 +245,12 @@ class UniProtKBFastaParserTest {
     }
 
     @Test
-    void testToUniProtKBFastaWithSubsequenceRange(){
-        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+    void testToUniProtKBFastaWithSubsequenceRange() {
+        List<Gene> genes =
+                List.of(
+                        new GeneBuilder()
+                                .orfNamesAdd(new ORFNameBuilder().value("ORF 1").build())
+                                .build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         String sequenceRange = "10-20";
         UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry, sequenceRange);
@@ -256,13 +264,18 @@ class UniProtKBFastaParserTest {
         assertEquals("FRAGMENTS_PRECURSOR", result.getFlagType().name());
         assertEquals(entry.getProteinExistence(), result.getProteinExistence());
         assertEquals(entry.getEntryAudit().getSequenceVersion(), result.getSequenceVersion());
-        assertEquals(entry.getSequence().getValue().substring(9, 20), result.getSequence().getValue());
+        assertEquals(
+                entry.getSequence().getValue().substring(9, 20), result.getSequence().getValue());
         assertEquals(sequenceRange, result.getSequenceRange());
     }
 
     @Test
-    void testToUniProtKBFastaWithSubsequenceOutOfRange(){
-        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+    void testToUniProtKBFastaWithSubsequenceOutOfRange() {
+        List<Gene> genes =
+                List.of(
+                        new GeneBuilder()
+                                .orfNamesAdd(new ORFNameBuilder().value("ORF 1").build())
+                                .build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         String sequenceRange = "40-50";
         UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry, sequenceRange);
@@ -273,8 +286,12 @@ class UniProtKBFastaParserTest {
     }
 
     @Test
-    void testToUniProtKBFastaWithSubsequenceOutOfRangeEnd(){
-        List<Gene> genes = List.of(new GeneBuilder().orfNamesAdd(new ORFNameBuilder().value("ORF 1").build()).build());
+    void testToUniProtKBFastaWithSubsequenceOutOfRangeEnd() {
+        List<Gene> genes =
+                List.of(
+                        new GeneBuilder()
+                                .orfNamesAdd(new ORFNameBuilder().value("ORF 1").build())
+                                .build());
         UniProtKBEntry entry = getEntryWithGene(genes);
         String sequenceRange = "20-100";
         UniProtKBFasta result = UniProtKBFastaParser.toUniProtKBFasta(entry, sequenceRange);
@@ -310,5 +327,4 @@ class UniProtKBFastaParserTest {
                         .build();
         return entry;
     }
-
 }

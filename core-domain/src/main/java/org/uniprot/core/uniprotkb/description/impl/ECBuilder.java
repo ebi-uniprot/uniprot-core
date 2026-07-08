@@ -5,7 +5,9 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.uniprotkb.description.EC;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class ECBuilder extends AbstractEvidencedValueBuilder<ECBuilder, EC> {
 
     @Override

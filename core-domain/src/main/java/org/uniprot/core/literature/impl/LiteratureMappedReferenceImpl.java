@@ -7,7 +7,9 @@ import org.uniprot.core.literature.LiteratureMappedReference;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureMappedReferenceImpl implements LiteratureMappedReference {
 
     private static final long serialVersionUID = -1925700851366460682L;

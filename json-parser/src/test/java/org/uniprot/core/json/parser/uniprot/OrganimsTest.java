@@ -12,7 +12,9 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class OrganimsTest {
 
     @Test

@@ -11,7 +11,9 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.gene.*;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class GeneBuilder implements Builder<Gene> {
 
     private GeneName geneName = null;

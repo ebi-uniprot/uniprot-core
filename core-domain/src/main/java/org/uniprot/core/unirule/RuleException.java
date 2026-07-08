@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public interface RuleException extends Serializable {
     String getNote();
 

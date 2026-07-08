@@ -37,7 +37,9 @@ package org.uniprot.core.uniprotkb.comment;
  * @see Comment
  */
 public interface DiseaseComment extends Comment, HasMolecule {
-    /** @return the definition of the disease */
+    /**
+     * @return the definition of the disease
+     */
     Disease getDisease();
 
     /**

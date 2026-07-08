@@ -8,7 +8,9 @@ import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyImpl;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class TaxonomyEntryImpl extends TaxonomyImpl implements TaxonomyEntry {
 
     private static final long serialVersionUID = -319775179301440773L;

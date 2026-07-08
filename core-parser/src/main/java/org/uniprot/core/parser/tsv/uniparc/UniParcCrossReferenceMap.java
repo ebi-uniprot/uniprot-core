@@ -1,15 +1,15 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+import java.util.stream.Collectors;
+
 import org.uniprot.core.parser.tsv.NamedValueMap;
 import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.util.Utils;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
-import java.util.stream.Collectors;
 
 /**
  * @author jluo

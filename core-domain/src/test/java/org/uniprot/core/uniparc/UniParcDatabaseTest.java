@@ -66,12 +66,12 @@ class UniParcDatabaseTest {
 
     @Test
     void isSource() {
-        assertTrue( UniParcDatabase.EMBL.isSource());
+        assertTrue(UniParcDatabase.EMBL.isSource());
     }
 
     @Test
     void isNotSource() {
-        assertFalse( UniParcDatabase.FLYBASE.isSource());
+        assertFalse(UniParcDatabase.FLYBASE.isSource());
     }
 
     @Test

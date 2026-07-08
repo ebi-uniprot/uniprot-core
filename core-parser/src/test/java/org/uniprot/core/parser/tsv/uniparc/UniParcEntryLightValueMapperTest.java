@@ -1,5 +1,10 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDate;
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -8,17 +13,19 @@ import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import java.time.LocalDate;
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 class UniParcEntryLightValueMapperTest {
 
     @Test
     void testGetDataOrganism() {
         UniParcEntryLight entry = create();
-        List<String> fields = Arrays.asList("upi", "organism", "organism_id", "proteome", "common_taxons", "common_taxon_ids");
+        List<String> fields =
+                Arrays.asList(
+                        "upi",
+                        "organism",
+                        "organism_id",
+                        "proteome",
+                        "common_taxons",
+                        "common_taxon_ids");
 
         Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entry, fields);
 
@@ -34,10 +41,19 @@ class UniParcEntryLightValueMapperTest {
     @Test
     void testGetDataOrganism_withEmptyCommonTaxons() {
         UniParcEntryLight entry = create();
-        UniParcEntryLight entryWithEmptyCommonTaxons = UniParcEntryLightBuilder.from(entry).commonTaxonsSet(List.of()).build();
-        List<String> fields = Arrays.asList("upi", "organism", "organism_id", "proteome", "common_taxons", "common_taxon_ids");
+        UniParcEntryLight entryWithEmptyCommonTaxons =
+                UniParcEntryLightBuilder.from(entry).commonTaxonsSet(List.of()).build();
+        List<String> fields =
+                Arrays.asList(
+                        "upi",
+                        "organism",
+                        "organism_id",
+                        "proteome",
+                        "common_taxons",
+                        "common_taxon_ids");
 
-        Map<String, String> result = new UniParcEntryLightValueMapper().mapEntity(entryWithEmptyCommonTaxons, fields);
+        Map<String, String> result =
+                new UniParcEntryLightValueMapper().mapEntity(entryWithEmptyCommonTaxons, fields);
 
         assertEquals(fields.size(), result.size());
         verify("UPI0000083A08", "upi", result);
@@ -97,8 +113,6 @@ class UniParcEntryLightValueMapperTest {
         verify("sigId2", "PROSITE", result);
     }
 
-
-
     private void verify(String expected, String field, Map<String, String> result) {
         assertEquals(expected, result.get(field));
     }
@@ -108,14 +122,28 @@ class UniParcEntryLightValueMapperTest {
         Sequence sequence = new SequenceBuilder(seq).build();
         List<SequenceFeature> seqFeatures = getSeqFeatures();
 
-        Organism organism1 = new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
+        Organism organism1 =
+                new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         Organism organism2 = new OrganismBuilder().taxonId(10090).scientificName("MOUSE").build();
         LinkedHashSet<Organism> organisms = new LinkedHashSet<>(List.of(organism1, organism2));
 
         LinkedHashSet<String> proteinNames = new LinkedHashSet<>(List.of("protein1", "protein2"));
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(List.of("gene1", "gene2"));
-        List<CommonOrganism> commonTaxons = List.of(new CommonOrganismBuilder().commonTaxon("Bacteroides").commonTaxonId(12345L).build(),new CommonOrganismBuilder().commonTaxon("Enterococcus").commonTaxonId(9876L).build());
-        LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(List.of(new ProteomeBuilder().id("UP000005640").component("C1").build(), new ProteomeBuilder().id("UP000002494").component("C2").build()));
+        List<CommonOrganism> commonTaxons =
+                List.of(
+                        new CommonOrganismBuilder()
+                                .commonTaxon("Bacteroides")
+                                .commonTaxonId(12345L)
+                                .build(),
+                        new CommonOrganismBuilder()
+                                .commonTaxon("Enterococcus")
+                                .commonTaxonId(9876L)
+                                .build());
+        LinkedHashSet<Proteome> proteomes =
+                new LinkedHashSet<>(
+                        List.of(
+                                new ProteomeBuilder().id("UP000005640").component("C1").build(),
+                                new ProteomeBuilder().id("UP000002494").component("C2").build()));
 
         return new UniParcEntryLightBuilder()
                 .uniParcId("UPI0000083A08")

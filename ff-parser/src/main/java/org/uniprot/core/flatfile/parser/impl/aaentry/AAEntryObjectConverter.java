@@ -13,25 +13,24 @@ import org.uniprot.core.uniprotkb.UniProtKBEntry;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.impl.UniProtKBEntryBuilder;
 
-
 public class AAEntryObjectConverter implements Converter<AAEntryObject, UniProtKBEntry> {
     private static final long serialVersionUID = 1L;
-	private final AcLineConverter acLineConverter = new AcLineConverter();
-    private final CcLineConverter ccLineConverter ;
+    private final AcLineConverter acLineConverter = new AcLineConverter();
+    private final CcLineConverter ccLineConverter;
     private final DeLineConverter deLineConverter = new DeLineConverter();
     private final FtLineConverter ftLineConverter = new FtLineConverter();
     private final GnLineConverter gnLineConverter = new GnLineConverter();
 
     private final KwLineConverter kwLineConverter;
-   // private final UniProtFactory factory = DefaultUniProtFactory.getInstance();
+    // private final UniProtFactory factory = DefaultUniProtFactory.getInstance();
 
-    public  AAEntryObjectConverter(SupportingDataMap supportingDataMap, boolean ignoreWrong) {
-    	ccLineConverter =
+    public AAEntryObjectConverter(SupportingDataMap supportingDataMap, boolean ignoreWrong) {
+        ccLineConverter =
                 new CcLineConverter(
                         supportingDataMap.getDiseaseMap(),
                         supportingDataMap.getSubcellularLocationMap(),
                         ignoreWrong);
-    	 kwLineConverter = new KwLineConverter(supportingDataMap.getKeywordMap(), ignoreWrong);
+        kwLineConverter = new KwLineConverter(supportingDataMap.getKeywordMap(), ignoreWrong);
     }
 
     @Override
@@ -41,23 +40,21 @@ public class AAEntryObjectConverter implements Converter<AAEntryObject, UniProtK
         UniProtKBAcLineObject acLineObj = acLineConverter.convert(f.ac);
         UniProtKBEntryBuilder activeEntryBuilder =
                 new UniProtKBEntryBuilder(
-                                acLineObj.getPrimaryAccession().getValue(),"", UniProtKBEntryType.AA);
+                        acLineObj.getPrimaryAccession().getValue(), "", UniProtKBEntryType.AA);
 
-        if (f.cc != null){
+        if (f.cc != null) {
             activeEntryBuilder.commentsSet(ccLineConverter.convert(f.cc));
         }
         if (f.de != null) {
             activeEntryBuilder.proteinDescription(deLineConverter.convert(f.de));
         }
-       
 
         if (f.ft != null) {
             activeEntryBuilder.featuresSet(ftLineConverter.convert(f.ft));
         }
-        if (f.gn != null){
+        if (f.gn != null) {
             activeEntryBuilder.genesSet(gnLineConverter.convert(f.gn));
         }
-
 
         if (f.kw != null) {
             activeEntryBuilder.keywordsSet(kwLineConverter.convert(f.kw));
@@ -66,15 +63,11 @@ public class AAEntryObjectConverter implements Converter<AAEntryObject, UniProtK
         return activeEntryBuilder.build();
     }
 
-
-
     private void clear() {
         ccLineConverter.clear();
         deLineConverter.clear();
         ftLineConverter.clear();
         gnLineConverter.clear();
         kwLineConverter.clear();
-       
     }
-
 }

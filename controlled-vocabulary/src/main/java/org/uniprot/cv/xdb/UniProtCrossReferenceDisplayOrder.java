@@ -11,7 +11,9 @@ import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.cv.common.AbstractFileReader;
 import org.uniprot.cv.common.CVSystemProperties;
 
-/** @author jieluo */
+/**
+ * @author jieluo
+ */
 public enum UniProtCrossReferenceDisplayOrder
         implements org.uniprot.core.uniprotkb.xdb.DatabaseDisplayOrder<UniProtDatabaseDetail> {
     INSTANCE;

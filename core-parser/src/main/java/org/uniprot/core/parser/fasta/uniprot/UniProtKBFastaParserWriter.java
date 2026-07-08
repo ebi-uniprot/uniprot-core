@@ -1,14 +1,14 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
+import static org.uniprot.core.parser.fasta.FastaUtils.*;
+
+import java.util.Objects;
+
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.uniprotkb.ProteinExistence;
 import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 import org.uniprot.core.uniprotkb.description.FlagType;
 import org.uniprot.core.util.Utils;
-
-import java.util.Objects;
-
-import static org.uniprot.core.parser.fasta.FastaUtils.*;
 
 /**
  * @author lgonzales

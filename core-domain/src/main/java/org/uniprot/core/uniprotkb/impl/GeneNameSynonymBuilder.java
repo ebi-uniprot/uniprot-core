@@ -10,7 +10,9 @@ import org.uniprot.core.gene.GeneNameSynonym;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class GeneNameSynonymBuilder
         extends AbstractEvidencedValueBuilder<GeneNameSynonymBuilder, GeneNameSynonym> {
 

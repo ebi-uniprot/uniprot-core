@@ -22,9 +22,8 @@ import org.uniprot.core.flatfile.parser.impl.cc.CcLineErrorListener;
 import org.uniprot.core.flatfile.parser.impl.entry.EntryErrorListener;
 import org.uniprot.core.flatfile.parser.impl.ft.FtLineErrorListener;
 
-
-
-public class AAUniProtKBLineParser <T, L extends Lexer, P extends Parser> implements UniprotKBLineParser<T> {
+public class AAUniProtKBLineParser<T, L extends Lexer, P extends Parser>
+        implements UniprotKBLineParser<T> {
 
     private final P parser;
 
@@ -32,7 +31,8 @@ public class AAUniProtKBLineParser <T, L extends Lexer, P extends Parser> implem
 
     private L lexer;
 
-    protected AAUniProtKBLineParser(AAGrammarFactory<L, P> factory, ParseTreeObjectExtractor<T> listener) {
+    protected AAUniProtKBLineParser(
+            AAGrammarFactory<L, P> factory, ParseTreeObjectExtractor<T> listener) {
         this.listener = listener;
 
         this.parser = this.createParserFromInput(new ANTLRInputStream(), factory);
@@ -93,39 +93,42 @@ public class AAUniProtKBLineParser <T, L extends Lexer, P extends Parser> implem
         if (parser instanceof CcLineParser lineParser) {
             lineParser.cc_lines();
         } else {
-            throw new RuntimeException("Parser's type : " + parser.getClass()
-                    + " is not recognized or not supported for No header parse.");
+            throw new RuntimeException(
+                    "Parser's type : "
+                            + parser.getClass()
+                            + " is not recognized or not supported for No header parse.");
         }
         return listener.getObject();
     }
+
     protected T processWithParser(P parser, String originString) {
 
-       
         try {
             if (parser instanceof AcLineParser lineParser) {
                 lineParser.ac_ac();
             } else if (parser instanceof CcLineParser lineParser) {
                 lineParser.cc_cc();
             } else if (parser instanceof DeLineParser lineParser) {
-                lineParser.de_de();            
+                lineParser.de_de();
             } else if (parser instanceof FtLineParser lineParser) {
                 lineParser.ft_ft();
             } else if (parser instanceof GnLineParser lineParser) {
                 lineParser.gn_gn();
-           
+
             } else if (parser instanceof KwLineParser lineParser) {
                 lineParser.kw_kw();
-          
+
             } else if (parser instanceof UniprotAAParser uniprotParser) {
                 uniprotParser.entry();
             } else {
-                throw new RuntimeException("Parser's type : " + parser.getClass() + " is not recognized.");
+                throw new RuntimeException(
+                        "Parser's type : " + parser.getClass() + " is not recognized.");
             }
         } catch (NullPointerException e) {
-            throw new RuntimeException("Unexpected Error, Checking the format of string: " + originString, e);
+            throw new RuntimeException(
+                    "Unexpected Error, Checking the format of string: " + originString, e);
         }
-            
+
         return listener.getObject();
     }
-
 }

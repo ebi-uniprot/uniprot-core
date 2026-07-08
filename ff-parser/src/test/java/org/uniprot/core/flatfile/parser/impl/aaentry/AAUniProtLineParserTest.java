@@ -23,14 +23,10 @@ import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject.GnName;
 import org.uniprot.core.flatfile.parser.impl.gn.GnLineObject.GnNameType;
 import org.uniprot.core.flatfile.parser.impl.kw.KwLineObject;
 
-
-
-
 class AAUniProtLineParserTest {
-    private static AAUniProtKBLineParserFactory parserFactory = new DefaultAAUniProtKBLineParserFactory();
+    private static AAUniProtKBLineParserFactory parserFactory =
+            new DefaultAAUniProtKBLineParserFactory();
 
-
-    
     @Test
     public void testACUniParcIdFormat() {
         UniprotKBLineParser<AcLineObject> acParser = parserFactory.createAcLineParser();
@@ -38,32 +34,32 @@ class AAUniProtLineParserTest {
         AcLineObject object = acParser.parse(acLine);
         assertEquals("UPI0013A7CF90", object.primaryAcc);
         assertEquals(0, object.secondaryAcc.size());
-
     }
+
     @Test
     public void testACUniParcIdWithTaxIdFormat() {
-    	UniprotKBLineParser<AcLineObject> acParser = parserFactory.createAcLineParser();
+        UniprotKBLineParser<AcLineObject> acParser = parserFactory.createAcLineParser();
         String acLine = "AC   UPI0013A7CF90-1392245;\n";
         AcLineObject object = acParser.parse(acLine);
         assertEquals("UPI0013A7CF90-1392245", object.primaryAcc);
         assertEquals(0, object.secondaryAcc.size());
     }
-    
-   
-    
+
     @Test
     void testCC() {
-        String ccLine ="""
+        String ccLine =
+                """
 CC   -!- FUNCTION: Catalyzes the conversion of acetate into acetyl-CoA (AcCoA),
 CC       an essential intermediate at the junction of anabolic and catabolic
-CC       product AcCoA. {ECO:0000256|HAMAP-Rule:MF_01123}.                
+CC       product AcCoA. {ECO:0000256|HAMAP-Rule:MF_01123}.
                         """;
         UniprotKBLineParser<CcLineObject> ccParser = parserFactory.createCcLineParser();
-        
+
         CcLineObject obj = ccParser.parse(ccLine);
 
-        String val = "Catalyzes the conversion of acetate into acetyl-CoA (AcCoA), an essential intermediate at the junction of anabolic and catabolic product AcCoA";
-      
+        String val =
+                "Catalyzes the conversion of acetate into acetyl-CoA (AcCoA), an essential intermediate at the junction of anabolic and catabolic product AcCoA";
+
         assertEquals(1, obj.getCcs().size());
         CC cc = obj.getCcs().get(0);
         assertEquals(CC.CCTopicEnum.FUNCTION, cc.getTopic());
@@ -77,30 +73,33 @@ CC       product AcCoA. {ECO:0000256|HAMAP-Rule:MF_01123}.
 
     @Test
     void testDE() {
-        String deLine = """
+        String deLine =
+                """
         DE   RecName: Full=Angiotensin-converting enzyme {ECO:0000256|RuleBase:RU361144};
-        DE            EC=3.4.-.- {ECO:0000256|RuleBase:RU361144};                
+        DE            EC=3.4.-.- {ECO:0000256|RuleBase:RU361144};
                         """;
         UniprotKBLineParser<DeLineObject> deParser = parserFactory.createDeLineParser();
-        
+
         DeLineObject object = deParser.parse(deLine);
-        DeLineObject.Name recName =object.getRecName();
+        DeLineObject.Name recName = object.getRecName();
         assertNotNull(recName);
         assertEquals("Angiotensin-converting enzyme", recName.getFullName());
-        checkEvidence(recName.getFullName(), object.getEvidenceInfo(), "ECO:0000256|RuleBase:RU361144");
+        checkEvidence(
+                recName.getFullName(), object.getEvidenceInfo(), "ECO:0000256|RuleBase:RU361144");
         assertEquals(1, recName.getEcs().size());
         assertEquals("3.4.-.-", recName.getEcs().get(0));
         DeLineObject.ECEvidence ecEvidence = new DeLineObject.ECEvidence();
-        ecEvidence.setEcValue( recName.getEcs().get(0));
-        ecEvidence.setNameECBelong(recName); 
+        ecEvidence.setEcValue(recName.getEcs().get(0));
+        ecEvidence.setNameECBelong(recName);
 
         checkEvidence(ecEvidence, object.getEvidenceInfo(), "ECO:0000256|RuleBase:RU361144");
     }
-    
+
     @Test
     void testGN() {
-        String gnLine ="""
-        GN   Name=acsA {ECO:0000256|HAMAP-Rule:MF_01123};                
+        String gnLine =
+                """
+        GN   Name=acsA {ECO:0000256|HAMAP-Rule:MF_01123};
                         """;
         UniprotKBLineParser<GnLineObject> parser = parserFactory.createGnLineParser();
         GnLineObject obj = parser.parse(gnLine);
@@ -109,37 +108,50 @@ CC       product AcCoA. {ECO:0000256|HAMAP-Rule:MF_01123}.
         GnName gnName = obj.gnObjects.get(0).names.get(0);
         assertEquals(GnNameType.GENAME, gnName.type);
         assertEquals(List.of("acsA"), gnName.names);
-        assertEquals(List.of("ECO:0000256|HAMAP-Rule:MF_01123"),
+        assertEquals(
+                List.of("ECO:0000256|HAMAP-Rule:MF_01123"),
                 gnName.getEvidenceInfo().getEvidences().get("acsA"));
-        
     }
-    
+
     @Test
     void testFT() {
-        String ftLines ="""
+        String ftLines =
+                """
 FT   CHAIN           18..805
 FT                   /note="Angiotensin-converting enzyme"
 FT                   /evidence="ECO:0000256|SAM:SignalP"
 FT                   /id="PRO_5035841938"
 FT   TRANSMEM        741..765
 FT                   /note="Helical"
-FT                   /evidence="ECO:0000256|SAM:Phobius"                        
+FT                   /evidence="ECO:0000256|SAM:Phobius"
                         """;
         UniprotKBLineParser<FtLineObject> parser = parserFactory.createFtLineParser();
         FtLineObject obj = parser.parse(ftLines);
         assertEquals(2, obj.getFts().size());
-        verifyFt(obj, obj.getFts().get(0), FtLineObject.FTType.CHAIN, "18", "805",
-                "Angiotensin-converting enzyme", "PRO_5035841938", 
+        verifyFt(
+                obj,
+                obj.getFts().get(0),
+                FtLineObject.FTType.CHAIN,
+                "18",
+                "805",
+                "Angiotensin-converting enzyme",
+                "PRO_5035841938",
                 List.of("ECO:0000256|SAM:SignalP"));
-        verifyFt(obj, obj.getFts().get(1), FtLineObject.FTType.TRANSMEM, "741", "765",
-                "Helical", null, 
+        verifyFt(
+                obj,
+                obj.getFts().get(1),
+                FtLineObject.FTType.TRANSMEM,
+                "741",
+                "765",
+                "Helical",
+                null,
                 List.of("ECO:0000256|SAM:Phobius"));
-        
     }
-    
+
     @Test
     void testAAEntry() {
-        String aaEntryLines = """
+        String aaEntryLines =
+                """
 AC   UPI000000000B-1032;
 DE   RecName: Full=Angiotensin-converting enzyme {ECO:0000256|RuleBase:RU361144};
 DE            EC=3.4.-.- {ECO:0000256|RuleBase:RU361144};
@@ -276,10 +288,10 @@ FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   COMPBIAS        789..805
 FT                   /note="Polar residues"
 FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
-//                        
+//
                         """;
         UniprotKBLineParser<AAEntryObject> entryParser = parserFactory.createEntryParser();
-     //   aaEntryLines = aaEntryLines.substring(0, aaEntryLines.length()-1);
+        //   aaEntryLines = aaEntryLines.substring(0, aaEntryLines.length()-1);
         AAEntryObject entry = entryParser.parse(aaEntryLines);
         assertNotNull(entry);
         assertEquals("UPI000000000B-1032", entry.ac.primaryAcc);
@@ -290,10 +302,15 @@ FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
         KwLineObject kw = entry.kw;
         assertEquals(18, kw.keywords.size());
     }
-    
-    void verifyFt(FtLineObject obj,
-            FtLineObject.FT ft, FtLineObject.FTType type, String start, String end,
-            String text, String ftid,
+
+    void verifyFt(
+            FtLineObject obj,
+            FtLineObject.FT ft,
+            FtLineObject.FTType type,
+            String start,
+            String end,
+            String text,
+            String ftid,
             List<String> evidences) {
         assertEquals(type, ft.getType());
         assertEquals(start, ft.getLocationStart());
@@ -305,13 +322,12 @@ FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
     }
 
     private void checkEvidence(Object obj, EvidenceInfo evInfo, String ev) {
-        if ((ev == null) || (ev.isEmpty()))
-            checkEvidences(obj, evInfo, null);
+        if ((ev == null) || (ev.isEmpty())) checkEvidences(obj, evInfo, null);
         List<String> evs = new ArrayList<>();
         evs.add(ev);
         checkEvidences(obj, evInfo, evs);
     }
-    
+
     private void checkEvidences(Object obj, EvidenceInfo evInfo, List<String> evs) {
 
         List<String> evidences = evInfo.getEvidences().get(obj);
@@ -326,5 +342,4 @@ FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
             assertEquals(evs.get(i), evidences.get(i));
         }
     }
-
 }

@@ -65,11 +65,12 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
         Integer proteinCount = xmlObj.getProteinCount();
         List<RelatedProteome> reladedProteomes = new ArrayList<>();
 
-        if(xmlObj.getRelatedTo() != null) {
-            reladedProteomes = xmlObj.getRelatedTo().getRelatedReferenceProteome().stream()
-                    .map(relatedReferenceProteomeConverter::fromXml).toList();
+        if (xmlObj.getRelatedTo() != null) {
+            reladedProteomes =
+                    xmlObj.getRelatedTo().getRelatedReferenceProteome().stream()
+                            .map(relatedReferenceProteomeConverter::fromXml)
+                            .toList();
         }
-
 
         builder.proteomeId(proteomeId(xmlObj.getUpid()))
                 .proteomeType(getProteomeType(xmlObj.getProteomeStatus()))
@@ -171,21 +172,21 @@ public class ProteomeConverter implements Converter<Proteome, ProteomeEntry> {
             convertExclusionReasons(uniObj, xmlObj);
         }
 
-        if(notNull(uniObj.getPanproteomeTaxon())){
+        if (notNull(uniObj.getPanproteomeTaxon())) {
             xmlObj.setPanproteomeTaxon(uniObj.getPanproteomeTaxon().getTaxonId());
-
         }
 
-        if(notNullNotEmpty(uniObj.getRelatedProteomes())){
+        if (notNullNotEmpty(uniObj.getRelatedProteomes())) {
             convertRelatedProteomes(uniObj, xmlObj);
         }
         return xmlObj;
     }
 
     private void convertRelatedProteomes(ProteomeEntry uniObj, Proteome xmlObj) {
-        List<RelatedReferenceProteome> rrps = uniObj.getRelatedProteomes().stream()
-                .map(relatedReferenceProteomeConverter::toXml)
-                .toList();
+        List<RelatedReferenceProteome> rrps =
+                uniObj.getRelatedProteomes().stream()
+                        .map(relatedReferenceProteomeConverter::toXml)
+                        .toList();
         RelatedToType relatedToType = xmlFactory.createRelatedToType();
         relatedToType.getRelatedReferenceProteome().addAll(rrps);
         xmlObj.setRelatedTo(relatedToType);

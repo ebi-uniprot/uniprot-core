@@ -9,7 +9,9 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class CreateUtils {
 
     public static List<Evidence> createEvidenceList(String evidenceStr) {

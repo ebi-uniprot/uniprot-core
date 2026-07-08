@@ -4,7 +4,9 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author jluo */
+/**
+ * @author jluo
+ */
 public enum MethodType implements EnumDisplay {
     GENE3D("GENE3D", "X"),
     MOBIDB_LITE("MOBIDBLT", "g"),

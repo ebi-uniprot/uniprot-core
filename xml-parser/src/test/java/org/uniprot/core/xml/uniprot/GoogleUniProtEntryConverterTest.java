@@ -1,5 +1,14 @@
 package org.uniprot.core.xml.uniprot;
 
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.io.InputStream;
+import java.util.List;
+
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.citation.Citation;
@@ -17,14 +26,6 @@ import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 import org.uniprot.core.xml.jaxb.uniprot.Uniprot;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-import java.io.InputStream;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class GoogleUniProtEntryConverterTest {
     @Test
@@ -47,7 +48,9 @@ class GoogleUniProtEntryConverterTest {
         assertNotNull(uniProtEntry);
         assertEquals("A0A6A5BR32", uniProtEntry.getPrimaryAccession().getValue());
         assertEquals("PLACEHOLDER", uniProtEntry.getUniProtkbId().getValue());
-        assertEquals("Uncharacterized protein", uniProtEntry.getProteinDescription().getRecommendedName().getFullName().getValue());
+        assertEquals(
+                "Uncharacterized protein",
+                uniProtEntry.getProteinDescription().getRecommendedName().getFullName().getValue());
         // reference
         assertEquals(1, uniProtEntry.getReferences().size());
         UniProtKBReference reference = uniProtEntry.getReferences().get(0);
@@ -142,7 +145,8 @@ class GoogleUniProtEntryConverterTest {
         assertNotNull(nameEvidence);
         assertEquals(1, nameEvidence.size());
         assertEquals(EvidenceCode.ECO_0008006, nameEvidence.get(0).getEvidenceCode());
-        CrossReference<EvidenceDatabase> nameEvidenceXref = nameEvidence.get(0).getEvidenceCrossReference();
+        CrossReference<EvidenceDatabase> nameEvidenceXref =
+                nameEvidence.get(0).getEvidenceCrossReference();
         assertNotNull(nameEvidenceXref);
         assertEquals("Google", nameEvidenceXref.getDatabase().getName());
         assertEquals("ProtNLM2", nameEvidenceXref.getId());
@@ -174,43 +178,52 @@ class GoogleUniProtEntryConverterTest {
         assertEquals(1, similarityComment.getTexts().size());
         EvidencedValue similarityCommentText = similarityComment.getTexts().get(0);
         assertNotNull(similarityCommentText);
-        assertEquals("Belongs to the ZIP transporter (TC 2.A.5) family", similarityCommentText.getValue());
+        assertEquals(
+                "Belongs to the ZIP transporter (TC 2.A.5) family",
+                similarityCommentText.getValue());
         assertEquals(1, similarityCommentText.getEvidences().size());
         Evidence similarityCommentTextEvidence = similarityCommentText.getEvidences().get(0);
         assertNotNull(similarityCommentTextEvidence);
         assertEquals(EvidenceCode.ECO_0008006, similarityCommentTextEvidence.getEvidenceCode());
-        CrossReference<EvidenceDatabase> similarityCommentTextEvidenceXref = similarityCommentTextEvidence.getEvidenceCrossReference();
+        CrossReference<EvidenceDatabase> similarityCommentTextEvidenceXref =
+                similarityCommentTextEvidence.getEvidenceCrossReference();
         assertNotNull(similarityCommentTextEvidenceXref);
         assertEquals("Google", similarityCommentTextEvidenceXref.getDatabase().getName());
         assertEquals("ProtNLM2", similarityCommentTextEvidenceXref.getId());
         assertEquals(3, similarityCommentTextEvidenceXref.getProperties().size());
         // comment function
-        FreeTextComment functionComment = (FreeTextComment) comments.get(1); // assuming this is the second comment
+        FreeTextComment functionComment =
+                (FreeTextComment) comments.get(1); // assuming this is the second comment
         assertNotNull(functionComment);
         assertEquals(CommentType.FUNCTION, functionComment.getCommentType());
         assertEquals(1, functionComment.getTexts().size());
 
         EvidencedValue functionCommentText = functionComment.getTexts().get(0);
         assertNotNull(functionCommentText);
-        assertEquals("Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by cardiac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity", functionCommentText.getValue());
+        assertEquals(
+                "Shows cytolytic activity on many different cells by forming pore in lipid membranes. In vivo, increases heart rate or kills the animal by cardiac arrest. In addition, it binds to heparin with high affinity, interacts with Kv channel-interacting protein 1 (KCNIP1) in a calcium-independent manner, and binds to integrin alpha-V/beta-3 (ITGAV/ITGB3) with moderate affinity",
+                functionCommentText.getValue());
 
         assertEquals(1, functionCommentText.getEvidences().size());
         Evidence functionCommentTextEvidence = functionCommentText.getEvidences().get(0);
         assertNotNull(functionCommentTextEvidence);
         assertEquals(EvidenceCode.ECO_0008006, functionCommentTextEvidence.getEvidenceCode());
 
-        CrossReference<EvidenceDatabase> functionCommentTextEvidenceXref = functionCommentTextEvidence.getEvidenceCrossReference();
+        CrossReference<EvidenceDatabase> functionCommentTextEvidenceXref =
+                functionCommentTextEvidence.getEvidenceCrossReference();
         assertNotNull(functionCommentTextEvidenceXref);
         assertEquals("Google", functionCommentTextEvidenceXref.getDatabase().getName());
         assertEquals("ProtNLM2", functionCommentTextEvidenceXref.getId());
         assertEquals(3, functionCommentTextEvidenceXref.getProperties().size());
         // comment subcellular location
-        SubcellularLocationComment subcellularComment = (SubcellularLocationComment) comments.get(2);
+        SubcellularLocationComment subcellularComment =
+                (SubcellularLocationComment) comments.get(2);
         assertNotNull(subcellularComment);
         assertEquals(CommentType.SUBCELLULAR_LOCATION, subcellularComment.getCommentType());
         assertEquals(1, subcellularComment.getSubcellularLocations().size());
 
-        SubcellularLocation subcellularLocation = subcellularComment.getSubcellularLocations().get(0);
+        SubcellularLocation subcellularLocation =
+                subcellularComment.getSubcellularLocations().get(0);
         assertNotNull(subcellularLocation);
 
         EvidencedValue location = subcellularLocation.getLocation();
@@ -222,11 +235,11 @@ class GoogleUniProtEntryConverterTest {
         assertNotNull(locationEvidence);
         assertEquals(EvidenceCode.ECO_0008006, locationEvidence.getEvidenceCode());
 
-        CrossReference<EvidenceDatabase> locationEvidenceXref = locationEvidence.getEvidenceCrossReference();
+        CrossReference<EvidenceDatabase> locationEvidenceXref =
+                locationEvidence.getEvidenceCrossReference();
         assertNotNull(locationEvidenceXref);
         assertEquals("Google", locationEvidenceXref.getDatabase().getName());
         assertEquals("ProtNLM2", locationEvidenceXref.getId());
         assertEquals(3, locationEvidenceXref.getProperties().size());
-
     }
 }

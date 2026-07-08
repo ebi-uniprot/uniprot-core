@@ -2,7 +2,6 @@ package org.uniprot.core.json.parser.uniparc;
 
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Database;
 import org.uniprot.core.impl.CrossReferenceImpl;
@@ -19,10 +18,11 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
+import org.uniprot.core.util.Pair;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
-import org.uniprot.core.util.Pair;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 /**
  * @author jluo
@@ -69,7 +69,6 @@ public class UniParcCrossRefJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(Proteome.class, ProteomeImpl.class);
         mod.addAbstractTypeMapping(Database.class, DefaultDatabase.class);
         mod.addAbstractTypeMapping(Pair.class, UniParcCrossReferencePair.class);
-
 
         objMapper.registerModule(mod);
         return objMapper;

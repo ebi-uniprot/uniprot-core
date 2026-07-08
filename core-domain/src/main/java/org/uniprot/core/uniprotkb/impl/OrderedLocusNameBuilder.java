@@ -10,7 +10,9 @@ import org.uniprot.core.gene.OrderedLocusName;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.evidence.impl.AbstractEvidencedValueBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class OrderedLocusNameBuilder
         extends AbstractEvidencedValueBuilder<OrderedLocusNameBuilder, OrderedLocusName> {
 

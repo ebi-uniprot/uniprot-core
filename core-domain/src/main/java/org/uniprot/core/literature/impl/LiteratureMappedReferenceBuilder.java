@@ -11,7 +11,9 @@ import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureMappedReferenceBuilder implements Builder<LiteratureMappedReference> {
 
     private UniProtKBAccession uniprotAccession;

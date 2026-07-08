@@ -1,17 +1,17 @@
 package org.uniprot.cv.xdb;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
+import static org.uniprot.cv.common.CVSystemProperties.DR_DATABASE_TYPES_LOCATION;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
 import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
 import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
 import org.uniprot.core.util.property.Property;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.cv.xdb.UniProtDatabaseCategory.*;
-import static org.uniprot.cv.common.CVSystemProperties.DR_DATABASE_TYPES_LOCATION;
 
 class UniProtKBDatabaseTypesTest {
 
@@ -128,7 +128,9 @@ class UniProtKBDatabaseTypesTest {
 
     @Test
     void testSwiss2dpageType() {
-        assertThrows(IllegalArgumentException.class,()->UniProtDatabaseTypes.INSTANCE.getDbTypeByName("SWISS-2DPAGE"));
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> UniProtDatabaseTypes.INSTANCE.getDbTypeByName("SWISS-2DPAGE"));
     }
 
     @Test
@@ -185,9 +187,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("eggNOG", opType.getName());
         assertEquals("eggNOG", opType.getDisplayName());
         assertEquals(PHYLOGENOMIC_DATABASES, opType.getCategory());
-        assertEquals(
-                "http://eggnog.embl.de/search/ogs/%id",
-                opType.getUriLink());
+        assertEquals("http://eggnog.embl.de/search/ogs/%id", opType.getUriLink());
         assertEquals(1, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "ToxonomicScope", "taxonomic scope", null);
     }
@@ -236,8 +236,7 @@ class UniProtKBDatabaseTypesTest {
         assertEquals("PIRSF", opType.getName());
         assertEquals("PIRSF", opType.getDisplayName());
         assertEquals(FAMILY_AND_DOMAIN_DATABASES, opType.getCategory());
-        assertEquals(
-                "https://www.ebi.ac.uk/interpro/entry/pirsf/%id", opType.getUriLink());
+        assertEquals("https://www.ebi.ac.uk/interpro/entry/pirsf/%id", opType.getUriLink());
         assertEquals(2, opType.getAttributes().size());
         verifyAttribute(opType.getAttributes().get(0), "EntryName", "entry name", null);
         verifyAttribute(opType.getAttributes().get(1), "MatchStatus", "match status", null);
@@ -323,14 +322,15 @@ class UniProtKBDatabaseTypesTest {
     @Test
     void testWithExternalFileGetsPriority() {
         try {
-            System.setProperty(DR_DATABASE_TYPES_LOCATION, "src/test/resources/xref/drlineconfigurationexternal.json");
+            System.setProperty(
+                    DR_DATABASE_TYPES_LOCATION,
+                    "src/test/resources/xref/drlineconfigurationexternal.json");
 
-            String source =
-                    UniProtDatabaseTypes.INSTANCE.getSourceAsString();
+            String source = UniProtDatabaseTypes.INSTANCE.getSourceAsString();
             List<Property> jsonArray = Property.parseJsonArray(source);
             assertEquals(1, jsonArray.size());
             Property property = jsonArray.get(0);
-            assertEquals("EX",  property.getString("name"));
+            assertEquals("EX", property.getString("name"));
         } finally {
             System.clearProperty(DR_DATABASE_TYPES_LOCATION);
         }
@@ -338,17 +338,17 @@ class UniProtKBDatabaseTypesTest {
 
     @Test
     void testWithExternalWhenNotConfigured() {
-            String source =
-                    UniProtDatabaseTypes.INSTANCE.getSourceAsString();
-            List<Property> jsonArray = Property.parseJsonArray(source);
-            assertEquals(200, jsonArray.size());
-            Property property = jsonArray.get(0);
-            assertEquals("EMBL",  property.getString("name"));
+        String source = UniProtDatabaseTypes.INSTANCE.getSourceAsString();
+        List<Property> jsonArray = Property.parseJsonArray(source);
+        assertEquals(200, jsonArray.size());
+        Property property = jsonArray.get(0);
+        assertEquals("EMBL", property.getString("name"));
     }
 
     @Test
     void testWithDiseaseDbs() {
-        List<UniProtDatabaseDetail> diseaseDbTypes = UniProtDatabaseTypes.INSTANCE.getDiseaseDbTypes();
+        List<UniProtDatabaseDetail> diseaseDbTypes =
+                UniProtDatabaseTypes.INSTANCE.getDiseaseDbTypes();
         assertEquals(3, diseaseDbTypes.size());
         List<String> dbNames = diseaseDbTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.containsAll(List.of("MIM", "MedGen", "MeSH")));
@@ -356,7 +356,8 @@ class UniProtKBDatabaseTypesTest {
 
     @Test
     void testWithUniProtKBDbs() {
-        List<UniProtDatabaseDetail> diseaseDbTypes = UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes();
+        List<UniProtDatabaseDetail> diseaseDbTypes =
+                UniProtDatabaseTypes.INSTANCE.getUniProtKBDbTypes();
         assertEquals(198, diseaseDbTypes.size());
         List<String> dbNames = diseaseDbTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.containsAll(List.of("EMBL", "EMDB", "CARD")));
@@ -364,7 +365,8 @@ class UniProtKBDatabaseTypesTest {
 
     @Test
     void testWithCatgeoryORG() {
-        List<UniProtDatabaseDetail> orDBTypes = UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES);
+        List<UniProtDatabaseDetail> orDBTypes =
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES);
         assertEquals(42, orDBTypes.size());
         List<String> dbNames = orDBTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.contains("ClinPGx"));

@@ -19,7 +19,9 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBReferenceBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class UniProtKBReferenceTest {
 
     @Test
@@ -61,7 +63,8 @@ public class UniProtKBReferenceTest {
     public static List<UniProtKBReference> getUniProtReferences() {
         List<UniProtKBReference> uniProtKBReferences = new ArrayList<>();
         uniProtKBReferences.add(getUniProtReference(1, BookTest.getBook()));
-        uniProtKBReferences.add(getUniProtReference(2, ElectronicArticleTest.getElectronicArticle()));
+        uniProtKBReferences.add(
+                getUniProtReference(2, ElectronicArticleTest.getElectronicArticle()));
         uniProtKBReferences.add(getUniProtReference(3, JournalArticleTest.getJournalArticle()));
         uniProtKBReferences.add(getUniProtReference(4, PatentTest.getPatent()));
         uniProtKBReferences.add(getUniProtReference(5, SubmissionTest.getSubmission()));

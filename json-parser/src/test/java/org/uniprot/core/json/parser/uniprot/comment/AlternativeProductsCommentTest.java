@@ -20,7 +20,9 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidencedValueBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class AlternativeProductsCommentTest {
 
     @Test

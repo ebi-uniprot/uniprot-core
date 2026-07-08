@@ -1,17 +1,17 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.time.LocalDate;
+import java.util.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
-
-import java.time.LocalDate;
-import java.util.*;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * @author jluo
@@ -141,7 +141,11 @@ class UniParcCrossReferenceMapTest {
                         .active(false)
                         .propertiesSet(properties2)
                         .proteinName("some pname2")
-                        .proteomesAdd(new ProteomeBuilder().id("UP00000564").component("chromosome 1").build())
+                        .proteomesAdd(
+                                new ProteomeBuilder()
+                                        .id("UP00000564")
+                                        .component("chromosome 1")
+                                        .build())
                         .build();
 
         return List.of(xref, xref2);

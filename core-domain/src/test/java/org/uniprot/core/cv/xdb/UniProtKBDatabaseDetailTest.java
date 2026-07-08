@@ -96,22 +96,27 @@ class UniProtKBDatabaseDetailTest {
 
     @Test
     void testEqualWithUniProtDataTypeValue() {
-        UniProtDatabaseDetail uniProtKB0 = createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
-        UniProtDatabaseDetail uniProtKB1 = createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
+        UniProtDatabaseDetail uniProtKB0 =
+                createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
+        UniProtDatabaseDetail uniProtKB1 =
+                createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
         assertEquals(uniProtKB0, uniProtKB1);
     }
 
     @Test
     void testNotEqualWithUniProtDataTypeValue() {
-        UniProtDatabaseDetail uniProtKB = createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
-        UniProtDatabaseDetail disease = createUniProtDatabaseDetailWithUniProtDataType(List.of("disease"));
+        UniProtDatabaseDetail uniProtKB =
+                createUniProtDatabaseDetailWithUniProtDataType(List.of("uniProtKB"));
+        UniProtDatabaseDetail disease =
+                createUniProtDatabaseDetailWithUniProtDataType(List.of("disease"));
         assertNotEquals(uniProtKB, disease);
     }
 
     @Test
     void testCreateWithUniProtDataTypeReturnsSameValue() {
         List<String> uniProtKBTypes = List.of("uniProtKB");
-        UniProtDatabaseDetail uniProtKB = createUniProtDatabaseDetailWithUniProtDataType(uniProtKBTypes);
+        UniProtDatabaseDetail uniProtKB =
+                createUniProtDatabaseDetailWithUniProtDataType(uniProtKBTypes);
         assertSame(uniProtKB.getUniProtDataTypes(), uniProtKBTypes);
     }
 
@@ -162,9 +167,19 @@ class UniProtKBDatabaseDetailTest {
         }
     }
 
-    private UniProtDatabaseDetail createUniProtDatabaseDetailWithUniProtDataType(List<String> uniProtDatabaseDetail) {
+    private UniProtDatabaseDetail createUniProtDatabaseDetailWithUniProtDataType(
+            List<String> uniProtDatabaseDetail) {
         return new UniProtDatabaseDetail(
-                name, displayName, category, uriLink, attributes, false, null, idMappingName, null, uniProtDatabaseDetail);
+                name,
+                displayName,
+                category,
+                uriLink,
+                attributes,
+                false,
+                null,
+                idMappingName,
+                null,
+                uniProtDatabaseDetail);
     }
 
     static UniProtDatabaseDetail createUniProtDatabaseDetail(

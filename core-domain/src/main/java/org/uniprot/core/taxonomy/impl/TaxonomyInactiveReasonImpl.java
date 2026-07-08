@@ -5,7 +5,9 @@ import java.util.Objects;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class TaxonomyInactiveReasonImpl implements TaxonomyInactiveReason {
 
     private static final long serialVersionUID = -154580848213747663L;

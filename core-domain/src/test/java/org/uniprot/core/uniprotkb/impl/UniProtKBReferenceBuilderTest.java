@@ -18,7 +18,8 @@ class UniProtKBReferenceBuilderTest {
     @Test
     void canSetReferenceNumber() {
         int referenceNumber = 10;
-        UniProtKBReference reference = new UniProtKBReferenceBuilder().referenceNumber(referenceNumber).build();
+        UniProtKBReference reference =
+                new UniProtKBReferenceBuilder().referenceNumber(referenceNumber).build();
         assertEquals(referenceNumber, reference.getReferenceNumber());
         assertTrue(reference.hasReferenceNumber());
     }

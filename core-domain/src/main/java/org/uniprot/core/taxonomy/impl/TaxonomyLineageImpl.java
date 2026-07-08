@@ -7,7 +7,9 @@ import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.taxonomy.TaxonomyRank;
 import org.uniprot.core.uniprotkb.taxonomy.impl.AbstractOrganismNameImpl;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class TaxonomyLineageImpl extends AbstractOrganismNameImpl implements TaxonomyLineage {
 
     private static final long serialVersionUID = -319775179301440774L;

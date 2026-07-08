@@ -1,18 +1,19 @@
 package org.uniprot.core.uniparc.impl;
 
+import static org.uniprot.core.util.Utils.addOrIgnoreNull;
+import static org.uniprot.core.util.Utils.modifiableList;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.impl.AbstractCrossReferenceBuilder;
 import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
-import javax.annotation.Nonnull;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.uniprot.core.util.Utils.addOrIgnoreNull;
-import static org.uniprot.core.util.Utils.modifiableList;
 
 /**
  * @author jluo
@@ -20,7 +21,7 @@ import static org.uniprot.core.util.Utils.modifiableList;
  */
 public class UniParcCrossReferenceBuilder
         extends AbstractCrossReferenceBuilder<
-        UniParcCrossReferenceBuilder, UniParcDatabase, UniParcCrossReference> {
+                UniParcCrossReferenceBuilder, UniParcDatabase, UniParcCrossReference> {
     private int versionI;
     private Integer version;
     private boolean active;

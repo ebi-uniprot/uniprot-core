@@ -1,11 +1,11 @@
 package org.uniprot.core.uniparc.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.Proteome;
 
-import javax.annotation.Nonnull;
-
-public class ProteomeBuilder  implements Builder<Proteome> {
+public class ProteomeBuilder implements Builder<Proteome> {
 
     private String id;
     private String component;
@@ -21,15 +21,12 @@ public class ProteomeBuilder  implements Builder<Proteome> {
         return this;
     }
 
-
     public ProteomeBuilder component(String component) {
         this.component = component;
         return this;
     }
 
     public static @Nonnull ProteomeBuilder from(@Nonnull Proteome instance) {
-        return new ProteomeBuilder()
-                .id(instance.getId())
-                .component(instance.getComponent());
+        return new ProteomeBuilder().id(instance.getId()).component(instance.getComponent());
     }
 }

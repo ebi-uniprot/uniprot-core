@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.CommonOrganism;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class CommonOrganismBuilderTest {
     @Test
@@ -26,7 +26,12 @@ class CommonOrganismBuilderTest {
 
     @Test
     void testFrom() {
-        CommonOrganism common = new CommonOrganismBuilder().topLevel("toLevel1").commonTaxon("common1").commonTaxonId(987L).build();
+        CommonOrganism common =
+                new CommonOrganismBuilder()
+                        .topLevel("toLevel1")
+                        .commonTaxon("common1")
+                        .commonTaxonId(987L)
+                        .build();
         CommonOrganism common1 = CommonOrganismBuilder.from(common).build();
         assertEquals(common, common1);
         CommonOrganism common3 = CommonOrganismBuilder.from(common).commonTaxon("common3").build();

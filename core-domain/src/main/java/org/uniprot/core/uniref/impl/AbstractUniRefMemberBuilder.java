@@ -29,7 +29,8 @@ public abstract class AbstractUniRefMemberBuilder<
     protected long organismTaxId;
     protected int sequenceLength;
     protected String proteinName;
-    protected List<UniProtKBAccession> accessions = new ArrayList<>();;
+    protected List<UniProtKBAccession> accessions = new ArrayList<>();
+    ;
     protected UniRefEntryId uniref50Id;
     protected UniRefEntryId uniref90Id;
     protected UniRefEntryId uniref100Id;

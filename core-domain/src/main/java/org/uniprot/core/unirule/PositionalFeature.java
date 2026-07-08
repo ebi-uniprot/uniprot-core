@@ -4,7 +4,9 @@ import org.uniprot.core.Range;
 import org.uniprot.core.uniprotkb.feature.Ligand;
 import org.uniprot.core.uniprotkb.feature.LigandPart;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public interface PositionalFeature extends RuleExceptionAnnotation {
     Range getPosition();
 

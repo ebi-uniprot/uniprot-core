@@ -4,7 +4,9 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author jluo */
+/**
+ * @author jluo
+ */
 public enum InterProType implements EnumDisplay {
     ACTIVE_SITE("Active site", "A"),
     BINDING_SITE("Binding site", "B"),

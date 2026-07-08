@@ -1,20 +1,18 @@
 package org.uniprot.core.uniparc.impl;
 
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.util.Pair;
-
 import java.io.Serial;
 import java.util.List;
 import java.util.Objects;
 
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.util.Pair;
+
 public class UniParcCrossReferencePair implements Pair<String, List<UniParcCrossReference>> {
-    @Serial
-    private static final long serialVersionUID = 7906365717659009263L;
+    @Serial private static final long serialVersionUID = 7906365717659009263L;
     private String key;
     private List<UniParcCrossReference> value;
 
-    UniParcCrossReferencePair() {
-    }
+    UniParcCrossReferencePair() {}
 
     public UniParcCrossReferencePair(String key, List<UniParcCrossReference> value) {
         this.key = key;
@@ -36,7 +34,8 @@ public class UniParcCrossReferencePair implements Pair<String, List<UniParcCross
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         UniParcCrossReferencePair that = (UniParcCrossReferencePair) o;
-        return Objects.equals(getKey(), that.getKey()) && Objects.equals(getValue(), that.getValue());
+        return Objects.equals(getKey(), that.getKey())
+                && Objects.equals(getValue(), that.getValue());
     }
 
     @Override

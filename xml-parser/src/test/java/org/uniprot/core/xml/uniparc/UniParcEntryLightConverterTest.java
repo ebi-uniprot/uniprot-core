@@ -1,5 +1,10 @@
 package org.uniprot.core.xml.uniparc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -12,11 +17,6 @@ import org.uniprot.core.uniparc.impl.SequenceFeatureBuilder;
 import org.uniprot.core.uniparc.impl.SequenceFeatureLocationBuilder;
 import org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class UniParcEntryLightConverterTest {
 
@@ -65,13 +65,12 @@ class UniParcEntryLightConverterTest {
                                 .build());
         sfs.add(sfBuilder.build());
         sfs.add(sfBuilder2.build());
-        builder.uniParcId("UPI0000083A08")
-                .sequence(sequence)
-                .sequenceFeaturesSet(sfs);
+        builder.uniParcId("UPI0000083A08").sequence(sequence).sequenceFeaturesSet(sfs);
         return builder.build();
     }
 
-    private SequenceFeatureLocation createSequenceFeatureLocationObject(int start, int end, String alignment){
+    private SequenceFeatureLocation createSequenceFeatureLocationObject(
+            int start, int end, String alignment) {
         SequenceFeatureLocationBuilder builder = new SequenceFeatureLocationBuilder();
         builder.range(start, end);
         builder.alignment(alignment);

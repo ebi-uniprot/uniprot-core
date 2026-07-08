@@ -109,7 +109,8 @@ public class BPCPMap implements NamedValueMap {
                 .map(BPCPComment::getTemperatureDependence)
                 .map(
                         temperatureDependence ->
-                                lineBuilder.buildTempLine(temperatureDependence, false, true)
+                                lineBuilder
+                                        .buildTempLine(temperatureDependence, false, true)
                                         .stream()
                                         .collect(Collectors.joining(" ")))
                 .collect(Collectors.joining(" "));

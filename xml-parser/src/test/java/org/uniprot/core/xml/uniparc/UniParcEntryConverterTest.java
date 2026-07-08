@@ -1,5 +1,11 @@
 package org.uniprot.core.xml.uniparc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -8,12 +14,6 @@ import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.jaxb.uniparc.Entry;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author jluo
@@ -56,9 +56,17 @@ class UniParcEntryConverterTest {
                 .signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
                 .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).build())
-                .locationsAdd(new SequenceFeatureLocationBuilder().range(202, 267).alignment("22M").build())
+                .locationsAdd(
+                        new SequenceFeatureLocationBuilder()
+                                .range(202, 267)
+                                .alignment("22M")
+                                .build())
                 .locationsAdd(new SequenceFeatureLocationBuilder().range(330, 398).build())
-                .locationsAdd(new SequenceFeatureLocationBuilder().range(586, 653).alignment("57M").build())
+                .locationsAdd(
+                        new SequenceFeatureLocationBuilder()
+                                .range(586, 653)
+                                .alignment("57M")
+                                .build())
                 .locationsAdd(new SequenceFeatureLocationBuilder().range(692, 766).build());
         sfs.add(sfBuilder.build());
         sfs.add(sfBuilder2.build());
@@ -92,7 +100,8 @@ class UniParcEntryConverterTest {
         builder.uniParcCrossReferencesAdd(xrefBuilder.build());
 
         Organism taxonomy2 = new OrganismBuilder().taxonId(7227).build();
-        Proteome proteomeIdComponent = new ProteomeBuilder().id("UP00000564").component( "chromosome 1").build();
+        Proteome proteomeIdComponent =
+                new ProteomeBuilder().id("UP00000564").component("chromosome 1").build();
 
         // id="NC_004354_874_0" version_i="5" active="Y" created="2007-04-27" last="2007-04-27">
         UniParcCrossReferenceBuilder xrefBuilder2 = new UniParcCrossReferenceBuilder();

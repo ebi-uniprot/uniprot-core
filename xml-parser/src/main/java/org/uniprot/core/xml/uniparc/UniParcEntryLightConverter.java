@@ -12,7 +12,7 @@ public class UniParcEntryLightConverter implements Converter<Entry, UniParcEntry
     private final SequenceFeatureConverter seqFeatureConverter;
     private final SequenceConverter sequenceConverter;
 
-    public UniParcEntryLightConverter(){
+    public UniParcEntryLightConverter() {
         this(new ObjectFactory());
     }
 

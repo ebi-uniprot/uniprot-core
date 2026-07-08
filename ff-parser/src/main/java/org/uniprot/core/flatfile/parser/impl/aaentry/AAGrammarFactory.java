@@ -23,12 +23,15 @@ import org.uniprot.core.flatfile.antlr.KwLineParser;
 import org.uniprot.core.flatfile.antlr.UniprotAALexer;
 import org.uniprot.core.flatfile.antlr.UniprotAAParser;
 
-
-
-
-public interface AAGrammarFactory<L extends Lexer, P extends Parser>  {
+public interface AAGrammarFactory<L extends Lexer, P extends Parser> {
     enum GrammarFactoryEnum {
-        UNIPROT_AA, AC, KW, GN, DE, FT, CC;
+        UNIPROT_AA,
+        AC,
+        KW,
+        GN,
+        DE,
+        FT,
+        CC;
 
         private AAGrammarFactory factory;
 
@@ -38,56 +41,57 @@ public interface AAGrammarFactory<L extends Lexer, P extends Parser>  {
                 @Override
                 public Lexer createLexer(CharStream in) {
                     switch (GrammarFactoryEnum.this) {
-                    case UNIPROT_AA:
-                        return wrapLexer(new UniprotAALexer(in), UniprotAALexer._ATN);
-                    case AC:
-                        return wrapLexer(new AcLineLexer(in), AcLineLexer._ATN);
-                                     
-                    case KW:
-                        return wrapLexer(new KwLineLexer(in), KwLineLexer._ATN);
-                                       
-                    case GN:
-                        return wrapLexer(new GnLineLexer(in), GnLineLexer._ATN);
+                        case UNIPROT_AA:
+                            return wrapLexer(new UniprotAALexer(in), UniprotAALexer._ATN);
+                        case AC:
+                            return wrapLexer(new AcLineLexer(in), AcLineLexer._ATN);
 
-                    case DE:
-                        return wrapLexer(new DeLineLexer(in), DeLineLexer._ATN);
-                    
-                    case FT:
-                        return wrapLexer(new FtLineLexer(in), FtLineLexer._ATN);
-                   
-                    case CC:
-                        return wrapLexer(new CcLineLexer(in), CcLineLexer._ATN);
-                   
-                    default:
-                        throw new RuntimeException("Lexer is not defined for: " + GrammarFactoryEnum.this);
+                        case KW:
+                            return wrapLexer(new KwLineLexer(in), KwLineLexer._ATN);
+
+                        case GN:
+                            return wrapLexer(new GnLineLexer(in), GnLineLexer._ATN);
+
+                        case DE:
+                            return wrapLexer(new DeLineLexer(in), DeLineLexer._ATN);
+
+                        case FT:
+                            return wrapLexer(new FtLineLexer(in), FtLineLexer._ATN);
+
+                        case CC:
+                            return wrapLexer(new CcLineLexer(in), CcLineLexer._ATN);
+
+                        default:
+                            throw new RuntimeException(
+                                    "Lexer is not defined for: " + GrammarFactoryEnum.this);
                     }
-
                 }
 
                 @Override
                 public Parser createParser(CommonTokenStream tokens) {
                     switch (GrammarFactoryEnum.this) {
-                    case UNIPROT_AA:
-                        return new UniprotAAParser(tokens);
-                    case AC:
-                        return new AcLineParser(tokens);
-                    case KW:
-                        return new KwLineParser(tokens);
-                   
-                    case GN:
-                        return new GnLineParser(tokens);                   
-                    
-                    case DE:
-                        return new DeLineParser(tokens);
-                    
-                    case FT:
-                        return new FtLineParser(tokens);
-                    
-                    case CC:
-                        return new CcLineParser(tokens);
-                    
-                    default:
-                        throw new RuntimeException("Parser is not defined for: " + GrammarFactoryEnum.this);
+                        case UNIPROT_AA:
+                            return new UniprotAAParser(tokens);
+                        case AC:
+                            return new AcLineParser(tokens);
+                        case KW:
+                            return new KwLineParser(tokens);
+
+                        case GN:
+                            return new GnLineParser(tokens);
+
+                        case DE:
+                            return new DeLineParser(tokens);
+
+                        case FT:
+                            return new FtLineParser(tokens);
+
+                        case CC:
+                            return new CcLineParser(tokens);
+
+                        default:
+                            throw new RuntimeException(
+                                    "Parser is not defined for: " + GrammarFactoryEnum.this);
                     }
                 }
             };
@@ -102,8 +106,8 @@ public interface AAGrammarFactory<L extends Lexer, P extends Parser>  {
 
         public static Lexer wrapLexer(Lexer lexer, ATN atn) {
             DFA[] dfAfromATN = createDFAfromATN(atn);
-            LexerATNSimulator lexerATNSimulator = new LexerATNSimulator(lexer, atn, dfAfromATN,
-                    new PredictionContextCache());
+            LexerATNSimulator lexerATNSimulator =
+                    new LexerATNSimulator(lexer, atn, dfAfromATN, new PredictionContextCache());
             lexer.setInterpreter(lexerATNSimulator);
             return lexer;
         }
@@ -120,5 +124,4 @@ public interface AAGrammarFactory<L extends Lexer, P extends Parser>  {
     public L createLexer(CharStream in);
 
     public P createParser(CommonTokenStream tokens);
-
 }

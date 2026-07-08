@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.SequenceFeatureLocation;
-
-import javax.annotation.Nonnull;
 
 public class SequenceFeatureLocationBuilder implements Builder<SequenceFeatureLocation> {
 
@@ -14,7 +14,7 @@ public class SequenceFeatureLocationBuilder implements Builder<SequenceFeatureLo
     @Nonnull
     @Override
     public SequenceFeatureLocation build() {
-        return new SequenceFeatureLocationImpl(start,end,alignment);
+        return new SequenceFeatureLocationImpl(start, end, alignment);
     }
 
     public @Nonnull SequenceFeatureLocationBuilder range(int start, int end) {
@@ -38,7 +38,8 @@ public class SequenceFeatureLocationBuilder implements Builder<SequenceFeatureLo
         return this;
     }
 
-    public static @Nonnull SequenceFeatureLocationBuilder from(@Nonnull SequenceFeatureLocation instance) {
+    public static @Nonnull SequenceFeatureLocationBuilder from(
+            @Nonnull SequenceFeatureLocation instance) {
         return new SequenceFeatureLocationBuilder()
                 .start(instance.getStart())
                 .end(instance.getEnd())

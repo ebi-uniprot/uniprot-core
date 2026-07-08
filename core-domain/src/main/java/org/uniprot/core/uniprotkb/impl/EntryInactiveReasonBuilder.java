@@ -13,7 +13,9 @@ import org.uniprot.core.uniprotkb.EntryInactiveReason;
 import org.uniprot.core.uniprotkb.InactiveReasonType;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class EntryInactiveReasonBuilder implements Builder<EntryInactiveReason> {
     private InactiveReasonType inactiveReasonType;
     private List<String> mergeDemergeTos = new ArrayList<>();

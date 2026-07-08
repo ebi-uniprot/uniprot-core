@@ -112,6 +112,7 @@ public class UniProtKBReferenceImpl implements UniProtKBReference {
 
     @Override
     public int hashCode() {
-        return Objects.hash(referenceNumber, citation, referencePositions, referenceComments, evidences);
+        return Objects.hash(
+                referenceNumber, citation, referencePositions, referenceComments, evidences);
     }
 }

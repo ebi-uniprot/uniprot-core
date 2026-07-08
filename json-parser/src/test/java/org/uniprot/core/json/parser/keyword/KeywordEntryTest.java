@@ -13,7 +13,9 @@ import org.uniprot.core.json.parser.ValidateJson;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class KeywordEntryTest {
 
     @Test

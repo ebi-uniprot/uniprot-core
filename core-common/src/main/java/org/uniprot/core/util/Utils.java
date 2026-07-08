@@ -106,7 +106,8 @@ public class Utils {
      * @param target list to add value, should be modifiable
      * @return true if collection changed
      */
-    public static boolean addOrIgnoreEmpty(@Nullable String value, @Nullable Collection<String> target) {
+    public static boolean addOrIgnoreEmpty(
+            @Nullable String value, @Nullable Collection<String> target) {
         if (notNull(target) && notNullNotEmpty(value)) {
             return target.add(value);
         }

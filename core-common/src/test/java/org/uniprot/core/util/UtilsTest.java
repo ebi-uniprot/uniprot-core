@@ -204,13 +204,15 @@ class UtilsTest {
             @Test
             void passingNullReturnEmptyList_unmodifiable() {
                 List<String> unmodifiableList = Utils.unmodifiableList(null);
-                assertThrows(UnsupportedOperationException.class, () -> unmodifiableList.add("abc"));
+                assertThrows(
+                        UnsupportedOperationException.class, () -> unmodifiableList.add("abc"));
             }
 
             @Test
             void passing_emptyList_returnEmptyList_unmodifiable() {
                 List<String> unmodifiableList = Utils.unmodifiableList(new ArrayList<>());
-                assertThrows(UnsupportedOperationException.class, () -> unmodifiableList.add("abc"));
+                assertThrows(
+                        UnsupportedOperationException.class, () -> unmodifiableList.add("abc"));
             }
 
             @Test
@@ -266,7 +268,7 @@ class UtilsTest {
                 list.add("d");
                 list.add("c");
                 Set<String> l = Utils.unmodifiableSet(list);
-                assertEquals(list,l);
+                assertEquals(list, l);
                 assertThrows(UnsupportedOperationException.class, () -> l.add("c"));
             }
         }

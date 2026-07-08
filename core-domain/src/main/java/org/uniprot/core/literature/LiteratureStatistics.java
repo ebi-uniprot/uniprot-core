@@ -2,7 +2,9 @@ package org.uniprot.core.literature;
 
 import org.uniprot.core.Statistics;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public interface LiteratureStatistics extends Statistics {
 
     long getComputationallyMappedProteinCount();

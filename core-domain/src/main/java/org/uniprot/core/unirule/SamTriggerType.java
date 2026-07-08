@@ -4,7 +4,9 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public enum SamTriggerType implements EnumDisplay {
     TRANSMEMBRANE("transmembrane"),
     SIGNAL("signal"),

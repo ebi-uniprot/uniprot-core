@@ -172,8 +172,12 @@ public class ProteomeTest {
                         .synonymsAdd("Escherichia coli K-12")
                         .build();
         ProteomeId relatedProteomeId = new ProteomeIdBuilder("UP000005641").build();
-        RelatedProteome relatedProteome = new RelatedProteomeBuilder().proteomeId(relatedProteomeId)
-                .similarity(1F).taxonomy(taxonomy).build();
+        RelatedProteome relatedProteome =
+                new RelatedProteomeBuilder()
+                        .proteomeId(relatedProteomeId)
+                        .similarity(1F)
+                        .taxonomy(taxonomy)
+                        .build();
 
         return new ProteomeEntryBuilder()
                 .proteomeId(proteomeId)

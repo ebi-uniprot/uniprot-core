@@ -11,7 +11,9 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniprotkb.description.*;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class ProteinDescriptionBuilder implements Builder<ProteinDescription> {
 
     private ProteinName recommendedName;

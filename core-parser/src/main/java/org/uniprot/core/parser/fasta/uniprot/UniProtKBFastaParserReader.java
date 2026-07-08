@@ -36,7 +36,7 @@ class UniProtKBFastaParserReader {
         int proteinExistenceIndex = line.indexOf(" PE=", spaceIndex);
         int sequenceVersionIndex = line.indexOf(" SV=", proteinExistenceIndex);
         String[] proteinIds;
-        if(spaceIndex > 0) {
+        if (spaceIndex > 0) {
             proteinIds = line.substring(0, spaceIndex).split("\\|");
             builder.uniProtkbId(proteinIds[2]);
             parseProteinName(builder, line);

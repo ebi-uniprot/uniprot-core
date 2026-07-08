@@ -1,6 +1,7 @@
 package org.uniprot.core.xml;
 
-import com.google.common.base.Strings;
+import java.util.Optional;
+
 import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.impl.ProteomeBuilder;
@@ -10,7 +11,7 @@ import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.cv.taxonomy.TaxonomicNode;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
 
-import java.util.Optional;
+import com.google.common.base.Strings;
 
 public class CrossReferenceConverterUtils {
     public static final String PROPERTY_GENE_NAME = "gene_name";
@@ -22,9 +23,13 @@ public class CrossReferenceConverterUtils {
     public static final String PROPERTY_UNIPROTKB_ACCESSION = "UniProtKB_accession";
     public static final String PROPERTY_SOURCES = UniParcCrossReference.PROPERTY_SOURCES;
 
-    private CrossReferenceConverterUtils(){}
+    private CrossReferenceConverterUtils() {}
 
-    public static void populateUniParcCrossReferenceBuilder(String propertyType, String propertyValue, UniParcCrossReferenceBuilder builder, TaxonomyRepo taxonomyRepo) {
+    public static void populateUniParcCrossReferenceBuilder(
+            String propertyType,
+            String propertyValue,
+            UniParcCrossReferenceBuilder builder,
+            TaxonomyRepo taxonomyRepo) {
         switch (propertyType) {
             case PROPERTY_GENE_NAME:
                 builder.geneName(propertyValue);
@@ -42,7 +47,8 @@ public class CrossReferenceConverterUtils {
                 builder.proteomesAdd(getProteomeIdComponent(propertyValue));
                 break;
             case PROPERTY_NCBI_TAXONOMY_ID:
-                builder.organism(CrossReferenceConverterUtils.convertTaxonomy(propertyValue, taxonomyRepo));
+                builder.organism(
+                        CrossReferenceConverterUtils.convertTaxonomy(propertyValue, taxonomyRepo));
                 break;
             case PROPERTY_UNIPROTKB_ACCESSION:
                 builder.propertiesAdd(PROPERTY_UNIPROTKB_ACCESSION, propertyValue);
@@ -52,10 +58,7 @@ public class CrossReferenceConverterUtils {
                 break;
             default:
                 throw new XmlReaderException(
-                        "Unable to read xml property: "
-                                + propertyType
-                                + "value: "
-                                + propertyValue);
+                        "Unable to read xml property: " + propertyType + "value: " + propertyValue);
         }
     }
 
@@ -76,7 +79,8 @@ public class CrossReferenceConverterUtils {
         return builder.build();
     }
 
-    private static Optional<TaxonomicNode> getTaxonomyNode(String taxId, TaxonomyRepo taxonomyRepo) {
+    private static Optional<TaxonomicNode> getTaxonomyNode(
+            String taxId, TaxonomyRepo taxonomyRepo) {
         if (taxonomyRepo == null) {
             return Optional.empty();
         } else return taxonomyRepo.retrieveNodeUsingTaxID(Integer.parseInt(taxId));
@@ -87,6 +91,9 @@ public class CrossReferenceConverterUtils {
         if (proteomeIdComponentValues.length < 2) {
             throw new XmlReaderException("Unable to parse proteomeId component: " + propertyValue);
         }
-        return new ProteomeBuilder().id(proteomeIdComponentValues[0]).component(proteomeIdComponentValues[1]).build();
+        return new ProteomeBuilder()
+                .id(proteomeIdComponentValues[0])
+                .component(proteomeIdComponentValues[1])
+                .build();
     }
 }

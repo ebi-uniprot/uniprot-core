@@ -1,5 +1,10 @@
 package org.uniprot.core.xml.uniparc;
 
+import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
@@ -12,11 +17,6 @@ import org.uniprot.core.xml.jaxb.uniparc.ObjectFactory;
 import org.uniprot.core.xml.jaxb.uniparc.PropertyType;
 import org.uniprot.core.xml.uniprot.XmlConverterHelper;
 import org.uniprot.cv.taxonomy.TaxonomyRepo;
-
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.uniprot.core.xml.CrossReferenceConverterUtils.*;
 
 /**
  * @author jluo
@@ -47,7 +47,8 @@ public class UniParcDBCrossReferenceConverter
                 .lastUpdated(XmlConverterHelper.dateFromXml(xmlObj.getLast()));
 
         for (PropertyType property : xmlObj.getProperty()) {
-            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(property.getType(), property.getValue(), builder, taxonomyRepo);
+            CrossReferenceConverterUtils.populateUniParcCrossReferenceBuilder(
+                    property.getType(), property.getValue(), builder, taxonomyRepo);
         }
         if (xmlObj.getVersion() != null) builder.version(xmlObj.getVersion());
         return builder.build();
@@ -81,7 +82,6 @@ public class UniParcDBCrossReferenceConverter
             for (Proteome proteomeIdComponent : uniObj.getProteomes()) {
                 properties.add(createProperty(PROPERTY_PROTEOMEID_COMPONENT, proteomeIdComponent));
             }
-
         }
 
         if (Utils.notNull(uniObj.getOrganism())) {
@@ -98,7 +98,6 @@ public class UniParcDBCrossReferenceConverter
 
         return xmlObj;
     }
-
 
     private PropertyType createProperty(String key, String value) {
         PropertyType xmlObj = xmlFactory.createPropertyType();

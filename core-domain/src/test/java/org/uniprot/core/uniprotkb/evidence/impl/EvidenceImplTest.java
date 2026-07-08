@@ -75,7 +75,7 @@ class EvidenceImplTest {
         assertEquals(xref, evidence.getEvidenceCrossReference());
     }
 
-    static CrossReference<EvidenceDatabase> getEvidenceCrossRef(){
+    static CrossReference<EvidenceDatabase> getEvidenceCrossRef() {
         List<Property> properties =
                 asList(new Property("key1", "value1"), new Property("key2", "value2"));
         return new CrossReferenceBuilder<EvidenceDatabase>()

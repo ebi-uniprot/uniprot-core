@@ -52,7 +52,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.jsontype.NamedType;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class UniprotKBJsonConfig extends JsonConfig {
 
     private static UniprotKBJsonConfig INSTANCE;

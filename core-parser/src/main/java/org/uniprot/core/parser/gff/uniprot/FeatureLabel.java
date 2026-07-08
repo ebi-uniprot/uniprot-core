@@ -1,6 +1,8 @@
 package org.uniprot.core.parser.gff.uniprot;
 
-/** @author gqi */
+/**
+ * @author gqi
+ */
 public enum FeatureLabel {
     /**
      * org.expasy.uniprot.models.Annotation.Type

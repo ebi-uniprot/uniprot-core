@@ -24,7 +24,11 @@ public class CommunityAnnotationImpl implements CommunityAnnotation {
     }
 
     public CommunityAnnotationImpl(
-            String proteinOrGene, String function, String disease, String comment, LocalDate submissionDate) {
+            String proteinOrGene,
+            String function,
+            String disease,
+            String comment,
+            LocalDate submissionDate) {
         this.proteinOrGene = proteinOrGene;
         this.function = function;
         this.disease = disease;

@@ -148,15 +148,14 @@ public class SubcellularLocationConverter
         return typeLocation;
     }
 
-    
     private String capitalizeFirstLetter(String value) {
-        if(Character.isUpperCase(value.charAt(0))) {
+        if (Character.isUpperCase(value.charAt(0))) {
             return value;
         }
-        String loc = subcellLocationNameMap.getName(value); 
-        return loc==null?Utils.upperFirstChar(value):loc;      
+        String loc = subcellLocationNameMap.getName(value);
+        return loc == null ? Utils.upperFirstChar(value) : loc;
     }
-    
+
     private EvidencedStringType buildLocation(SubcellularLocationValue locationValue) {
         if ((locationValue != null) && (!locationValue.getValue().isEmpty())) {
             return buildLocation(locationValue.getValue(), locationValue);

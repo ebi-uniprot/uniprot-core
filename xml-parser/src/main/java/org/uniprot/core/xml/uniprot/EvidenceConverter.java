@@ -33,7 +33,10 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         EvidenceBuilder evidenceBuilder = new EvidenceBuilder().evidenceCode(evCode);
         if (xmlObj.getSource() != null) {
             CrossReference<EvidenceDatabase> xref = xrefConverter.fromXml(xmlObj.getSource());
-            evidenceBuilder.databaseId(xref.getId()).databaseName(xref.getDatabase().getName()).crossReference(xref);
+            evidenceBuilder
+                    .databaseId(xref.getId())
+                    .databaseName(xref.getDatabase().getName())
+                    .crossReference(xref);
         }
 
         return evidenceBuilder.build();
@@ -68,10 +71,14 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
         @Override
         public CrossReference<EvidenceDatabase> fromXml(SourceType xmlObj) {
             if (xmlObj.getDbReference() != null) {
-                List<Property> properties = xmlObj.getDbReference().getProperty()
-                        .stream()
-                        .map(propertyType -> new Property(propertyType.getType(), propertyType.getValue()))
-                        .toList();
+                List<Property> properties =
+                        xmlObj.getDbReference().getProperty().stream()
+                                .map(
+                                        propertyType ->
+                                                new Property(
+                                                        propertyType.getType(),
+                                                        propertyType.getValue()))
+                                .toList();
                 return new CrossReferenceBuilder<EvidenceDatabase>()
                         .database(new EvidenceDatabase(xmlObj.getDbReference().getType()))
                         .id(xmlObj.getDbReference().getId())
@@ -98,7 +105,7 @@ public class EvidenceConverter implements Converter<EvidenceType, Evidence> {
                 DbReferenceType dbRef = xmlUniprotFactory.createDbReferenceType();
                 dbRef.setType(uniObj.getDatabase().getName());
                 dbRef.setId(uniObj.getId());
-                if(uniObj.getProperties() != null && !uniObj.getProperties().isEmpty()) {
+                if (uniObj.getProperties() != null && !uniObj.getProperties().isEmpty()) {
                     List<Property> properties = uniObj.getProperties();
                     for (Property property : properties) {
                         PropertyType propertyType = xmlUniprotFactory.createPropertyType();

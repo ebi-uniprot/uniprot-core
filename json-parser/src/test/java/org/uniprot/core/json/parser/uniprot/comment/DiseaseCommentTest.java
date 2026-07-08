@@ -18,7 +18,9 @@ import org.uniprot.core.uniprotkb.comment.impl.NoteBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class DiseaseCommentTest {
 
     @Test

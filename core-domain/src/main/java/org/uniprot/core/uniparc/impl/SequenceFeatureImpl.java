@@ -29,7 +29,10 @@ public class SequenceFeatureImpl implements SequenceFeature {
     }
 
     SequenceFeatureImpl(
-            InterProGroup domain, SignatureDbType dbType, String dbId, List<SequenceFeatureLocation> locations) {
+            InterProGroup domain,
+            SignatureDbType dbType,
+            String dbId,
+            List<SequenceFeatureLocation> locations) {
         super();
         this.interproGroup = domain;
         this.database = dbType;

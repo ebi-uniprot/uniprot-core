@@ -9,7 +9,9 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBIdBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class UniProtKBIdTest {
 
     @Test

@@ -16,8 +16,7 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
  */
 public class UniParcEntryValueMapper implements EntityValueMapper<UniParcEntry> {
 
-    private static final List<String> UNIPARC_FIELDS =
-            List.of("upi", "first_seen", "last_seen");
+    private static final List<String> UNIPARC_FIELDS = List.of("upi", "first_seen", "last_seen");
 
     @Override
     public Map<String, String> mapEntity(UniParcEntry entry, List<String> fields) {

@@ -1,6 +1,12 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
@@ -13,12 +19,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.fail;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author jluo
@@ -69,7 +70,8 @@ public class UniParcEntryTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-        Proteome proteomeIdComponent = new ProteomeBuilder().id("UPI").component( "ComponentValue").build();
+        Proteome proteomeIdComponent =
+                new ProteomeBuilder().id("UPI").component("ComponentValue").build();
         builder.uniParcId("UPI0000083A08")
                 .sequence(uniSeq)
                 .sequenceFeaturesSet(sfs)
@@ -118,7 +120,11 @@ public class UniParcEntryTest {
         return new SequenceFeatureBuilder()
                 .signatureDbType(signatureType)
                 .signatureDbId("id-" + signatureType)
-                .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).alignment("48M").build())
+                .locationsAdd(
+                        new SequenceFeatureLocationBuilder()
+                                .range(81, 163)
+                                .alignment("48M")
+                                .build())
                 .interproGroup(
                         new InterProGroupBuilder()
                                 .id("IPR007123")

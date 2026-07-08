@@ -1,10 +1,10 @@
 package org.uniprot.core.uniparc;
 
-import org.uniprot.core.CrossReference;
-import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
 import java.time.LocalDate;
 import java.util.List;
+
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
 /**
  * @author jluo
@@ -13,8 +13,8 @@ import java.util.List;
 public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
 
     /**
-     * sources property will store UniParcDatabaseName:sourceXrefId:ProteomeId:ComponentName
-     * For example: UniProtKB/Swiss-Prot:ABC01415:UP000005640:Chromosome 1
+     * sources property will store UniParcDatabaseName:sourceXrefId:ProteomeId:ComponentName For
+     * example: UniProtKB/Swiss-Prot:ABC01415:UP000005640:Chromosome 1
      */
     String PROPERTY_SOURCES = "sources";
 
@@ -39,5 +39,4 @@ public interface UniParcCrossReference extends CrossReference<UniParcDatabase> {
     String getNcbiGi();
 
     List<Proteome> getProteomes();
-
 }

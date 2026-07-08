@@ -18,7 +18,8 @@ public class FeatureLineBuilderFactory {
         featureBuilders.put(UniprotKBFeatureType.VARIANT, new VariantFeatureLineBuilder());
         featureBuilders.put(UniprotKBFeatureType.VAR_SEQ, new VarSeqFeatureBuilder());
         featureBuilders.put(UniprotKBFeatureType.BINDING, new BindingFeatureLineBuilder());
-    };
+    }
+    ;
 
     private static final FFLineBuilder<UniProtKBFeature> defaultBuilder =
             new SimpleFeatureLineBuilder();

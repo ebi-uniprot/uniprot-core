@@ -40,7 +40,11 @@ class SequenceFeatureConverterTest {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
         builder.signatureDbType(SignatureDbType.PANTHER)
                 .signatureDbId("PTHR11977")
-                .locationsAdd(new SequenceFeatureLocationBuilder().range(49, 790).alignment("55M").build())
+                .locationsAdd(
+                        new SequenceFeatureLocationBuilder()
+                                .range(49, 790)
+                                .alignment("55M")
+                                .build())
                 .interproGroup(
                         new InterProGroupBuilder().id("IPR007122").name("Villin/Gelsolin").build());
         verify(builder.build());
@@ -70,9 +74,17 @@ class SequenceFeatureConverterTest {
         builder.signatureDbType(SignatureDbType.PFAM)
                 .signatureDbId("PF00626")
                 .locationsAdd(new SequenceFeatureLocationBuilder().range(81, 163).build())
-                .locationsAdd(new SequenceFeatureLocationBuilder().range(202, 267).alignment("21M").build())
+                .locationsAdd(
+                        new SequenceFeatureLocationBuilder()
+                                .range(202, 267)
+                                .alignment("21M")
+                                .build())
                 .locationsAdd(new SequenceFeatureLocationBuilder().range(330, 398).build())
-                .locationsAdd(new SequenceFeatureLocationBuilder().range(586, 653).alignment("55M").build())
+                .locationsAdd(
+                        new SequenceFeatureLocationBuilder()
+                                .range(586, 653)
+                                .alignment("55M")
+                                .build())
                 .locationsAdd(new SequenceFeatureLocationBuilder().range(692, 766).build())
                 .interproGroup(
                         new InterProGroupBuilder()

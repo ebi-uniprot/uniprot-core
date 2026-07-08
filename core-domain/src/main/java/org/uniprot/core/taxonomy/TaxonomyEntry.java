@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public interface TaxonomyEntry extends Taxonomy, Serializable {
 
     Taxonomy getParent();

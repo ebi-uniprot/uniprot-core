@@ -38,10 +38,14 @@ import java.util.List;
  */
 public interface CofactorComment extends Comment, HasMolecule {
 
-    /** @return list of cofactor */
+    /**
+     * @return list of cofactor
+     */
     List<Cofactor> getCofactors();
 
-    /** @return cofactor note */
+    /**
+     * @return cofactor note
+     */
     Note getNote();
 
     boolean hasCofactors();

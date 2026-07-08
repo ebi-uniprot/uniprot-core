@@ -14,7 +14,9 @@ import org.uniprot.core.impl.CrossReferenceBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class CitationUtil {
 
     static void validateCitation(JsonNode jsonNode) {

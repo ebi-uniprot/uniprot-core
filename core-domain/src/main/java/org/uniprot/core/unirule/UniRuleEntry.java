@@ -6,7 +6,9 @@ import java.util.List;
 
 import org.uniprot.core.Statistics;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public interface UniRuleEntry extends Serializable {
     UniRuleId getUniRuleId();
 

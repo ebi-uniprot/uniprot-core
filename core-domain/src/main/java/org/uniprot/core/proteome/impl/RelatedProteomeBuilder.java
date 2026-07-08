@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.RelatedProteome;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-
-import javax.annotation.Nonnull;
 
 public class RelatedProteomeBuilder implements Builder<RelatedProteome> {
     private ProteomeId proteomeId;
@@ -21,11 +21,11 @@ public class RelatedProteomeBuilder implements Builder<RelatedProteome> {
         this.similarity = similarity;
         return this;
     }
+
     public @Nonnull RelatedProteomeBuilder taxonomy(Taxonomy taxonomy) {
         this.taxonomy = taxonomy;
         return this;
     }
-
 
     @Nonnull
     @Override
@@ -35,7 +35,8 @@ public class RelatedProteomeBuilder implements Builder<RelatedProteome> {
 
     public static @Nonnull RelatedProteomeBuilder from(@Nonnull RelatedProteome instance) {
         RelatedProteomeBuilder builder = new RelatedProteomeBuilder();
-        return builder.proteomeId(instance.getId()).similarity(instance.getSimilarity())
+        return builder.proteomeId(instance.getId())
+                .similarity(instance.getSimilarity())
                 .taxonomy(instance.getTaxId());
     }
 }

@@ -1,8 +1,8 @@
 package org.uniprot.core.uniparc.impl;
 
-import org.uniprot.core.uniparc.CommonOrganism;
-
 import java.util.Objects;
+
+import org.uniprot.core.uniparc.CommonOrganism;
 
 public class CommonOrganismImpl implements CommonOrganism {
 
@@ -13,8 +13,7 @@ public class CommonOrganismImpl implements CommonOrganism {
 
     private Long commonTaxonId;
 
-    CommonOrganismImpl(){
-    }
+    CommonOrganismImpl() {}
 
     CommonOrganismImpl(String topLevel, String commonTaxon, Long commonTaxonId) {
         this.topLevel = topLevel;
@@ -42,7 +41,8 @@ public class CommonOrganismImpl implements CommonOrganism {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CommonOrganismImpl that = (CommonOrganismImpl) o;
-        return Objects.equals(topLevel, that.topLevel) && Objects.equals(commonTaxon, that.commonTaxon)
+        return Objects.equals(topLevel, that.topLevel)
+                && Objects.equals(commonTaxon, that.commonTaxon)
                 && Objects.equals(this.commonTaxonId, that.commonTaxonId);
     }
 

@@ -126,10 +126,7 @@ class UniProtKBFastaParserWriterTest {
                         .id("P21802")
                         .uniProtkbId("P12345_PROT")
                         .entryType(UniProtKBEntryType.SWISSPROT)
-                        .sequence(
-                                new SequenceBuilder(
-                                        "ABCDE")
-                                        .build())
+                        .sequence(new SequenceBuilder("ABCDE").build())
                         .geneName("Gene Name Value")
                         .proteinName("Protein Name Value")
                         .organism(

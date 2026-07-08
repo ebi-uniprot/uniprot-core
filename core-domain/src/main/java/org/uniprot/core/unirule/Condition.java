@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.uniprot.core.Range;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public interface Condition extends Serializable {
     List<ConditionValue> getConditionValues();
 

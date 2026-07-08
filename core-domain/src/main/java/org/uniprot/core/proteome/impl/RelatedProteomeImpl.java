@@ -1,10 +1,10 @@
 package org.uniprot.core.proteome.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.proteome.ProteomeId;
 import org.uniprot.core.proteome.RelatedProteome;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
-
-import java.util.Objects;
 
 public class RelatedProteomeImpl implements RelatedProteome {
 
@@ -13,7 +13,7 @@ public class RelatedProteomeImpl implements RelatedProteome {
     private Float similarity;
     private Taxonomy taxonomy;
 
-    RelatedProteomeImpl(){}
+    RelatedProteomeImpl() {}
 
     public RelatedProteomeImpl(ProteomeId proteomeId, Float similarity, Taxonomy taxonomy) {
         this.proteomeId = proteomeId;
@@ -40,7 +40,8 @@ public class RelatedProteomeImpl implements RelatedProteome {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         RelatedProteomeImpl that = (RelatedProteomeImpl) o;
-        return Objects.equals(this.proteomeId, that.proteomeId) && Objects.equals(this.taxonomy, that.taxonomy)
+        return Objects.equals(this.proteomeId, that.proteomeId)
+                && Objects.equals(this.taxonomy, that.taxonomy)
                 && Objects.equals(this.similarity, that.getSimilarity());
     }
 

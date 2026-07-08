@@ -1,5 +1,14 @@
 package org.uniprot.core.parser.fasta.uniparc;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
@@ -12,28 +21,23 @@ import org.uniprot.core.uniparc.impl.*;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.uniprot.core.uniparc.impl.UniParcEntryLightBuilder.HAS_ACTIVE_CROSS_REF;
 /**
  * @author jluo
  * @date: 24 Jun 2019
  */
 class UniParcFastaParserTest {
 
-    public static final String EXPECTED_FASTA_RESULT = """
+    public static final String EXPECTED_FASTA_RESULT =
+            """
             >UPI0000083A08 status=active
             MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT
             LLRAIDWFRDNGYFNA""";
-    public static final String EXPECTED_FASTA_RESULT_INACTIVE = """
+    public static final String EXPECTED_FASTA_RESULT_INACTIVE =
+            """
             >UPI0000083A08 status=inactive
             MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT
             LLRAIDWFRDNGYFNA""";
+
     @Test
     void testUniParcEntryToFasta() {
         UniParcEntry entry = create();
@@ -51,15 +55,17 @@ class UniParcFastaParserTest {
     @Test
     void testUniParcEntryLightToFastaInactive() {
         UniParcEntryLight entry = createEntryLight();
-        entry = UniParcEntryLightBuilder.from(entry).extraAttributesAdd(HAS_ACTIVE_CROSS_REF, false).build();
+        entry =
+                UniParcEntryLightBuilder.from(entry)
+                        .extraAttributesAdd(HAS_ACTIVE_CROSS_REF, false)
+                        .build();
         String fasta = UniParcFastaParser.toFasta(entry);
         assertEquals(EXPECTED_FASTA_RESULT_INACTIVE, fasta);
     }
 
     @Test
-    void testUniParcLightFastaSeqRange(){
-        String expectedFasta = ">UPI0000083A08|5-10 status=active\n" +
-                "MARALA";
+    void testUniParcLightFastaSeqRange() {
+        String expectedFasta = ">UPI0000083A08|5-10 status=active\n" + "MARALA";
         UniParcEntryLight entry = createEntryLight();
         String seqRange = "5-10";
         String fasta = UniParcFastaParser.toFasta(entry, seqRange);
@@ -68,10 +74,11 @@ class UniParcFastaParserTest {
     }
 
     @Test
-    void testUniParcLightFastaSeqRangeOutOfRangeShouldReturnTillEnd(){
-        String expectedFasta = ">UPI0000083A08|5-1000000 status=active\n" +
-                "MARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDTLLRA\n" +
-                "IDWFRDNGYFNA";
+    void testUniParcLightFastaSeqRangeOutOfRangeShouldReturnTillEnd() {
+        String expectedFasta =
+                ">UPI0000083A08|5-1000000 status=active\n"
+                        + "MARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDTLLRA\n"
+                        + "IDWFRDNGYFNA";
         UniParcEntryLight entry = createEntryLight();
         String seqRange = "5-1000000";
         String fasta = UniParcFastaParser.toFasta(entry, seqRange);
@@ -83,10 +90,10 @@ class UniParcFastaParserTest {
         Sequence sequence = getSequence();
         List<UniParcCrossReference> xrefs = getXrefs();
         return new UniParcEntryBuilder()
-                        .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .uniParcCrossReferencesSet(xrefs)
-                        .sequence(sequence)
-                        .build();
+                .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
+                .uniParcCrossReferencesSet(xrefs)
+                .sequence(sequence)
+                .build();
     }
 
     private UniParcEntryLight createEntryLight() {
@@ -138,10 +145,13 @@ class UniParcFastaParserTest {
                         .propertiesSet(properties2)
                         .organism(taxonomy2)
                         .proteinName("some pname")
-                        .proteomesAdd(new ProteomeBuilder().id("UP00000564").component("chromosome 1").build())
+                        .proteomesAdd(
+                                new ProteomeBuilder()
+                                        .id("UP00000564")
+                                        .component("chromosome 1")
+                                        .build())
                         .build();
 
         return Arrays.asList(xref, xref2);
     }
-
 }

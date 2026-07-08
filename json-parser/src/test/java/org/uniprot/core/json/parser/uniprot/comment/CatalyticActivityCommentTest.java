@@ -20,7 +20,9 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class CatalyticActivityCommentTest {
 
     @Test

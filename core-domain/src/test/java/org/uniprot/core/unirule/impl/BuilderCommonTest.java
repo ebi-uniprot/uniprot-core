@@ -19,7 +19,9 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.uniprot.core.Builder;
 import org.uniprot.core.unirule.*;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public class BuilderCommonTest {
 
     /**

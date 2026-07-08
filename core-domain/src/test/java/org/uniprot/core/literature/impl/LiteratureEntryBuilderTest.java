@@ -8,7 +8,9 @@ import static org.uniprot.core.ObjectsForTests.createCompleteLiteratureStatistic
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.literature.LiteratureEntry;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class LiteratureEntryBuilderTest {
 
     @Test

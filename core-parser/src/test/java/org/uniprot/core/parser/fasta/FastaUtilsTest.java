@@ -1,8 +1,8 @@
 package org.uniprot.core.parser.fasta;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
 
 class FastaUtilsTest {
     @Test
@@ -23,8 +23,7 @@ class FastaUtilsTest {
     void parseSequenceTwoLines() {
         String input = getSequence(61);
         String result = FastaUtils.parseSequence(input);
-        String expect = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-                        "A";
+        String expect = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" + "A";
         assertEquals(expect, result);
     }
 
@@ -32,8 +31,9 @@ class FastaUtilsTest {
     void parseSequenceTwoLinesFull() {
         String input = getSequence(120);
         String result = FastaUtils.parseSequence(input);
-        String expect = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-                        "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+        String expect =
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n"
+                        + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
         assertEquals(expect, result);
     }
 
@@ -41,13 +41,14 @@ class FastaUtilsTest {
     void parseSequenceThreeLines() {
         String input = getSequence(121);
         String result = FastaUtils.parseSequence(input);
-        String expect = "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n" +
-                "A";
+        String expect =
+                "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n"
+                        + "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n"
+                        + "A";
         assertEquals(expect, result);
     }
 
-    private String getSequence(int length){
+    private String getSequence(int length) {
         String s = "A";
         return s.repeat(length);
     }

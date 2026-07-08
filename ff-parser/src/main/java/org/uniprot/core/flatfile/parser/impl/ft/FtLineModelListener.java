@@ -68,37 +68,46 @@ public class FtLineModelListener extends FtLineParserBaseListener
             ft.setFtText(updateAltSeqText(result));
         }
     }
-    
+
     private String replaceVarSeqSpaceNoSpace(String text1) {
-        if(Strings.isNullOrEmpty(text1)){
+        if (Strings.isNullOrEmpty(text1)) {
             return text1;
         }
         String newText = text1;
-        while(newText.contains(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER)) {
-           String restText = newText.substring(newText.indexOf(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER)
-                   +RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER.length() );
-           String token = restText;
-           int indexSpace = restText.indexOf(" ");
-           int indexLess = restText.indexOf("<");
-           if(indexSpace>0) {
-               if(indexLess>0) {
-                   if(indexLess<indexSpace) {
-                       token =restText.substring(0, restText.indexOf("<"));
-                   }else {
-                       token =restText.substring(0, restText.indexOf(" "));
-                   }
-               }else {
-                   token =restText.substring(0, restText.indexOf(" "));
-               }
-           } else  if(indexLess>0) {
-               token =restText.substring(0, restText.indexOf("<"));
-           }
-       
-          if(RememberLastTokenLexer.isSequenceLetter(token)) {
-              newText = newText.replaceFirst(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, "");
-          }else {
-              newText = newText.replaceFirst(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, " ");
-          }
+        while (newText.contains(RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER)) {
+            String restText =
+                    newText.substring(
+                            newText.indexOf(
+                                            RememberLastTokenLexer
+                                                    .VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER)
+                                    + RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER
+                                            .length());
+            String token = restText;
+            int indexSpace = restText.indexOf(" ");
+            int indexLess = restText.indexOf("<");
+            if (indexSpace > 0) {
+                if (indexLess > 0) {
+                    if (indexLess < indexSpace) {
+                        token = restText.substring(0, restText.indexOf("<"));
+                    } else {
+                        token = restText.substring(0, restText.indexOf(" "));
+                    }
+                } else {
+                    token = restText.substring(0, restText.indexOf(" "));
+                }
+            } else if (indexLess > 0) {
+                token = restText.substring(0, restText.indexOf("<"));
+            }
+
+            if (RememberLastTokenLexer.isSequenceLetter(token)) {
+                newText =
+                        newText.replaceFirst(
+                                RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, "");
+            } else {
+                newText =
+                        newText.replaceFirst(
+                                RememberLastTokenLexer.VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER, " ");
+            }
         }
         return newText;
     }

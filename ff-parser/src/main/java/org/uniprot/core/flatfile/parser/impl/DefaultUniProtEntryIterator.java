@@ -162,8 +162,8 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
         this.parsingJobCountDownLatch = new CountDownLatch(threadCount);
 
         for (int i = 0; i < threadCount; i++) {
-            ParsingTask parsingTask =createParsingTask();
-                    
+            ParsingTask parsingTask = createParsingTask();
+
             parsingTask.setName("Parsing Worker No. " + (i + 1));
             this.workers.add(parsingTask);
             parsingTask.start();
@@ -180,8 +180,9 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
     }
 
     protected ParsingTask createParsingTask() {
-    	return new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
+        return new ParsingTask(ffQueue, entriesQueue, this.parsingJobCountDownLatch);
     }
+
     public class EntryStringEmitter implements Runnable {
         private final EntryReader entryReader;
 
@@ -267,9 +268,9 @@ public class DefaultUniProtEntryIterator implements UniProtEntryIterator {
             this.countDown = countDown;
             this.parser = createEntryParser();
         }
-        
+
         protected UniProtParser createEntryParser() {
-        	return new DefaultUniProtParser(supportingDataMap, ignoreWrong);
+            return new DefaultUniProtParser(supportingDataMap, ignoreWrong);
         }
 
         void finish() {

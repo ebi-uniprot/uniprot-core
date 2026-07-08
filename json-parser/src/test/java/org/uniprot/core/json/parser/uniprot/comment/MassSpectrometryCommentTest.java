@@ -12,7 +12,9 @@ import org.uniprot.core.uniprotkb.comment.impl.MassSpectrometryCommentBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class MassSpectrometryCommentTest {
 
     @Test

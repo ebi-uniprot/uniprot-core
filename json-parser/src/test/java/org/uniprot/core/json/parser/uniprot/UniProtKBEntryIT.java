@@ -31,7 +31,9 @@ import org.uniprot.cv.xdb.UniProtDatabaseTypes;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class UniProtKBEntryIT {
 
     private static final Logger logger = LoggerFactory.getLogger(UniProtKBEntryIT.class);

@@ -9,7 +9,9 @@ import org.uniprot.core.uniprotkb.UniProtKBEntryType;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class UniprotKBEntryEnumTest {
 
     @Test

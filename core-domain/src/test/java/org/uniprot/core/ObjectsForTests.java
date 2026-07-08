@@ -1,5 +1,14 @@
 package org.uniprot.core;
 
+import static java.util.Arrays.asList;
+import static java.util.Collections.emptyList;
+import static java.util.Collections.singletonList;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.citation.CitationDatabase;
 import org.uniprot.core.citation.impl.AbstractCitationBuilder;
@@ -35,15 +44,6 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.singletonList;
 
 public class ObjectsForTests {
     public static Reaction createReaction() {
@@ -221,7 +221,10 @@ public class ObjectsForTests {
     }
 
     public static List<SequenceFeature> sequenceFeatures() {
-        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
+        List<SequenceFeatureLocation> locations =
+                Arrays.asList(
+                        new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(),
+                        new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
@@ -238,7 +241,8 @@ public class ObjectsForTests {
     public static List<UniParcCrossReference> uniParcDBCrossReferences() {
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("propertyOne", "some pname"));
-        Proteome proteomeIdComponent = new ProteomeBuilder().component("componentValue").id("proteomeId").build();
+        Proteome proteomeIdComponent =
+                new ProteomeBuilder().component("componentValue").id("proteomeId").build();
         UniParcCrossReference xref =
                 new UniParcCrossReferenceBuilder()
                         .versionI(3)
@@ -259,7 +263,8 @@ public class ObjectsForTests {
 
         List<Property> properties2 = new ArrayList<>();
         properties.add(new Property("propertyTwo", "some pname"));
-        Proteome proteomeIdComponent2 = new ProteomeBuilder().component("componentValue2").id("proteomeId2").build();
+        Proteome proteomeIdComponent2 =
+                new ProteomeBuilder().component("componentValue2").id("proteomeId2").build();
 
         UniParcCrossReference xref2 =
                 new UniParcCrossReferenceBuilder()

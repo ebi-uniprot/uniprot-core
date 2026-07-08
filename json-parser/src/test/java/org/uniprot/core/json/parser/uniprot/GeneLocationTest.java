@@ -11,7 +11,9 @@ import org.uniprot.core.uniprotkb.impl.GeneLocationBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class GeneLocationTest {
 
     @Test

@@ -1,16 +1,17 @@
 package org.uniprot.core.proteome.impl;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.proteome.*;
 import org.uniprot.core.taxonomy.TaxonomyLineage;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
     private ProteomeId id;
@@ -213,7 +214,8 @@ public class ProteomeEntryBuilder implements Builder<ProteomeEntry> {
         return this;
     }
 
-    public @Nonnull ProteomeEntryBuilder relatedProteomesSet(List<RelatedProteome> relatedProteomes) {
+    public @Nonnull ProteomeEntryBuilder relatedProteomesSet(
+            List<RelatedProteome> relatedProteomes) {
         this.relatedProteomes = Utils.modifiableList(relatedProteomes);
         return this;
     }

@@ -5,7 +5,9 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.Builder;
 import org.uniprot.core.literature.LiteratureStatistics;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureStatisticsBuilder implements Builder<LiteratureStatistics> {
 
     private long reviewedProteinCount;

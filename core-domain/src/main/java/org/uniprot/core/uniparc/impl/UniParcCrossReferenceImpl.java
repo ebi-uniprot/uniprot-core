@@ -1,16 +1,16 @@
 package org.uniprot.core.uniparc.impl;
 
+import java.time.LocalDate;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
 import org.uniprot.core.Property;
 import org.uniprot.core.impl.CrossReferenceImpl;
 import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
-
-import java.time.LocalDate;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * @author jluo
@@ -33,8 +33,20 @@ public class UniParcCrossReferenceImpl extends CrossReferenceImpl<UniParcDatabas
 
     UniParcCrossReferenceImpl() {
         this(
-                null, null, null, 0, null, false, null,
-                null, null, null, null, null, null, Collections.emptyList());
+                null,
+                null,
+                null,
+                0,
+                null,
+                false,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                Collections.emptyList());
     }
 
     UniParcCrossReferenceImpl(

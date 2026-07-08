@@ -3,7 +3,9 @@ package org.uniprot.core.taxonomy;
 import java.io.Serializable;
 import java.util.List;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public interface TaxonomyStrain extends Serializable {
 
     String getName();

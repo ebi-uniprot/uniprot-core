@@ -209,8 +209,10 @@ public class FTLineBuilderHelper {
             }
             String joiner = getJoiner(featureWithAlternativeSequence);
             sb.append(
-                    featureWithAlternativeSequence.getAlternativeSequence()
-                            .getAlternativeSequences().stream()
+                    featureWithAlternativeSequence
+                            .getAlternativeSequence()
+                            .getAlternativeSequences()
+                            .stream()
                             .collect(Collectors.joining(joiner)));
         } else {
             sb.append(MISSING);

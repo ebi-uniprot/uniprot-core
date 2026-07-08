@@ -59,7 +59,17 @@ public class UniProtDatabaseDetail implements Serializable {
             String linkedReason,
             String idMappingName,
             String type) {
-        this(name, displayName, category, uriLink, attributes, implicit, linkedReason, idMappingName, type, List.of());
+        this(
+                name,
+                displayName,
+                category,
+                uriLink,
+                attributes,
+                implicit,
+                linkedReason,
+                idMappingName,
+                type,
+                List.of());
     }
 
     public UniProtDatabaseDetail(

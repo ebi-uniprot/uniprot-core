@@ -10,7 +10,9 @@ import org.uniprot.core.json.parser.ValidateJson;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class SequenceTest {
 
     @Test

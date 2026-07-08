@@ -1,5 +1,9 @@
 package org.uniprot.core.parser.fasta.uniprot;
 
+import static org.uniprot.core.parser.fasta.FastaParserUtils.getSequence;
+
+import java.util.List;
+
 import org.uniprot.core.fasta.UniProtKBFasta;
 import org.uniprot.core.fasta.impl.UniProtKBFastaBuilder;
 import org.uniprot.core.gene.Gene;
@@ -9,10 +13,6 @@ import org.uniprot.core.uniprotkb.description.Name;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.util.Utils;
 
-import java.util.List;
-
-import static org.uniprot.core.parser.fasta.FastaParserUtils.getSequence;
-
 public class UniProtKBFastaParser {
 
     private UniProtKBFastaParser() {}
@@ -20,6 +20,7 @@ public class UniProtKBFastaParser {
     public static UniProtKBFasta toUniProtKBFasta(UniProtKBEntry entry) {
         return toUniProtKBFasta(entry, null);
     }
+
     public static UniProtKBFasta toUniProtKBFasta(UniProtKBEntry entry, String sequenceRange) {
         return new UniProtKBFastaBuilder()
                 .id(entry.getPrimaryAccession().getValue())

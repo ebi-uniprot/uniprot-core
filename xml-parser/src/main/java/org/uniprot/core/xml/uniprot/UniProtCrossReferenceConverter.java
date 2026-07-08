@@ -30,7 +30,8 @@ public class UniProtCrossReferenceConverter
         this(evRefMapper, new ObjectFactory());
     }
 
-    public UniProtCrossReferenceConverter(EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
+    public UniProtCrossReferenceConverter(
+            EvidenceIndexMapper evRefMapper, ObjectFactory xmlUniprotFactory) {
         this.xmlUniprotFactory = xmlUniprotFactory;
         this.evRefMapper = evRefMapper;
     }

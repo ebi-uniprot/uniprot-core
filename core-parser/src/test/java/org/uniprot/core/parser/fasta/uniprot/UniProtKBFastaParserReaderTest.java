@@ -131,9 +131,7 @@ class UniProtKBFastaParserReaderTest {
 
     @Test
     void parseFastaWithSequenceRange() {
-        String fastaInput =
-                ">sp|P12345|10-20\n"
-                        + "ITFTCPRSDG";
+        String fastaInput = ">sp|P12345|10-20\n" + "ITFTCPRSDG";
         UniProtKBFasta result = UniProtKBFastaParserReader.parse(fastaInput);
         assertNotNull(result);
         assertEquals(UniProtKBEntryType.SWISSPROT, result.getEntryType());

@@ -1,8 +1,12 @@
 package org.uniprot.core.xml.dbreference;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_UNIPROTKB_ACCESSION;
+
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.Proteome;
-
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
 import org.uniprot.core.uniparc.impl.ProteomeBuilder;
@@ -11,18 +15,13 @@ import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 import org.uniprot.core.xml.jaxb.dbreference.DbReference;
 
-import java.time.LocalDate;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.uniprot.core.xml.CrossReferenceConverterUtils.PROPERTY_UNIPROTKB_ACCESSION;
-
-
 class UniParcCrossReferenceConverterTest {
     @Test
     void testComplete() {
         Organism taxonomy = new OrganismBuilder().taxonId(7227).build();
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
-        Proteome proteomeIdComponent = new ProteomeBuilder().id("proteomeValue").component("ComponentValue").build();
+        Proteome proteomeIdComponent =
+                new ProteomeBuilder().id("proteomeValue").component("ComponentValue").build();
         builder.database(UniParcDatabase.TREMBL)
                 .id("A0A0C4DHG2-PB")
                 .versionI(1)
@@ -43,6 +42,5 @@ class UniParcCrossReferenceConverterTest {
         DbReference xmlObj = converter.toXml(xref);
         UniParcCrossReference converted = converter.fromXml(xmlObj);
         assertEquals(xref, converted);
-
     }
 }

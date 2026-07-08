@@ -9,7 +9,9 @@ import java.util.Objects;
 import org.uniprot.core.uniprotkb.taxonomy.OrganismName;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public abstract class AbstractOrganismNameImpl implements OrganismName {
 
     private static final long serialVersionUID = -4054471655650420667L;

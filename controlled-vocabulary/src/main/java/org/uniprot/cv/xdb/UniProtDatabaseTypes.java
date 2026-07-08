@@ -1,11 +1,6 @@
 package org.uniprot.cv.xdb;
 
-import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
-import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
-import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
-import org.uniprot.core.util.Utils;
-import org.uniprot.core.util.property.Property;
-import org.uniprot.cv.common.AbstractFileReader;
+import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
 
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -15,7 +10,12 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.uniprot.cv.common.CVSystemProperties.getDrDatabaseTypesLocation;
+import org.uniprot.core.cv.xdb.UniProtDatabaseAttribute;
+import org.uniprot.core.cv.xdb.UniProtDatabaseCategory;
+import org.uniprot.core.cv.xdb.UniProtDatabaseDetail;
+import org.uniprot.core.util.Utils;
+import org.uniprot.core.util.property.Property;
+import org.uniprot.cv.common.AbstractFileReader;
 
 public enum UniProtDatabaseTypes {
     INSTANCE;
@@ -23,8 +23,8 @@ public enum UniProtDatabaseTypes {
 
     private final List<UniProtDatabaseDetail> uniProtKBDbTypes = new ArrayList<>();
     private final List<UniProtDatabaseDetail> diseaseDbTypes = new ArrayList<>();
-    private final Map<String, List<UniProtDatabaseDetail>> databaseCollectionOperations = Map.of("UNIPROTKB", uniProtKBDbTypes,
-            "DISEASE", diseaseDbTypes);
+    private final Map<String, List<UniProtDatabaseDetail>> databaseCollectionOperations =
+            Map.of("UNIPROTKB", uniProtKBDbTypes, "DISEASE", diseaseDbTypes);
     private Map<String, UniProtDatabaseDetail> uniProtKBDbTypeMap;
 
     UniProtDatabaseTypes() {
@@ -77,7 +77,8 @@ public enum UniProtDatabaseTypes {
                     String category = item.getString("category");
                     String uriLink = item.getString("uriLink");
                     String uniProtDataTypeString = item.optString("uniProtDataTypes", "UNIPROTKB");
-                    List<String> uniProtDataTypes = Arrays.asList(uniProtDataTypeString.split(",", -1));
+                    List<String> uniProtDataTypes =
+                            Arrays.asList(uniProtDataTypeString.split(",", -1));
 
                     String implicit = item.optString("implicit", "false");
                     boolean isImplicit = Boolean.parseBoolean(implicit);

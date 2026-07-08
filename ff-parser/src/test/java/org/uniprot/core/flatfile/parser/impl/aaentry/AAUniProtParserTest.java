@@ -17,21 +17,20 @@ import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
+
 /**
- *
  * @author jluo
  * @date: 30 Jan 2026
- *
-*/
-
+ */
 class AAUniProtParserTest {
 
-	@Test
-	void testParse() {
-		SupportingDataMap supportingDataMap =new SupportingDataMapImpl();
-		AAUniProtParser parser = new AAUniProtParser(supportingDataMap, true);
-		
-        String aaEntryLines = """
+    @Test
+    void testParse() {
+        SupportingDataMap supportingDataMap = new SupportingDataMapImpl();
+        AAUniProtParser parser = new AAUniProtParser(supportingDataMap, true);
+
+        String aaEntryLines =
+                """
 AC   UPI000000000B-1032;
 DE   RecName: Full=Angiotensin-converting enzyme {ECO:0000256|RuleBase:RU361144};
 DE            EC=3.4.-.- {ECO:0000256|RuleBase:RU361144};
@@ -168,37 +167,34 @@ FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
 FT   COMPBIAS        789..805
 FT                   /note="Polar residues"
 FT                   /evidence="ECO:0000256|SAM:MobiDB-lite"
-//                        
+//
                         """;
-		UniProtKBEntry entry =parser.parse(aaEntryLines);
-		assertNotNull(entry);
-		assertEquals("UPI000000000B-1032", entry.getPrimaryAccession().getValue());
-		
-		ProteinDescription pd = entry.getProteinDescription();
-		assertEquals("Angiotensin-converting enzyme", pd.getRecommendedName()
-				.getFullName().getValue());
-		assertFalse(pd.hasAlternativeNames());
-		assertEquals(15, entry.getComments().size());
-		List<CatalyticActivityComment> caComments =
-				entry.getCommentsByType(CommentType.CATALYTIC_ACTIVITY);
-		
-		assertEquals(9, caComments.size());
-		List<FreeTextComment> coComments =
-				entry.getCommentsByType(CommentType.CAUTION);
-		assertEquals(1, coComments.size());
-		FreeTextComment ctComment = coComments.get(0);
-		assertEquals(1, ctComment.getTexts().size());
-		EvidencedValue ev = ctComment.getTexts().get(0);
-		
-		String expectedEv ="Lacks conserved residue(s) required for the propagation of feature annotation {ECO:0000256|PROSITE-ProRule:PRU01355}";
-		assertEquals(expectedEv, ev.toString());
-		assertEquals(5, entry.getFeatures().size());
-		 List<UniProtKBFeature> domainFts =entry.getFeaturesByType(UniprotKBFeatureType.DOMAIN);
-		assertEquals(1, domainFts.size());
-		
-		assertEquals(18, entry.getKeywords().size());
-	     
-	}
+        UniProtKBEntry entry = parser.parse(aaEntryLines);
+        assertNotNull(entry);
+        assertEquals("UPI000000000B-1032", entry.getPrimaryAccession().getValue());
 
+        ProteinDescription pd = entry.getProteinDescription();
+        assertEquals(
+                "Angiotensin-converting enzyme", pd.getRecommendedName().getFullName().getValue());
+        assertFalse(pd.hasAlternativeNames());
+        assertEquals(15, entry.getComments().size());
+        List<CatalyticActivityComment> caComments =
+                entry.getCommentsByType(CommentType.CATALYTIC_ACTIVITY);
+
+        assertEquals(9, caComments.size());
+        List<FreeTextComment> coComments = entry.getCommentsByType(CommentType.CAUTION);
+        assertEquals(1, coComments.size());
+        FreeTextComment ctComment = coComments.get(0);
+        assertEquals(1, ctComment.getTexts().size());
+        EvidencedValue ev = ctComment.getTexts().get(0);
+
+        String expectedEv =
+                "Lacks conserved residue(s) required for the propagation of feature annotation {ECO:0000256|PROSITE-ProRule:PRU01355}";
+        assertEquals(expectedEv, ev.toString());
+        assertEquals(5, entry.getFeatures().size());
+        List<UniProtKBFeature> domainFts = entry.getFeaturesByType(UniprotKBFeatureType.DOMAIN);
+        assertEquals(1, domainFts.size());
+
+        assertEquals(18, entry.getKeywords().size());
+    }
 }
-

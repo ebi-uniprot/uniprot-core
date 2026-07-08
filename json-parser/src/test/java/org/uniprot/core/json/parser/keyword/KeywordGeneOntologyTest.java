@@ -6,7 +6,9 @@ import org.uniprot.core.cv.go.impl.GeneOntologyEntryBuilder;
 import org.uniprot.core.cv.go.impl.GoTermBuilder;
 import org.uniprot.core.json.parser.ValidateJson;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 class KeywordGeneOntologyTest {
 
     @Test

@@ -53,12 +53,16 @@ import org.uniprot.core.uniprotkb.evidence.HasEvidences;
  * @see DiseaseComment
  */
 public interface Disease extends HasEvidences {
-    /** @return disease id (ID) */
+    /**
+     * @return disease id (ID)
+     */
     String getDiseaseId();
 
     String getDiseaseAccession();
 
-    /** @return disease acronym (AR) */
+    /**
+     * @return disease acronym (AR)
+     */
     String getAcronym();
 
     String getDescription();
@@ -71,7 +75,9 @@ public interface Disease extends HasEvidences {
 
     boolean hasDiseaseAccession();
 
-    /** @return disease acronym (AR) */
+    /**
+     * @return disease acronym (AR)
+     */
     boolean hasAcronym();
 
     boolean hasDescription();

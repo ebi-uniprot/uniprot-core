@@ -9,7 +9,8 @@ import org.uniprot.core.xml.Converter;
 import org.uniprot.core.xml.jaxb.proteome.ObjectFactory;
 import org.uniprot.core.xml.jaxb.proteome.RelatedReferenceProteome;
 
-public class RelatedReferenceProteomeConverter implements Converter<RelatedReferenceProteome, RelatedProteome> {
+public class RelatedReferenceProteomeConverter
+        implements Converter<RelatedReferenceProteome, RelatedProteome> {
 
     private ObjectFactory objectFactory;
 
@@ -20,6 +21,7 @@ public class RelatedReferenceProteomeConverter implements Converter<RelatedRefer
     public RelatedReferenceProteomeConverter(ObjectFactory objectFactory) {
         this.objectFactory = objectFactory;
     }
+
     @Override
     public RelatedProteome fromXml(RelatedReferenceProteome xmlObj) {
         RelatedProteomeBuilder builder = new RelatedProteomeBuilder();

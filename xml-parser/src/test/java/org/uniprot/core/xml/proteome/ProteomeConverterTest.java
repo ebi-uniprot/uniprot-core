@@ -20,7 +20,6 @@ import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
 import org.uniprot.core.xml.jaxb.proteome.Proteome;
 
-
 class ProteomeConverterTest {
 
     @Test
@@ -147,14 +146,22 @@ class ProteomeConverterTest {
         ProteomeId proteomeId1 = new ProteomeIdBuilder(id1).build();
         float similarity1 = 0.5f;
         Taxonomy taxon1 = new TaxonomyBuilder().taxonId(9600).build();
-        RelatedProteome relatedProteome1 = new RelatedProteomeBuilder().proteomeId(proteomeId1)
-                .similarity(similarity1).taxonomy(taxon1).build();
+        RelatedProteome relatedProteome1 =
+                new RelatedProteomeBuilder()
+                        .proteomeId(proteomeId1)
+                        .similarity(similarity1)
+                        .taxonomy(taxon1)
+                        .build();
         Taxonomy taxon2 = new TaxonomyBuilder().taxonId(9601).build();
         float similarity2 = 0.6f;
         String id2 = "UP1234567880";
         ProteomeId proteomeId2 = new ProteomeIdBuilder(id2).build();
-        RelatedProteome relatedProteome2 = new RelatedProteomeBuilder().proteomeId(proteomeId2)
-                .similarity(similarity2).taxonomy(taxon2).build();
+        RelatedProteome relatedProteome2 =
+                new RelatedProteomeBuilder()
+                        .proteomeId(proteomeId2)
+                        .similarity(similarity2)
+                        .taxonomy(taxon2)
+                        .build();
         List<RelatedProteome> relatedProteomes = new ArrayList<>();
         relatedProteomes.add(relatedProteome1);
         relatedProteomes.add(relatedProteome2);

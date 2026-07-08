@@ -13,7 +13,9 @@ import org.uniprot.core.uniprotkb.description.impl.*;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class ProteinDescriptionTest {
 
     @Test

@@ -17,7 +17,9 @@ import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.feature.UniProtKBFeature;
 import org.uniprot.core.uniprotkb.feature.UniprotKBFeatureType;
 
-/** @author gqi */
+/**
+ * @author gqi
+ */
 public class UniProtGffParser {
     private static final String FEATURE_SOURCE = "UniProtKB";
     private static final String EMPTY_COLUMN = ".";

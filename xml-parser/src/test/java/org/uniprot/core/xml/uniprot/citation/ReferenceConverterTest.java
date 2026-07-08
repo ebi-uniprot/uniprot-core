@@ -37,8 +37,8 @@ class ReferenceConverterTest {
         refComments.add(createReferenceComment(ReferenceCommentType.STRAIN, "S1", evidences));
         refComments.add(createReferenceComment(ReferenceCommentType.TISSUE, "S11", evidences));
         UniProtKBReference uniReference =
-                createUniProtReference(2,
-                        submission, referencePositions, refComments, Collections.emptyList());
+                createUniProtReference(
+                        2, submission, referencePositions, refComments, Collections.emptyList());
         ReferenceConverter converter = new ReferenceConverter(new EvidenceIndexMapper());
         ReferenceType xmlReference = converter.toXml(uniReference);
         System.out.println(

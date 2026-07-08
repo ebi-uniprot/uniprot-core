@@ -1,5 +1,8 @@
 package org.uniprot.core.parser.fasta.uniparc;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.uniprot.core.Property;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.SequenceBuilder;
@@ -13,25 +16,29 @@ import org.uniprot.core.uniparc.impl.UniParcIdBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class UniParcFastaParserTestUtils {
 
     static UniParcEntry create() {
         List<UniParcCrossReference> xrefs = getUniProtXrefs(true);
         Organism organism = getOrganism(9606L, "Homo Sapiens");
-        xrefs.add(getXref(UniParcDatabase.EMBL,"CQR81549", true, organism, "UP000005640", "Chromosome 1"));
+        xrefs.add(
+                getXref(
+                        UniParcDatabase.EMBL,
+                        "CQR81549",
+                        true,
+                        organism,
+                        "UP000005640",
+                        "Chromosome 1"));
         return new UniParcEntryBuilder()
-                        .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
-                        .uniParcCrossReferencesSet(xrefs)
-                        .sequence(getSequence())
-                        .build();
+                .uniParcId(new UniParcIdBuilder("UPI0000083A08").build())
+                .uniParcCrossReferencesSet(xrefs)
+                .sequence(getSequence())
+                .build();
     }
 
     static Sequence getSequence() {
-        String seq = "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT" +
-                     "LLRAIDWFRDNGYFNA";
+        String seq =
+                "MSMAMARALATLGRLRYRVSGQLPLLDETAIEVMAGGQFLDGRKAREELGFFSTTALDDT" + "LLRAIDWFRDNGYFNA";
         return new SequenceBuilder(seq).build();
     }
 
@@ -39,7 +46,19 @@ public class UniParcFastaParserTestUtils {
         List<UniParcCrossReference> result = new ArrayList<>();
         Organism human = getOrganism(9606, "Homo sapiens");
 
-        result.add(getXref(UniParcDatabase.SWISSPROT, "P12345", active, human, null, null, "Protein Name One", "Gene Name One", new Property(UniParcCrossReference.PROPERTY_SOURCES, "ABC01415:UP000005640:Chromosome 1")));
+        result.add(
+                getXref(
+                        UniParcDatabase.SWISSPROT,
+                        "P12345",
+                        active,
+                        human,
+                        null,
+                        null,
+                        "Protein Name One",
+                        "Gene Name One",
+                        new Property(
+                                UniParcCrossReference.PROPERTY_SOURCES,
+                                "ABC01415:UP000005640:Chromosome 1")));
 
         return result;
     }
@@ -48,19 +67,42 @@ public class UniParcFastaParserTestUtils {
         return new OrganismBuilder().taxonId(taxonId).scientificName(name).build();
     }
 
-    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism) {
+    static UniParcCrossReference getXref(
+            UniParcDatabase database, String id, boolean active, Organism organism) {
         return getXref(database, id, active, organism, null, null);
     }
 
-    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component) {
-        return getXref(database,id, active, organism, proteomeId, component, null, null,null);
+    static UniParcCrossReference getXref(
+            UniParcDatabase database,
+            String id,
+            boolean active,
+            Organism organism,
+            String proteomeId,
+            String component) {
+        return getXref(database, id, active, organism, proteomeId, component, null, null, null);
     }
 
-    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String geneName, String proteinName, Property property) {
-        return getXref(database,id, active, organism, null, null, proteinName, geneName, property);
+    static UniParcCrossReference getXref(
+            UniParcDatabase database,
+            String id,
+            boolean active,
+            Organism organism,
+            String geneName,
+            String proteinName,
+            Property property) {
+        return getXref(database, id, active, organism, null, null, proteinName, geneName, property);
     }
 
-    static UniParcCrossReference getXref(UniParcDatabase database, String id, boolean active, Organism organism, String proteomeId, String component, String proteinName, String geneName, Property property) {
+    static UniParcCrossReference getXref(
+            UniParcDatabase database,
+            String id,
+            boolean active,
+            Organism organism,
+            String proteomeId,
+            String component,
+            String proteinName,
+            String geneName,
+            Property property) {
         return new UniParcCrossReferenceBuilder()
                 .database(database)
                 .id(id)

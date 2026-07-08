@@ -16,7 +16,9 @@ import org.uniprot.core.uniprotkb.comment.impl.RnaEditingPositionBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class RnaEditingCommentTest {
 
     @Test

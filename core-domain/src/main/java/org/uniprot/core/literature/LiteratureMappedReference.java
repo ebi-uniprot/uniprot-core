@@ -6,7 +6,9 @@ import java.util.List;
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public interface LiteratureMappedReference extends Serializable {
 
     UniProtKBAccession getUniprotAccession();

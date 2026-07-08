@@ -38,7 +38,7 @@ public class ReferenceObjectConverter extends EvidenceCollector
                 builder = rlLineConverter.convert(f.rl);
         int referenceNumber = 0;
         if (f.rn != null) {
-           referenceNumber = f.rn.number;
+            referenceNumber = f.rn.number;
         }
         if (f.ra != null) {
             List<Author> authors = raLineConverter.convert(f.ra);

@@ -7,7 +7,9 @@ import org.uniprot.core.citation.Citation;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.LiteratureStatistics;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureEntryBuilder implements Builder<LiteratureEntry> {
 
     private Citation citation;

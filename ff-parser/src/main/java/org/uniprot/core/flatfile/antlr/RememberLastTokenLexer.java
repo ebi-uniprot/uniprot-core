@@ -23,9 +23,9 @@ public abstract class RememberLastTokenLexer extends AbstractUniProtLexer {
 
     /** */
     private static final long serialVersionUID = 1L;
-    
-    public static final String VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER ="<<SPACE_NO_SPACE_PLACEHOLDER>>";
 
+    public static final String VAR_SEQ_SPACE_NO_SPACE_PLACEHOLDER =
+            "<<SPACE_NO_SPACE_PLACEHOLDER>>";
 
     private Token lastToken;
     private Token nextToken;

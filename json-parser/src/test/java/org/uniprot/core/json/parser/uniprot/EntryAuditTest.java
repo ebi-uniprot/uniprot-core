@@ -12,7 +12,9 @@ import org.uniprot.core.uniprotkb.impl.EntryAuditBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class EntryAuditTest {
 
     @Test

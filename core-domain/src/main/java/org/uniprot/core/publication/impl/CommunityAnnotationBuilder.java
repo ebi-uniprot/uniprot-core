@@ -1,11 +1,11 @@
 package org.uniprot.core.publication.impl;
 
+import java.time.LocalDate;
+
 import javax.annotation.Nonnull;
 
 import org.uniprot.core.Builder;
 import org.uniprot.core.publication.CommunityAnnotation;
-
-import java.time.LocalDate;
 
 /**
  * Created 02/12/2020
@@ -52,7 +52,8 @@ public class CommunityAnnotationBuilder implements Builder<CommunityAnnotation> 
     @Nonnull
     @Override
     public CommunityAnnotation build() {
-        return new CommunityAnnotationImpl(proteinOrGene, function, disease, comment, submissionDate);
+        return new CommunityAnnotationImpl(
+                proteinOrGene, function, disease, comment, submissionDate);
     }
 
     public static CommunityAnnotationBuilder from(@Nonnull CommunityAnnotation instance) {

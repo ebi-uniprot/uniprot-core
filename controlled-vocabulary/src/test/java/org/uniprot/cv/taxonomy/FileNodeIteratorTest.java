@@ -70,7 +70,8 @@ class FileNodeIteratorTest {
         File taxonomyFile = new File(url.toURI());
         FileNodeIterator iterator =
                 new FileNodeIterator(taxonomyFile, FIELD_SEPARATOR, NULL_PLACEHOLDER);
-        while (iterator.hasNext() && iterator.next() != null) ;
+        while (iterator.hasNext() && iterator.next() != null)
+            ;
 
         // try to call next
         NoSuchElementException thrown =

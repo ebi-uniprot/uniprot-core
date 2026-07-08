@@ -1,5 +1,12 @@
 package org.uniprot.core.uniparc.impl;
 
+import static org.uniprot.core.util.Utils.putOrIgnoreNull;
+
+import java.time.LocalDate;
+import java.util.*;
+
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.uniparc.CommonOrganism;
@@ -8,12 +15,6 @@ import org.uniprot.core.uniparc.SequenceFeature;
 import org.uniprot.core.uniparc.UniParcEntryLight;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
-
-import javax.annotation.Nonnull;
-import java.time.LocalDate;
-import java.util.*;
-
-import static org.uniprot.core.util.Utils.putOrIgnoreNull;
 
 public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     public static final String HAS_ACTIVE_CROSS_REF = "hasActiveCrossRef";
@@ -43,39 +44,50 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
     @Nonnull
     @Override
     public UniParcEntryLight build() {
-        return new UniParcEntryLightImpl(uniParcId, crossReferenceCount, commonTaxons, uniProtKBAccessions,
-                sequence, sequenceFeatures, oldestCrossRefCreated,
-                mostRecentCrossRefUpdated, organisms, proteinNames,
-                geneNames, proteomes, extraAttributes);
+        return new UniParcEntryLightImpl(
+                uniParcId,
+                crossReferenceCount,
+                commonTaxons,
+                uniProtKBAccessions,
+                sequence,
+                sequenceFeatures,
+                oldestCrossRefCreated,
+                mostRecentCrossRefUpdated,
+                organisms,
+                proteinNames,
+                geneNames,
+                proteomes,
+                extraAttributes);
     }
 
-    public  @Nonnull UniParcEntryLightBuilder uniParcId(String uniParcId) {
+    public @Nonnull UniParcEntryLightBuilder uniParcId(String uniParcId) {
         this.uniParcId = uniParcId;
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder crossReferenceCount(int crossReferenceCount){
+    public @Nonnull UniParcEntryLightBuilder crossReferenceCount(int crossReferenceCount) {
         this.crossReferenceCount = crossReferenceCount;
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder commonTaxonsSet(List<CommonOrganism> commonTaxons){
+    public @Nonnull UniParcEntryLightBuilder commonTaxonsSet(List<CommonOrganism> commonTaxons) {
         this.commonTaxons = Utils.modifiableList(commonTaxons);
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder commonTaxonsAdd(CommonOrganism commonTaxon){
+    public @Nonnull UniParcEntryLightBuilder commonTaxonsAdd(CommonOrganism commonTaxon) {
         Utils.addOrIgnoreNull(commonTaxon, this.commonTaxons);
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsSet(LinkedHashSet<String> uniProtKBAccessions){
+    public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsSet(
+            LinkedHashSet<String> uniProtKBAccessions) {
         this.uniProtKBAccessions = Utils.modifiableLinkedHashSet(uniProtKBAccessions);
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsAdd(String uniProtKBAccession){
-         Utils.addOrIgnoreNull(uniProtKBAccession, this.uniProtKBAccessions);
+    public @Nonnull UniParcEntryLightBuilder uniProtKBAccessionsAdd(String uniProtKBAccession) {
+        Utils.addOrIgnoreNull(uniProtKBAccession, this.uniProtKBAccessions);
         return this;
     }
 
@@ -84,7 +96,8 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder sequenceFeaturesSet(List<SequenceFeature> sequenceFeatures) {
+    public @Nonnull UniParcEntryLightBuilder sequenceFeaturesSet(
+            List<SequenceFeature> sequenceFeatures) {
         this.sequenceFeatures = Utils.modifiableList(sequenceFeatures);
         return this;
     }
@@ -94,12 +107,14 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder oldestCrossRefCreated(LocalDate oldestCrossRefCreated) {
+    public @Nonnull UniParcEntryLightBuilder oldestCrossRefCreated(
+            LocalDate oldestCrossRefCreated) {
         this.oldestCrossRefCreated = oldestCrossRefCreated;
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder mostRecentCrossRefUpdated(LocalDate mostRecentCrossRefUpdated) {
+    public @Nonnull UniParcEntryLightBuilder mostRecentCrossRefUpdated(
+            LocalDate mostRecentCrossRefUpdated) {
         this.mostRecentCrossRefUpdated = mostRecentCrossRefUpdated;
         return this;
     }
@@ -149,15 +164,18 @@ public class UniParcEntryLightBuilder implements Builder<UniParcEntryLight> {
         return this;
     }
 
-    public @Nonnull UniParcEntryLightBuilder extraAttributesSet(Map<String, Object> extraAttributes) {
+    public @Nonnull UniParcEntryLightBuilder extraAttributesSet(
+            Map<String, Object> extraAttributes) {
         this.extraAttributes = new LinkedHashMap<>(extraAttributes);
         return this;
     }
 
-    public static @Nonnull UniParcEntryLightBuilder from(UniParcEntryLight uniParcEntryLight){
-        LinkedHashSet<String> uniProtKBAccessions = new LinkedHashSet<>(uniParcEntryLight.getUniProtKBAccessions());
+    public static @Nonnull UniParcEntryLightBuilder from(UniParcEntryLight uniParcEntryLight) {
+        LinkedHashSet<String> uniProtKBAccessions =
+                new LinkedHashSet<>(uniParcEntryLight.getUniProtKBAccessions());
         LinkedHashSet<Organism> organisms = new LinkedHashSet<>(uniParcEntryLight.getOrganisms());
-        LinkedHashSet<String> proteinNames = new LinkedHashSet<>(uniParcEntryLight.getProteinNames());
+        LinkedHashSet<String> proteinNames =
+                new LinkedHashSet<>(uniParcEntryLight.getProteinNames());
         LinkedHashSet<String> geneNames = new LinkedHashSet<>(uniParcEntryLight.getGeneNames());
         LinkedHashSet<Proteome> proteomes = new LinkedHashSet<>(uniParcEntryLight.getProteomes());
         UniParcEntryLightBuilder builder = new UniParcEntryLightBuilder();

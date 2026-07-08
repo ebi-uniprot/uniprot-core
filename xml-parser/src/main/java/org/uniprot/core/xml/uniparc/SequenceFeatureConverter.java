@@ -37,13 +37,13 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
     @Override
     public SequenceFeature fromXml(SeqFeatureType xmlObj) {
         SequenceFeatureBuilder builder = new SequenceFeatureBuilder();
-                builder.signatureDbType(SignatureDbType.typeOf(xmlObj.getDatabase()))
+        builder.signatureDbType(SignatureDbType.typeOf(xmlObj.getDatabase()))
                 .signatureDbId(xmlObj.getId())
                 .locationsSet(
                         xmlObj.getLcn().stream()
                                 .map(locationConverter::fromXml)
                                 .collect(Collectors.toList()));
-        if(xmlObj.getIpr() != null){
+        if (xmlObj.getIpr() != null) {
             builder.interproGroup(interproGroupConverter.fromXml(xmlObj.getIpr()));
         }
 
@@ -55,7 +55,7 @@ public class SequenceFeatureConverter implements Converter<SeqFeatureType, Seque
         SeqFeatureType xmlObj = xmlFactory.createSeqFeatureType();
         xmlObj.setDatabase(uniObj.getSignatureDbType().getDisplayName());
         xmlObj.setId(uniObj.getSignatureDbId());
-        if(uniObj.getInterProDomain() != null) {
+        if (uniObj.getInterProDomain() != null) {
             xmlObj.setIpr(interproGroupConverter.toXml(uniObj.getInterProDomain()));
         }
 

@@ -5,7 +5,9 @@ import java.util.Objects;
 
 import org.uniprot.core.uniprotkb.taxonomy.OrganismHost;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class OrganismHostImpl extends AbstractOrganismNameImpl implements OrganismHost {
 
     private static final long serialVersionUID = 6516703868320522667L;

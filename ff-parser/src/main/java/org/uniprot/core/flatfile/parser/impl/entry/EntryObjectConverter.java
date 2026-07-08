@@ -190,5 +190,4 @@ public class EntryObjectConverter implements Converter<EntryObject, UniProtKBEnt
         refObjConverter.clear();
         drLineConverter.clear();
     }
-
 }

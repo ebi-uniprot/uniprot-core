@@ -8,7 +8,9 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kjetland.jackson.jsonSchema.JsonSchemaGenerator;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class JsonUtils {
 
     public static String getJsonString(Object obj, boolean isPretty) {

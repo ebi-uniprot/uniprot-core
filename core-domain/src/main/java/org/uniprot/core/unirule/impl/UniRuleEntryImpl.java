@@ -15,7 +15,9 @@ import org.uniprot.core.unirule.UniRuleEntry;
 import org.uniprot.core.unirule.UniRuleId;
 import org.uniprot.core.util.Utils;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public class UniRuleEntryImpl implements UniRuleEntry {
     private static final long serialVersionUID = 656822574542548594L;
     private UniRuleId uniRuleId;

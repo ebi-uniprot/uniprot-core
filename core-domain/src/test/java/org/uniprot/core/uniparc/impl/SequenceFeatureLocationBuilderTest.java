@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.uniparc.SequenceFeatureLocation;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class SequenceFeatureLocationBuilderTest {
     @Test
@@ -17,8 +17,7 @@ class SequenceFeatureLocationBuilderTest {
     @Test
     void testEnd() {
         int end = 20;
-        SequenceFeatureLocation location =
-                new SequenceFeatureLocationBuilder().end(end).build();
+        SequenceFeatureLocation location = new SequenceFeatureLocationBuilder().end(end).build();
         assertEquals(end, location.getEnd());
     }
 
@@ -39,10 +38,12 @@ class SequenceFeatureLocationBuilderTest {
                 new SequenceFeatureLocationBuilder().alignment(alignment).build();
         assertEquals(alignment, location.getAlignment());
     }
+
     @Test
     void testFromSequenceFeatureLocation() {
         SequenceFeatureLocation location = new SequenceFeatureLocationImpl(10, 20, "VALUE");
-        SequenceFeatureLocation fromLocation = SequenceFeatureLocationBuilder.from(location).build();
+        SequenceFeatureLocation fromLocation =
+                SequenceFeatureLocationBuilder.from(location).build();
         assertEquals(location, fromLocation);
     }
 }

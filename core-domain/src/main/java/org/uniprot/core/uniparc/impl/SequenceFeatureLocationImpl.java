@@ -1,16 +1,16 @@
 package org.uniprot.core.uniparc.impl;
 
+import java.util.Objects;
+
 import org.uniprot.core.Location;
 import org.uniprot.core.uniparc.SequenceFeatureLocation;
 
-import java.util.Objects;
-
-public class SequenceFeatureLocationImpl extends Location implements SequenceFeatureLocation{
+public class SequenceFeatureLocationImpl extends Location implements SequenceFeatureLocation {
 
     private static final long serialVersionUID = -4804406936471873484L;
     private String alignment;
 
-    SequenceFeatureLocationImpl(){
+    SequenceFeatureLocationImpl() {
         super(0, 0);
     }
 
@@ -23,7 +23,6 @@ public class SequenceFeatureLocationImpl extends Location implements SequenceFea
     public String getAlignment() {
         return alignment;
     }
-
 
     @Override
     public boolean equals(Object o) {

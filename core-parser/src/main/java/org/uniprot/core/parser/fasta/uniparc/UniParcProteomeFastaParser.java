@@ -1,5 +1,10 @@
 package org.uniprot.core.parser.fasta.uniparc;
 
+import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
+import static org.uniprot.core.util.Utils.*;
+
+import java.util.*;
+
 import org.uniprot.core.Property;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniparc.UniParcDatabase;
@@ -7,24 +12,23 @@ import org.uniprot.core.uniparc.UniParcEntry;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
 
-import java.util.*;
-
-import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
-import static org.uniprot.core.util.Utils.*;
-
 public class UniParcProteomeFastaParser {
 
-    private static final Set<UniParcDatabase> UNIPROTKB_DATABASES = Set.of(
-            UniParcDatabase.SWISSPROT, UniParcDatabase.TREMBL, UniParcDatabase.SWISSPROT_VARSPLIC);
+    private static final Set<UniParcDatabase> UNIPROTKB_DATABASES =
+            Set.of(
+                    UniParcDatabase.SWISSPROT,
+                    UniParcDatabase.TREMBL,
+                    UniParcDatabase.SWISSPROT_VARSPLIC);
     private static final String DELIMITER = "|";
 
     /**
-     * This method is responsible to convert UniParcEntry into UniParc Proteome FASTA format.
-     * The FASTA HEADER will display cross-references (Xrefs) in the following order of precedence:
-     * 1. Display active UniProtXrefs only.
-     * 2. If no active UniProtXrefs are available, display inactive UniProtXrefs only.
-     * 3. If no UniProtXrefs (active or inactive) are available, display active sources only.
-     * 4. If no UniProtXrefs and no active sources are available, display inactive sources only.
+     * This method is responsible to convert UniParcEntry into UniParc Proteome FASTA format. The
+     * FASTA HEADER will display cross-references (Xrefs) in the following order of precedence: 1.
+     * Display active UniProtXrefs only. 2. If no active UniProtXrefs are available, display
+     * inactive UniProtXrefs only. 3. If no UniProtXrefs (active or inactive) are available, display
+     * active sources only. 4. If no UniProtXrefs and no active sources are available, display
+     * inactive sources only.
+     *
      * @param UniParc Entry
      * @return FASTA format string
      */
@@ -36,31 +40,35 @@ public class UniParcProteomeFastaParser {
         boolean hasUniProtXrefsActive = false;
         boolean hasSourceActive = false;
         String proteomeId = null;
-        for(UniParcCrossReference xref: entry.getUniParcCrossReferences()){
-            if(UNIPROTKB_DATABASES.contains(xref.getDatabase())){
+        for (UniParcCrossReference xref : entry.getUniParcCrossReferences()) {
+            if (UNIPROTKB_DATABASES.contains(xref.getDatabase())) {
                 uniProtXrefs.add(xref);
-                if(proteomeId == null && xref.hasProperties()){
+                if (proteomeId == null && xref.hasProperties()) {
                     proteomeId = getProteomeId(xref.getProperties().get(0));
                 }
-                if(xref.isActive()){
+                if (xref.isActive()) {
                     hasUniProtXrefsActive = true;
                 }
             } else {
                 sourceXrefs.put(xref.getId(), xref);
-                if(Utils.notNullNotEmpty(xref.getProteomes())) {
+                if (Utils.notNullNotEmpty(xref.getProteomes())) {
                     int size = xref.getProteomes().size();
-                    proteomeId = xref.getProteomes().get(size-1).getId();
+                    proteomeId = xref.getProteomes().get(size - 1).getId();
                 }
-                if(xref.isActive()){
+                if (xref.isActive()) {
                     hasSourceActive = true;
                 }
             }
         }
         StringBuilder sb = new StringBuilder();
-        if(!uniProtXrefs.isEmpty()){
-            sb.append(getFastaHeader(uniProtXrefs, hasUniProtXrefsActive, id, proteomeId, sourceXrefs));
+        if (!uniProtXrefs.isEmpty()) {
+            sb.append(
+                    getFastaHeader(
+                            uniProtXrefs, hasUniProtXrefsActive, id, proteomeId, sourceXrefs));
         } else {
-            sb.append(getFastaHeader(sourceXrefs.values(), hasSourceActive, id, proteomeId, sourceXrefs));
+            sb.append(
+                    getFastaHeader(
+                            sourceXrefs.values(), hasSourceActive, id, proteomeId, sourceXrefs));
         }
         sb.append("\n");
         sb.append(parseSequence(entry.getSequence().getValue()));
@@ -70,23 +78,28 @@ public class UniParcProteomeFastaParser {
     private static String getProteomeId(Property property) {
         String result = null;
         String[] sourcePropertyValues = property.getValue().split(",");
-        if(sourcePropertyValues.length == 1){
+        if (sourcePropertyValues.length == 1) {
             String[] propertyValue = sourcePropertyValues[0].split(":");
-            if(propertyValue.length > 2){
+            if (propertyValue.length > 2) {
                 result = propertyValue[2];
             }
         }
         return result;
     }
 
-    private static StringBuilder getFastaHeader(Collection<UniParcCrossReference> xrefs, boolean hasActive, String id, String proteomeId, Map<String, UniParcCrossReference> sourceXrefs) {
+    private static StringBuilder getFastaHeader(
+            Collection<UniParcCrossReference> xrefs,
+            boolean hasActive,
+            String id,
+            String proteomeId,
+            Map<String, UniParcCrossReference> sourceXrefs) {
         Set<String> proteinNames = new LinkedHashSet<>();
         Set<String> geneNames = new LinkedHashSet<>();
         Set<String> accessions = new LinkedHashSet<>();
         Set<String> sourceIds = new LinkedHashSet<>();
         Set<String> components = new LinkedHashSet<>();
         Organism organism = null;
-        for(UniParcCrossReference xref: xrefs) {
+        for (UniParcCrossReference xref : xrefs) {
             if (xref.isActive() == hasActive) {
                 addOrIgnoreNull(xref.getProteinName(), proteinNames);
                 addOrIgnoreNull(xref.getGeneName(), geneNames);
@@ -116,7 +129,7 @@ public class UniParcProteomeFastaParser {
         }
         StringBuilder sb = new StringBuilder();
         sb.append(">").append(id);
-        if(!proteinNames.isEmpty()){
+        if (!proteinNames.isEmpty()) {
             sb.append(" ").append(String.join(DELIMITER, proteinNames));
         }
         if (notNull(organism)) {
@@ -126,16 +139,16 @@ public class UniParcProteomeFastaParser {
             sb.append(" OX=").append(organism.getTaxonId());
         }
 
-        if(!geneNames.isEmpty()){
+        if (!geneNames.isEmpty()) {
             sb.append(" GN=").append(String.join(DELIMITER, geneNames));
         }
-        if(!accessions.isEmpty()){
+        if (!accessions.isEmpty()) {
             sb.append(" AC=").append(String.join(DELIMITER, accessions));
         }
-        if(!sourceIds.isEmpty()){
+        if (!sourceIds.isEmpty()) {
             sb.append(" SS=").append(String.join(DELIMITER, sourceIds));
         }
-        if(Utils.notNullNotEmpty(proteomeId)) {
+        if (Utils.notNullNotEmpty(proteomeId)) {
             sb.append(" PC=").append(proteomeId);
             if (!components.isEmpty()) {
                 sb.append(":").append(String.join(DELIMITER, components));
@@ -151,8 +164,9 @@ public class UniParcProteomeFastaParser {
                 .toList();
     }
 
-    private static String getSourceId(Map<String, UniParcCrossReference> sourceXrefs, String sourceId) {
-        if(sourceXrefs.containsKey(sourceId)){
+    private static String getSourceId(
+            Map<String, UniParcCrossReference> sourceXrefs, String sourceId) {
+        if (sourceXrefs.containsKey(sourceId)) {
             sourceId = sourceXrefs.get(sourceId).getDatabase().getName() + ":" + sourceId;
         }
         return sourceId;

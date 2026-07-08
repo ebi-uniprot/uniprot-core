@@ -1,8 +1,8 @@
 package org.uniprot.core.uniparc.impl;
 
-import org.uniprot.core.uniparc.Proteome;
-
 import java.util.Objects;
+
+import org.uniprot.core.uniparc.Proteome;
 
 public class ProteomeImpl implements Proteome {
 
@@ -11,8 +11,7 @@ public class ProteomeImpl implements Proteome {
     private String id;
     private String component;
 
-    ProteomeImpl() {
-    }
+    ProteomeImpl() {}
 
     ProteomeImpl(String id, String component) {
         this.id = id;

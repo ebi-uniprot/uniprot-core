@@ -1,17 +1,17 @@
 package org.uniprot.core.uniparc.impl;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.uniparc.UniParcCrossReference;
-import org.uniprot.core.uniparc.UniParcDatabase;
-import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.uniparc.UniParcCrossReference;
+import org.uniprot.core.uniparc.UniParcDatabase;
+import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
 class UniParcCrossReferencePairTest {
 
@@ -42,13 +42,15 @@ class UniParcCrossReferencePairTest {
                         new OrganismBuilder().taxonId(10L).scientificName("sName").build(),
                         "chain",
                         "ncbiGi",
-                        List.of(new ProteomeBuilder().id("proteomeId").component("component").build())
-                );
+                        List.of(
+                                new ProteomeBuilder()
+                                        .id("proteomeId")
+                                        .component("component")
+                                        .build()));
         String key = "Sample";
         UniParcCrossReferencePair pair1 = new UniParcCrossReferencePair(key, List.of(xref1));
         UniParcCrossReferencePair pair2 = new UniParcCrossReferencePair(key, List.of(xref1));
         assertTrue(pair1.equals(pair2) && pair2.equals(pair1));
         assertEquals(pair1.hashCode(), pair2.hashCode());
     }
-
 }

@@ -6,7 +6,9 @@ import java.util.Objects;
 import org.uniprot.core.taxonomy.TaxonomyStrain;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class TaxonomyStrainImpl implements TaxonomyStrain {
 
     private static final long serialVersionUID = -319775179301440775L;

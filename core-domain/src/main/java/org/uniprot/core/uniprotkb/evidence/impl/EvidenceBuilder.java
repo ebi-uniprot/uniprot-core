@@ -23,7 +23,7 @@ public class EvidenceBuilder implements Builder<Evidence> {
 
     @Override
     public @Nonnull Evidence build() {
-        if(crossReference != null){
+        if (crossReference != null) {
             return new EvidenceImpl(evidenceCode, crossReference);
         } else if (databaseName == null && databaseId == null) {
             return new EvidenceImpl(evidenceCode, null);
@@ -55,7 +55,9 @@ public class EvidenceBuilder implements Builder<Evidence> {
         this.databaseId = databaseId;
         return this;
     }
-    public @Nonnull EvidenceBuilder crossReference(CrossReference<EvidenceDatabase> crossReference) {
+
+    public @Nonnull EvidenceBuilder crossReference(
+            CrossReference<EvidenceDatabase> crossReference) {
         this.crossReference = crossReference;
         return this;
     }

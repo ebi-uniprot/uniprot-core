@@ -4,7 +4,9 @@ import javax.annotation.Nonnull;
 
 import org.uniprot.core.util.EnumDisplay;
 
-/** @author jluo */
+/**
+ * @author jluo
+ */
 public enum Status implements EnumDisplay {
     FALSE_NEGATIVE("N"),
     FALSE_POSITIVE("F"),

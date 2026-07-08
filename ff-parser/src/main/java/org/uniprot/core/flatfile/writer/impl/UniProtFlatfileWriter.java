@@ -25,8 +25,8 @@ import org.uniprot.core.flatfile.writer.FlatfileWriter;
 import org.uniprot.core.flatfile.writer.LineType;
 import org.uniprot.core.uniprotkb.*;
 import org.uniprot.core.uniprotkb.comment.Comment;
-import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 import org.uniprot.core.uniprotkb.comment.CommentType;
+import org.uniprot.core.uniprotkb.comment.SequenceCautionComment;
 
 import com.google.common.base.Strings;
 
@@ -248,16 +248,14 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtKBEntry> {
         for (CommentType commentType : CommentType.values()) {
             List<Comment> comments = entry.getCommentsByType(commentType);
             if (!comments.isEmpty()) {
-            	if(commentType ==CommentType.SEQUENCE_CAUTION) {
-            		List<List<Comment>> seqCoumentsList = splitSequenceComments(comments);
-            		for(List<Comment> seqComments: seqCoumentsList) {
-            			ccLines.add(buildComment(seqComments, showEvidence));
-            		}            		
-            	}else {
-            		ccLines.add(buildComment(comments, showEvidence));
-            	}
-            	
-         
+                if (commentType == CommentType.SEQUENCE_CAUTION) {
+                    List<List<Comment>> seqCoumentsList = splitSequenceComments(comments);
+                    for (List<Comment> seqComments : seqCoumentsList) {
+                        ccLines.add(buildComment(seqComments, showEvidence));
+                    }
+                } else {
+                    ccLines.add(buildComment(comments, showEvidence));
+                }
             }
         }
         return ccLines;
@@ -266,48 +264,45 @@ public class UniProtFlatfileWriter implements FlatfileWriter<UniProtKBEntry> {
     private static List<List<Comment>> splitSequenceComments(List<Comment> comments) {
         List<List<Comment>> splittedComments = new ArrayList<>();
         Comment currentComment = null;
-        List<Comment> curComments= new ArrayList<>();
-        for(Comment comment: comments) {
-            if(currentComment ==null) {
-                currentComment =comment;
+        List<Comment> curComments = new ArrayList<>();
+        for (Comment comment : comments) {
+            if (currentComment == null) {
+                currentComment = comment;
                 curComments = new ArrayList<>();
                 curComments.add(comment);
-            }else {
-            	String curMolecule = ((SequenceCautionComment)currentComment).getMolecule();
-            	String molecule =((SequenceCautionComment)comment).getMolecule();
-                if(Strings.isNullOrEmpty(curMolecule)){
-                  if(Strings.isNullOrEmpty(molecule))  {
-                      curComments.add(comment);
-                  }else {
-                      splittedComments.add(curComments);
-                      currentComment =comment;
-                      curComments = new ArrayList<>();
-                      curComments.add(comment); 
-                      
-                  }
-                }else if(curMolecule.equals(molecule)) {
+            } else {
+                String curMolecule = ((SequenceCautionComment) currentComment).getMolecule();
+                String molecule = ((SequenceCautionComment) comment).getMolecule();
+                if (Strings.isNullOrEmpty(curMolecule)) {
+                    if (Strings.isNullOrEmpty(molecule)) {
+                        curComments.add(comment);
+                    } else {
+                        splittedComments.add(curComments);
+                        currentComment = comment;
+                        curComments = new ArrayList<>();
+                        curComments.add(comment);
+                    }
+                } else if (curMolecule.equals(molecule)) {
                     curComments.add(comment);
-                }else {
+                } else {
                     splittedComments.add(curComments);
-                    currentComment =comment;
+                    currentComment = comment;
                     curComments = new ArrayList<>();
-                    curComments.add(comment);  
+                    curComments.add(comment);
                 }
             }
         }
-        if(!curComments.isEmpty()) {
+        if (!curComments.isEmpty()) {
             splittedComments.add(curComments);
         }
         return splittedComments;
     }
-    
+
     private static FFLine buildComment(List<Comment> comments, boolean showEvidence) {
-        if (showEvidence)
-            return ccLineBuilder.buildWithEvidence(comments);
-        else
-            return ccLineBuilder.build(comments);
+        if (showEvidence) return ccLineBuilder.buildWithEvidence(comments);
+        else return ccLineBuilder.build(comments);
     }
-    
+
     private static FFLine buildDRLines(UniProtKBEntry entry, boolean showEvidence) {
         FFLine drLines = FFLines.create();
         drLines.add(drLineBuilder.build(entry.getUniProtKBCrossReferences()));

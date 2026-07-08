@@ -24,7 +24,9 @@ import org.uniprot.core.uniprotkb.impl.UniProtKBAccessionBuilder;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/** @author sahmad Created 18/12/2020 */
+/**
+ * @author sahmad Created 18/12/2020
+ */
 class MappedPublicationsJsonConfigTest {
     @Test
     void testSimpleMappedPublications() {
@@ -111,7 +113,7 @@ class MappedPublicationsJsonConfigTest {
                 .proteinOrGene(protOrGene)
                 .function(function)
                 .disease(disease)
-                .submissionDate(LocalDate.of(2024,9,16));
+                .submissionDate(LocalDate.of(2024, 9, 16));
         CommunityMappedReferenceBuilder builder = new CommunityMappedReferenceBuilder();
         builder.communityAnnotation(communityAnnotationBuilder.build());
         builder.uniProtKBAccession(accession).source(mappedSource);

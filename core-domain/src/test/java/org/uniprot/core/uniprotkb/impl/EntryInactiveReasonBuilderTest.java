@@ -20,9 +20,8 @@ class EntryInactiveReasonBuilderTest {
     @Test
     void canBuildWithDeletedReason() {
         DeletedReason deletedReason = DeletedReason.SWISSPROT_DELETION;
-        EntryInactiveReason reason = new EntryInactiveReasonBuilder()
-                .deletedReason(deletedReason)
-                .build();
+        EntryInactiveReason reason =
+                new EntryInactiveReasonBuilder().deletedReason(deletedReason).build();
         assertNotNull(reason.getDeletedReason());
         assertEquals(deletedReason, reason.getDeletedReason());
     }

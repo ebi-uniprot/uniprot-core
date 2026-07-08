@@ -15,7 +15,9 @@ import org.uniprot.core.json.parser.keyword.serializer.KeywordCategorySerializer
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class KeywordJsonConfig extends JsonConfig {
     private static KeywordJsonConfig INSTANCE;
 

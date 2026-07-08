@@ -43,13 +43,11 @@ public class DefaultAAUniProtKBLineParserFactory implements AAUniProtKBLineParse
                 AAGrammarFactory.GrammarFactoryEnum.AC.getFactory(), new AcLineModelListener());
     }
 
-
     @Override
     public UniprotKBLineParser<DeLineObject> createDeLineParser() {
         return new AAUniProtKBLineParser<DeLineObject, DeLineLexer, DeLineParser>(
                 AAGrammarFactory.GrammarFactoryEnum.DE.getFactory(), new DeLineModelListener());
     }
-
 
     @Override
     public UniprotKBLineParser<GnLineObject> createGnLineParser() {
@@ -57,16 +55,11 @@ public class DefaultAAUniProtKBLineParserFactory implements AAUniProtKBLineParse
                 AAGrammarFactory.GrammarFactoryEnum.GN.getFactory(), new GnLineModelListener());
     }
 
-
-
     @Override
     public UniprotKBLineParser<KwLineObject> createKwLineParser() {
         return new AAUniProtKBLineParser<KwLineObject, KwLineLexer, KwLineParser>(
                 AAGrammarFactory.GrammarFactoryEnum.KW.getFactory(), new KwLineModelListener());
     }
-
-
-
 
     @Override
     public UniprotKBLineParser<FtLineObject> createFtLineParser() {
@@ -74,13 +67,9 @@ public class DefaultAAUniProtKBLineParserFactory implements AAUniProtKBLineParse
                 AAGrammarFactory.GrammarFactoryEnum.FT.getFactory(), new FtLineModelListener());
     }
 
-
     @Override
     public UniprotKBLineParser<CcLineObject> createCcLineParser() {
         return new AAUniProtKBLineParser<CcLineObject, CcLineLexer, CcLineParser>(
                 AAGrammarFactory.GrammarFactoryEnum.CC.getFactory(), new CcLineModelListener());
     }
-
-
 }
-

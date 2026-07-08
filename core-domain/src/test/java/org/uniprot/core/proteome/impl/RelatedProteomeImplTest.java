@@ -1,11 +1,11 @@
 package org.uniprot.core.proteome.impl;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.proteome.RelatedProteome;
 import org.uniprot.core.uniprotkb.taxonomy.Taxonomy;
 import org.uniprot.core.uniprotkb.taxonomy.impl.TaxonomyBuilder;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 public class RelatedProteomeImplTest {
     @Test

@@ -11,7 +11,9 @@ import javax.annotation.Nonnull;
 import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class OrganismBuilder extends AbstractOrganismNameBuilder<OrganismBuilder, Organism> {
     private long taxonId;
     private List<Evidence> evidences = new ArrayList<>();

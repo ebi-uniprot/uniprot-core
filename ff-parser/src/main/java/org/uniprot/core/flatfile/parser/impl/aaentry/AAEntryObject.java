@@ -15,5 +15,4 @@ public class AAEntryObject {
     public FtLineObject ft;
     public GnLineObject gn;
     public KwLineObject kw;
-   
 }

@@ -18,7 +18,10 @@ public class EntryInactiveReasonImpl implements EntryInactiveReason {
         this.mergeDemergeTo = Collections.emptyList();
     }
 
-    EntryInactiveReasonImpl(InactiveReasonType inactiveReasonType, List<String> mergeDemergeTo, DeletedReason deletedReason) {
+    EntryInactiveReasonImpl(
+            InactiveReasonType inactiveReasonType,
+            List<String> mergeDemergeTo,
+            DeletedReason deletedReason) {
         this.inactiveReasonType = inactiveReasonType;
         this.mergeDemergeTo = Utils.unmodifiableList(mergeDemergeTo);
         this.deletedReason = deletedReason;

@@ -70,12 +70,13 @@ public class SubcellLocationNameMapImpl implements SubcellLocationNameMap {
     private String getLowercaseContent(SubcellularLocationEntry entry) {
         return entry.getContent().toLowerCase();
     }
+
     private String getLowercaseName(SubcellularLocationEntry entry) {
         return entry.getName().toLowerCase();
     }
 
-	@Override
-	public String getName(String name) {
-		return subcellularLocationNameMap.get(name.toLowerCase());
-	}
+    @Override
+    public String getName(String name) {
+        return subcellularLocationNameMap.get(name.toLowerCase());
+    }
 }

@@ -1,9 +1,9 @@
 package org.uniprot.core.uniparc.impl;
 
+import javax.annotation.Nonnull;
+
 import org.uniprot.core.Builder;
 import org.uniprot.core.uniparc.CommonOrganism;
-
-import javax.annotation.Nonnull;
 
 public class CommonOrganismBuilder implements Builder<CommonOrganism> {
 
@@ -22,7 +22,6 @@ public class CommonOrganismBuilder implements Builder<CommonOrganism> {
         this.topLevel = topLevel;
         return this;
     }
-
 
     public CommonOrganismBuilder commonTaxon(String commonTaxon) {
         this.commonTaxon = commonTaxon;

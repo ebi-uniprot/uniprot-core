@@ -14,7 +14,9 @@ import org.uniprot.core.uniprotkb.evidence.EvidencedValue;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class BPCPCommentTest {
 
     @Test

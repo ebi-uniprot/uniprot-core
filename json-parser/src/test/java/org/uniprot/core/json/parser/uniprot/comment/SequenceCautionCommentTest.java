@@ -12,7 +12,9 @@ import org.uniprot.core.uniprotkb.comment.impl.SequenceCautionCommentBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class SequenceCautionCommentTest {
 
     @Test

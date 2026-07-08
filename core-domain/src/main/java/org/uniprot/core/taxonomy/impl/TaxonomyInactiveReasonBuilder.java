@@ -6,7 +6,9 @@ import org.uniprot.core.Builder;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReason;
 import org.uniprot.core.taxonomy.TaxonomyInactiveReasonType;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class TaxonomyInactiveReasonBuilder implements Builder<TaxonomyInactiveReason> {
 
     private TaxonomyInactiveReasonType inactiveReasonType;

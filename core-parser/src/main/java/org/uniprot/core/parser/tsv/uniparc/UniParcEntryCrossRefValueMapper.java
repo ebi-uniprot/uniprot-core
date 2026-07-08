@@ -1,14 +1,14 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+
 import org.uniprot.core.parser.tsv.EntityValueMapper;
 import org.uniprot.core.uniparc.Proteome;
 import org.uniprot.core.uniparc.UniParcCrossReference;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.util.Utils;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
 
 /**
  * @author sahmad

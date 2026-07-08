@@ -52,7 +52,10 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testLocations() {
-        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
+        List<SequenceFeatureLocation> locations =
+                Arrays.asList(
+                        new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(),
+                        new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
@@ -69,7 +72,10 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testAddLocation() {
-        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
+        List<SequenceFeatureLocation> locations =
+                Arrays.asList(
+                        new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(),
+                        new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()
@@ -87,7 +93,10 @@ class SequenceFeatureBuilderTest {
 
     @Test
     void testFrom() {
-        List<SequenceFeatureLocation> locations = Arrays.asList(new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(), new SequenceFeatureLocationBuilder().range(45, 89).build());
+        List<SequenceFeatureLocation> locations =
+                Arrays.asList(
+                        new SequenceFeatureLocationBuilder().range(12, 23).alignment("55M").build(),
+                        new SequenceFeatureLocationBuilder().range(45, 89).build());
         InterProGroup domain = new InterProGroupBuilder().name("name1").id("id1").build();
         SequenceFeature sf =
                 new SequenceFeatureBuilder()

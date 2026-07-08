@@ -1,5 +1,11 @@
 package org.uniprot.core.xml.uniprot;
 
+import static java.util.Arrays.asList;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
+
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Property;
@@ -9,12 +15,6 @@ import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
 import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 import org.uniprot.core.uniprotkb.evidence.impl.EvidenceBuilder;
 import org.uniprot.core.xml.jaxb.uniprot.EvidenceType;
-
-import java.util.List;
-
-import static java.util.Arrays.asList;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.cv.evidence.EvidenceHelper.parseEvidenceLine;
 
 class EvidenceConverterTest {
     private final EvidenceConverter converter = new EvidenceConverter();
@@ -313,28 +313,33 @@ class EvidenceConverterTest {
     }
 
     @Test
-    void testEvidenceToAndFromXMLWithProperties(){
-            List<Property> properties =
-                    asList(new Property("key1", "value1"), new Property("key2", "value2"));
-            CrossReference<EvidenceDatabase> xref =
-                    new CrossReferenceBuilder<EvidenceDatabase>()
-                            .database(new EvidenceDatabase("EMBL"))
-                            .id("DB123414")
-                            .propertiesSet(properties)
-                            .build();
-            Evidence evidence = new EvidenceBuilder().evidenceCode(EvidenceCode.ECO_0000245).crossReference(xref).build();
+    void testEvidenceToAndFromXMLWithProperties() {
+        List<Property> properties =
+                asList(new Property("key1", "value1"), new Property("key2", "value2"));
+        CrossReference<EvidenceDatabase> xref =
+                new CrossReferenceBuilder<EvidenceDatabase>()
+                        .database(new EvidenceDatabase("EMBL"))
+                        .id("DB123414")
+                        .propertiesSet(properties)
+                        .build();
+        Evidence evidence =
+                new EvidenceBuilder()
+                        .evidenceCode(EvidenceCode.ECO_0000245)
+                        .crossReference(xref)
+                        .build();
         EvidenceType xmlObj = converter.toXml(evidence);
         assertNotNull(xmlObj);
         Evidence converted = converter.fromXml(xmlObj);
         assertEquals(evidence, converted);
-        assertEquals("<evidence type=\"ECO:0000245\" key=\"1\" xmlns=\"http://uniprot.org/uniprot\">\n" +
-                        "    <source>\n" +
-                        "        <dbReference type=\"EMBL\" id=\"DB123414\">\n" +
-                        "            <property type=\"key1\" value=\"value1\"/>\n" +
-                        "            <property type=\"key2\" value=\"value2\"/>\n" +
-                        "        </dbReference>\n" +
-                        "    </source>\n" +
-                        "</evidence>",
+        assertEquals(
+                "<evidence type=\"ECO:0000245\" key=\"1\" xmlns=\"http://uniprot.org/uniprot\">\n"
+                        + "    <source>\n"
+                        + "        <dbReference type=\"EMBL\" id=\"DB123414\">\n"
+                        + "            <property type=\"key1\" value=\"value1\"/>\n"
+                        + "            <property type=\"key2\" value=\"value2\"/>\n"
+                        + "        </dbReference>\n"
+                        + "    </source>\n"
+                        + "</evidence>",
                 UniProtXmlTestHelper.toXmlString(xmlObj, EvidenceType.class, "evidence"));
     }
 

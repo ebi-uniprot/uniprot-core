@@ -7,7 +7,9 @@ import org.uniprot.core.json.parser.uniprot.citation.LiteratureTest;
 import org.uniprot.core.literature.LiteratureEntry;
 import org.uniprot.core.literature.impl.LiteratureEntryBuilder;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class LiteratureEntryTest {
 
     @Test

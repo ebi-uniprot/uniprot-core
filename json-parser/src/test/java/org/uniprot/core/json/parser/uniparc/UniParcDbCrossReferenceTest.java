@@ -1,6 +1,11 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import static org.junit.jupiter.api.Assertions.fail;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
 import org.uniprot.core.json.parser.ValidateJson;
@@ -14,11 +19,7 @@ import org.uniprot.core.uniprotkb.evidence.Evidence;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.fail;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * @author jluo
@@ -37,7 +38,8 @@ class UniParcDbCrossReferenceTest {
                         .synonymsAdd("syn name")
                         .evidencesSet(evidences)
                         .build();
-        Proteome proteomeIdComponent = new ProteomeBuilder().id("UPI").component("ComponentValue").build();
+        Proteome proteomeIdComponent =
+                new ProteomeBuilder().id("UPI").component("ComponentValue").build();
 
         UniParcCrossReferenceBuilder builder = new UniParcCrossReferenceBuilder();
         builder.database(UniParcDatabase.TREMBL)

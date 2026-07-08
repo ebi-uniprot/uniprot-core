@@ -1,10 +1,7 @@
 package org.uniprot.core.uniprotkb.evidence.impl;
 
-import org.junit.jupiter.api.Test;
-import org.uniprot.core.CrossReference;
-import org.uniprot.core.uniprotkb.evidence.Evidence;
-import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
-import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.uniprot.core.uniprotkb.evidence.impl.EvidenceImplTest.getEvidenceCrossRef;
 
 import java.util.List;
 import java.util.UUID;
@@ -12,8 +9,11 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.uniprot.core.uniprotkb.evidence.impl.EvidenceImplTest.getEvidenceCrossRef;
+import org.junit.jupiter.api.Test;
+import org.uniprot.core.CrossReference;
+import org.uniprot.core.uniprotkb.evidence.Evidence;
+import org.uniprot.core.uniprotkb.evidence.EvidenceCode;
+import org.uniprot.core.uniprotkb.evidence.EvidenceDatabase;
 
 public class EvidenceBuilderTest {
     @Test
@@ -32,7 +32,7 @@ public class EvidenceBuilderTest {
     }
 
     @Test
-    void buildWithCrossReference(){
+    void buildWithCrossReference() {
         CrossReference<EvidenceDatabase> xref = getEvidenceCrossRef();
         Evidence obj = new EvidenceBuilder().crossReference(xref).build();
         assertEquals(xref, obj.getEvidenceCrossReference());

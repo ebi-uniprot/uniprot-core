@@ -5,7 +5,9 @@ import java.io.Serializable;
 import org.uniprot.core.citation.Citation;
 import org.uniprot.core.util.Utils;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public interface LiteratureEntry extends Serializable {
 
     Citation getCitation();

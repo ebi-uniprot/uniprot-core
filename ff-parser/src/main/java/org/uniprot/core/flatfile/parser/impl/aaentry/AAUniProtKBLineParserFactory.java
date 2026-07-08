@@ -18,10 +18,8 @@ public interface AAUniProtKBLineParserFactory {
     UniprotKBLineParser<KwLineObject> createKwLineParser();
 
     UniprotKBLineParser<FtLineObject> createFtLineParser();
- 
+
     UniprotKBLineParser<CcLineObject> createCcLineParser();
 
     UniprotKBLineParser<AAEntryObject> createEntryParser();
-
-   
 }

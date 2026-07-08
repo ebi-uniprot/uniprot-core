@@ -6,7 +6,9 @@ import org.uniprot.core.uniprotkb.comment.Comment;
 import org.uniprot.core.uniprotkb.description.ProteinDescription;
 import org.uniprot.core.uniprotkb.xdb.UniProtKBCrossReference;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public interface Annotation extends RuleExceptionAnnotation {
     Comment getComment();
 

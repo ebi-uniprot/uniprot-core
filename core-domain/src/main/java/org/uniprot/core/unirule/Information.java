@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.uniprot.core.uniprotkb.UniProtKBAccession;
 
-/** @author sahmad */
+/**
+ * @author sahmad
+ */
 public interface Information extends Serializable {
     String getVersion();
 

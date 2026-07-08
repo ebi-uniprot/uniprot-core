@@ -1,10 +1,10 @@
 package org.uniprot.core.parser.fasta;
 
+import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
+
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniref.UniRefEntry;
 import org.uniprot.core.uniref.UniRefEntryLight;
-
-import static org.uniprot.core.parser.fasta.FastaUtils.parseSequence;
 
 /**
  * @author jluo

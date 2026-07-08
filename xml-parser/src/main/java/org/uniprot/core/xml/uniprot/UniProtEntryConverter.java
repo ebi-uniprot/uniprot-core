@@ -142,11 +142,11 @@ public class UniProtEntryConverter implements Converter<Entry, UniProtKBEntry> {
         evRefMapper.reset(evidenceIdMap);
     }
 
-    protected ProteinDescription fromXml(ProteinType proteinType){
+    protected ProteinDescription fromXml(ProteinType proteinType) {
         return descriptionConverter.fromXml(proteinType);
     }
 
-    ProteinDescription fromXml(ProteinDescription modelObject, SequenceType xmlObject){
+    ProteinDescription fromXml(ProteinDescription modelObject, SequenceType xmlObject) {
         return flagUpdater.fromXml(modelObject, xmlObject);
     }
 

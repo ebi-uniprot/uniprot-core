@@ -1,7 +1,7 @@
 package org.uniprot.core.json.parser.uniparc;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
+import java.time.LocalDate;
+
 import org.uniprot.core.CrossReference;
 import org.uniprot.core.Sequence;
 import org.uniprot.core.impl.CrossReferenceImpl;
@@ -16,7 +16,8 @@ import org.uniprot.core.uniprotkb.evidence.impl.EvidenceImpl;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismImpl;
 
-import java.time.LocalDate;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 
 public class UniParcEntryLightJsonConfig extends JsonConfig {
     private static UniParcEntryLightJsonConfig instance;
@@ -55,7 +56,8 @@ public class UniParcEntryLightJsonConfig extends JsonConfig {
         mod.addAbstractTypeMapping(UniParcEntryLight.class, UniParcEntryLightImpl.class);
         mod.addAbstractTypeMapping(InterProGroup.class, InterProGroupImpl.class);
         mod.addAbstractTypeMapping(SequenceFeature.class, SequenceFeatureImpl.class);
-        mod.addAbstractTypeMapping(SequenceFeatureLocation.class, SequenceFeatureLocationImpl.class);
+        mod.addAbstractTypeMapping(
+                SequenceFeatureLocation.class, SequenceFeatureLocationImpl.class);
         mod.addAbstractTypeMapping(CrossReference.class, CrossReferenceImpl.class);
         mod.addAbstractTypeMapping(Sequence.class, SequenceImpl.class);
         mod.addAbstractTypeMapping(CommonOrganism.class, CommonOrganismImpl.class);

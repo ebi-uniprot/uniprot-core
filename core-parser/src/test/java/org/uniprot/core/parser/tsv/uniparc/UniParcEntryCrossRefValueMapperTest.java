@@ -1,5 +1,10 @@
 package org.uniprot.core.parser.tsv.uniparc;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.uniprot.core.Property;
@@ -10,11 +15,6 @@ import org.uniprot.core.uniparc.impl.ProteomeBuilder;
 import org.uniprot.core.uniparc.impl.UniParcCrossReferenceBuilder;
 import org.uniprot.core.uniprotkb.taxonomy.Organism;
 import org.uniprot.core.uniprotkb.taxonomy.impl.OrganismBuilder;
-
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author sahmad
@@ -78,7 +78,8 @@ class UniParcEntryCrossRefValueMapperTest {
                 new OrganismBuilder().taxonId(9606).scientificName("Homo sapiens").build();
         List<Property> properties = new ArrayList<>();
         properties.add(new Property("prop1", "pvalue"));
-        Proteome proteomeIdComponent = new ProteomeBuilder().id("proteoemid").component("component").build();
+        Proteome proteomeIdComponent =
+                new ProteomeBuilder().id("proteoemid").component("component").build();
         return new UniParcCrossReferenceBuilder()
                 .versionI(3)
                 .database(UniParcDatabase.SWISSPROT)

@@ -9,7 +9,9 @@ import org.uniprot.core.uniprotkb.comment.impl.WebResourceCommentBuilder;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-/** @author lgonzales */
+/**
+ * @author lgonzales
+ */
 public class WebResourceCommentTest {
 
     @Test
