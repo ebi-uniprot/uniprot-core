@@ -21,6 +21,7 @@ class DeletedReasonTest {
     @Test
     void canGetFromIdWithValidSingleId() {
         assertEquals(DeletedReason.PROTEOME_REDUNDANCY, DeletedReason.fromId("13"));
+        assertEquals(DeletedReason.REFERENCE_PROTEOME_EXCLUSION.getName(), DeletedReason.fromId("13").getName());
     }
 
     @Test
