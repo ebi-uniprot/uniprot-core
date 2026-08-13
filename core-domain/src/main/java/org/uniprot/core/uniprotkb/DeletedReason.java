@@ -18,7 +18,7 @@ public enum DeletedReason implements EnumDisplay {
     SOURCE_DELETION_REFSEQ( "Deleted from sequence source (RefSeq)", 11),
     SWISSPROT_DELETION( "Deleted from Swiss-Prot", 2),
     REDUNDANCY( "Redundant sequence", 3),
-    PROTEOME_REDUNDANCY( "Redundant proteome", 13),
+    PROTEOME_REDUNDANCY( "Not part of a reference proteome", 13),
     PROTEOME_EXCLUSION( "Excluded proteome", 14),
     OVERREPRESENTED( "Over-represented sequence", 15),
     REFERENCE_PROTEOME_EXCLUSION( "Not part of a reference proteome", 16);
