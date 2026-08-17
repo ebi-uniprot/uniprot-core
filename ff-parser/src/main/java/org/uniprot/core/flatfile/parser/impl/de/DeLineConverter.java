@@ -150,7 +150,7 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinName convertAltName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
-        if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
+        if ((val.getFullName() != null) && (!val.getFullName().isEmpty())) {
             fullName =
                     new NameBuilder()
                             .value(val.getFullName())
@@ -190,7 +190,7 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinName convertRecName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
-        if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
+        if ((val.getFullName() != null) && (!val.getFullName().isEmpty())) {
             fullName =
                     new NameBuilder()
                             .value(val.getFullName())
@@ -228,7 +228,7 @@ public class DeLineConverter extends EvidenceCollector
     private ProteinSubName convertSubmissionName(
             DeLineObject.Name val, Map<Object, List<Evidence>> evidenceMap) {
         Name fullName = null;
-        if ((val.getFullName() != null) || (!val.getFullName().isEmpty())) {
+        if ((val.getFullName() != null) && (!val.getFullName().isEmpty())) {
             fullName =
                     new NameBuilder()
                             .value(val.getFullName())
