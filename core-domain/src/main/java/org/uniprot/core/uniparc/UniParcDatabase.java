@@ -28,7 +28,7 @@ public enum UniParcDatabase implements Database, EnumDisplay {
             "FusionGDB",
             true,
             false,
-            "https://compbio.uth.edu/FusionGDB2/gene_search_result.cgi?type=quick_search&quick_search=%id"),
+            "https://compbio.uth.edu/FusionGDB/gene_search_result.cgi?type=quick_search&quick_search=%id"),
 
     H_INV(1600, "H-InvDB",false, false),
     IPI(1700, "IPI",false, false),
