@@ -260,6 +260,56 @@ class DeLineConverterTest {
         assertEquals(FlagType.PRECURSOR, flag.getType());
     }
 
+    @Test
+    void convertAltNameWithoutFullName() {
+        DeLineObject deObject = new DeLineObject();
+        List<String> shortNames = new ArrayList<>();
+        shortNames.add("PAP-I");
+        deObject.getAltNames().add(createName(null, shortNames));
+
+        ProteinDescription pDesc = converter.convert(deObject);
+
+        List<ProteinName> altNames = pDesc.getAlternativeNames();
+        assertEquals(1, altNames.size());
+        ProteinName altName = altNames.get(0);
+        assertNull(altName.getFullName());
+        assertEquals(1, altName.getShortNames().size());
+        assertEquals("PAP-I", altName.getShortNames().get(0).getValue());
+    }
+
+    @Test
+    void convertRecNameWithoutFullName() {
+        DeLineObject deObject = new DeLineObject();
+        DeLineObject.Name recName = new DeLineObject.Name();
+        recName.getShortNames().add("Annexin-5");
+        deObject.setRecName(recName);
+
+        ProteinDescription pDesc = converter.convert(deObject);
+
+        ProteinName convertedRecName = pDesc.getRecommendedName();
+        assertNotNull(convertedRecName);
+        assertNull(convertedRecName.getFullName());
+        assertEquals(1, convertedRecName.getShortNames().size());
+        assertEquals("Annexin-5", convertedRecName.getShortNames().get(0).getValue());
+    }
+
+    @Test
+    void convertSubmissionNameWithoutFullName() {
+        DeLineObject deObject = new DeLineObject();
+        DeLineObject.Name subName = new DeLineObject.Name();
+        subName.getEcs().add("1.1.1.1");
+        deObject.getSubNames().add(subName);
+
+        ProteinDescription pDesc = converter.convert(deObject);
+
+        List<ProteinSubName> subNames = pDesc.getSubmissionNames();
+        assertEquals(1, subNames.size());
+        ProteinSubName convertedSubName = subNames.get(0);
+        assertNull(convertedSubName.getFullName());
+        assertEquals(1, convertedSubName.getEcNumbers().size());
+        assertEquals("1.1.1.1", convertedSubName.getEcNumbers().get(0).getValue());
+    }
+
     private void validate(String fullName, String shortName, ProteinName proteinName) {
         List<String> ecs = new ArrayList<>();
         validate(fullName, shortName, ecs, proteinName);
