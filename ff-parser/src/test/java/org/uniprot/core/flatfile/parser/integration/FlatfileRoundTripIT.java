@@ -3,6 +3,7 @@ package org.uniprot.core.flatfile.parser.integration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.slf4j.LoggerFactory.getLogger;
+import static org.uniprot.cv.common.CVSystemProperties.DR_ORD_LOCATION;
 
 import java.io.IOException;
 import java.net.URL;
@@ -101,7 +102,12 @@ class FlatfileRoundTripIT {
     }
 
     private void testFile(String file, boolean isPublic) {
-        System.setProperty("cv.dr.ord.location", "src/test/resources/parser/dr_ord.txt");
+        URL resource = getClass().getClassLoader().getResource("parser/dr_ord.txt");
+        if (resource != null) {
+            System.setProperty(DR_ORD_LOCATION, resource.getPath());
+        } else {
+            throw new IllegalStateException("dr_ord.txt not found in src/test/resources/parser");
+        }
 
         System.out.println("====>" + file);
         String entryStr = readEntryFromFile(file);
