@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.slf4j.LoggerFactory.getLogger;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
@@ -101,7 +102,10 @@ class FlatfileRoundTripIT {
     }
 
     private void testFile(String file, boolean isPublic) {
-        System.setProperty("cv.dr.ord.location", "src/test/resources/parser/dr_ord.txt");
+        System.setProperty(
+                "cv.dr.ord.location",
+                new File(getClass().getClassLoader().getResource("parser/dr_ord.txt").getFile()).getAbsolutePath()
+        );
 
         System.out.println("====>" + file);
         String entryStr = readEntryFromFile(file);
