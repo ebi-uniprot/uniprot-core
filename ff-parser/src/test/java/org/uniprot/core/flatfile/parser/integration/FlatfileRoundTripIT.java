@@ -4,14 +4,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.slf4j.LoggerFactory.getLogger;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.TreeSet;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.Logger;
@@ -30,6 +32,16 @@ import com.google.common.io.Resources;
 
 class FlatfileRoundTripIT {
     private static final Logger LOGGER = getLogger(FlatfileRoundTripIT.class);
+    private static final String DR_ORD_RESOURCE = "parser/dr_ord.txt";
+
+    @BeforeAll
+    static void initDisplayOrderLocation() throws Exception {
+        URL drOrdResource =
+                Objects.requireNonNull(
+                        FlatfileRoundTripIT.class.getClassLoader().getResource(DR_ORD_RESOURCE));
+        System.setProperty(
+                "cv.dr.ord.location", Paths.get(drOrdResource.toURI()).toAbsolutePath().toString());
+    }
 
     @ParameterizedTest
     @CsvSource({
@@ -102,12 +114,6 @@ class FlatfileRoundTripIT {
     }
 
     private void testFile(String file, boolean isPublic) {
-        System.setProperty(
-                "cv.dr.ord.location",
-                new File(getClass().getClassLoader().getResource("parser/dr_ord.txt").getFile()).getAbsolutePath()
-        );
-
-        System.out.println("====>" + file);
         String entryStr = readEntryFromFile(file);
         testEntry(entryStr, isPublic);
     }

@@ -237,6 +237,14 @@
 						${argLine}
 						${test.jvm.argLine}
 					</argLine>
+					<systemProperties>
+						<property>
+							<name>cv.dr.ord.location</name>
+							<value>
+								${project.build.directory}/../../controlled-vocabulary/src/test/resources/xdb/dr_ord
+							</value>
+						</property>
+					</systemProperties>
 				</configuration>
 				<executions>
 					<execution>
