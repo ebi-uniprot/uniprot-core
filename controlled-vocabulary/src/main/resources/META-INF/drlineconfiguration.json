@@ -123,12 +123,6 @@
 		]
 	},
 	{
-		"name": "PDBsum",
-		"displayName": "PDBsum",
-		"category": "3DS",
-		"uriLink": "https://www.ebi.ac.uk/pdbsum/%id"
-	},
-	{
 		"name": "PCDDB",
 		"displayName": "PCDDB",
 		"category": "3DS",
@@ -1033,13 +1027,6 @@
           }
         ]
 	},
-	{
-		"name": "LegioList",
-		"displayName": "LegioList",
-		"category": "ORG",
-		"uriLink": "http://genolist.pasteur.fr/LegioList/genome.cgi?external_query+%id",
-        "idMappingName": "LEGIOLIST_ID"
-    },
 	{
 		"name": "Leproma",
 		"displayName": "Leproma",
