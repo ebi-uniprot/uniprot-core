@@ -7,7 +7,7 @@
 	<groupId>org.uniprot</groupId>
 	<artifactId>core-parent</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.43-SNAPSHOT</version>
+	<version>1.0.42.2</version>
 	<name>UniProt Core Aggregator</name>
 
 	<properties>
@@ -237,14 +237,6 @@
 						${argLine}
 						${test.jvm.argLine}
 					</argLine>
-					<systemProperties>
-						<property>
-							<name>cv.dr.ord.location</name>
-							<value>
-								${project.build.directory}/../../controlled-vocabulary/src/test/resources/xdb/dr_ord
-							</value>
-						</property>
-					</systemProperties>
 				</configuration>
 				<executions>
 					<execution>
