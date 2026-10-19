@@ -116,13 +116,23 @@ public class FtLineModelListener extends FtLineParserBaseListener
     }
 
     @Override
+    public void exitLoc_isoform(FtLineParser.Loc_isoformContext ctx)
+    { 
+        if(ctx !=null) {
+            String  text = ctx.getText();
+            ft.setSequence(text);
+        }
+    }
+    
+    @Override
     public void exitLoc_start(FtLineParser.Loc_startContext ctx) {
         String text = ctx.getText();
-        int index = text.indexOf(":");
-        if (index != -1) {
-            ft.setSequence(text.substring(0, index));
-            ft.setLocationStart(text.substring(index + 1));
-        } else ft.setLocationStart(text);
+        ft.setLocationStart(text);
+//        int index = text.indexOf(":");
+//        if (index != -1) {
+//            ft.setSequence(text.substring(0, index));
+//            ft.setLocationStart(text.substring(index + 1));
+//        } else ft.setLocationStart(text);
     }
 
     @Override

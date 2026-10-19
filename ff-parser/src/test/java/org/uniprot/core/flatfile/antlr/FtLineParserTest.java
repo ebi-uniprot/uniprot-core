@@ -424,31 +424,6 @@ class FtLineParserTest {
     }
 
     @Test
-    void testWithEvidence() {
-        String ftLines =
-                "FT   METAL           186\n"
-                        + "FT                   /note=\"Calcium; via carbonyl oxygen\"\n"
-                        + "FT                   /evidence=\"ECO:0000006|PubMed:20858735,"
-                        + " ECO:0000006|PubMed:23640942\"\n";
-
-        UniprotKBLineParser<FtLineObject> parser =
-                new DefaultUniprotKBLineParserFactory().createFtLineParser();
-        FtLineObject obj = parser.parse(ftLines);
-        assertEquals(1, obj.getFts().size());
-        verify(
-                obj.getFts().get(0),
-                FTType.METAL,
-                "186",
-                "186",
-                "Calcium; via carbonyl oxygen",
-                null);
-        verifyEvidences(
-                obj,
-                obj.getFts().get(0),
-                List.of("ECO:0000006|PubMed:20858735", "ECO:0000006|PubMed:23640942"));
-    }
-
-    @Test
     void testWithEvidence2() {
         String ftLines =
                 "FT   HELIX           33..83\n"

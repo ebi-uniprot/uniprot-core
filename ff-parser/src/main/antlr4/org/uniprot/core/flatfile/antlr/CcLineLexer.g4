@@ -219,7 +219,7 @@ CC_IR_LEFT_SQ : '['                               -> type (LEFT_SQ);
 CC_IR_RIGHT_SQ : ']'                               -> type (RIGHT_SQ);
 CC_IR_COLON : ': '                               -> type (COLON_SPACE), pushMode(CC_INTERACTION_GENE_NAME);
 CC_IR_COMA : ','                               -> type (COMA);
-CC_IR_AC: [A-Za-z0-9][-\.A-Za-z0-9_]*;
+CC_IR_AC: [A-Za-z0-9][-\\.A-Za-z0-9_]*;
 
 
 mode CC_INTERACTION_GENE_NAME;
@@ -487,7 +487,7 @@ CC_D_WORD_D: CC_D_D ((CC_D_D|'.')* CC_D_D)?;
 //fragment CC_D_ABBR: '(' CC_D_WORD ((CC_D_SPACE|CC_D_CHANGE_OF_LINE) CC_D_WORD)* ')';
 fragment CC_D_MIM_FRAG: '[MIM:' INTEGER ']:';
 fragment INTEGER: [1-9][0-9]*             ;
-fragment CC_D_L: ~[ .\n\r\t={\[];
+fragment CC_D_L: ~[ .\n\r\t={\\[];
 fragment CC_D_D: ~[ .\n\r\t={];
 fragment CC_D_COMA: ','     ;
 /*

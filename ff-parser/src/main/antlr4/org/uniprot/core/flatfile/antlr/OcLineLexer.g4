@@ -21,6 +21,6 @@ DOT_NEW_LINE: '.\n'     ->popMode;
 DOT: '.';
 
 OcWord: OL ((OL|DOT)* OL)?;
-fragment OL : ~[ \.;\r\n\t];
+fragment OL : ~[ \\.;\r\n\t];
 
 

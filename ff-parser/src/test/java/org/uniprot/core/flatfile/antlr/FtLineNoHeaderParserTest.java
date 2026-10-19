@@ -227,7 +227,7 @@ class FtLineNoHeaderParserTest {
     @Test
     void testWithEvidence() {
         String ftLines =
-                "METAL 186\n/note=\"Calcium; via carbonyl oxygen\"\n"
+                "BINDING 186\n/note=\"Calcium; via carbonyl oxygen\"\n"
                         + "/evidence=\"ECO:0000006|PubMed:20858735, ECO:0000006|PubMed:23640942\"";
 
         UniprotKBLineParser<FtLineObject> parser =
@@ -238,7 +238,7 @@ class FtLineNoHeaderParserTest {
         assertEquals(1, obj.getFts().size());
         verify(
                 obj.getFts().get(0),
-                FTType.METAL,
+                FTType.BINDING,
                 "186",
                 "186",
                 "Calcium; via carbonyl oxygen",

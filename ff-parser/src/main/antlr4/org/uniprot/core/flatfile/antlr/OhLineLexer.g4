@@ -19,6 +19,6 @@ mode HOSTNAME_MODE;
 HOST_WORD: HL+;
 SPACE: ' ';
 DOT: '.';
-fragment HL: ~[ \.];
+fragment HL: ~[ \\.];
 LINE_END: '.\n'     -> popMode;
 

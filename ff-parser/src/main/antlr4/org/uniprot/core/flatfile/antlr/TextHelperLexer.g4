@@ -4,7 +4,7 @@ options { superClass=org.uniprot.core.flatfile.antlr.RememberLastTokenLexer; }
 
 //this is only used satisfy antlr. not used.
 //it shouldn't produce any token in this default mode.
-NOTHING: [];
+NOTHING: [''];
 //each helper method in its own mode.
 
 mode MODE_REMOVE_CHANGE_OF_LINE;
@@ -26,7 +26,7 @@ CC_DISEASE_ABBR_MIM_CHANGE_LINE: '\nCC       '  {replaceChangeOfLine();};
 CC_DISEASE_ABBR_MIM_MIM: 'MIM:';
 CC_DISEASE_ABBR_MIM_VALUE: [1-9][0-9]*;
 CC_DISEASE_ABBR_MIM_WORD: CC_DISEASE_ABBR_MIM_WORD_LETTER+;
-fragment CC_DISEASE_ABBR_MIM_WORD_LETTER: ~[ ()\[\]:\n\r\t];
+fragment CC_DISEASE_ABBR_MIM_WORD_LETTER: ~[ ()\\[\]:\n\r\t];
 
 //CC_D_PUBMED: '(PubMed:' INTEGER (CC_D_COMA CC_D_SPACE|CC_D_CHANGE_OF_LINE INTEGER) ')' ;
 mode MODE_CC_DISEASE_PUBMED;
