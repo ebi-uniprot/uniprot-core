@@ -134,16 +134,20 @@ class PropertyObjectTest {
         json.put("key", str);
 
         final Object actualKey = json.opt("key");
-        assert str.equals(actualKey) : "Incorrect key value. Got " + actualKey + " expected " + str;
+        assertEquals(str, actualKey, "Incorrect key value. Got " + actualKey + " expected " + str);
 
         final long actualLong = json.optLong("key", 0L);
-        assert actualLong != 0 : "Unable to extract long value for string " + str;
-        assert 26315000000253009L == actualLong
-                : "Incorrect key value. Got " + actualLong + " expected " + str;
+        assertNotEquals(0L, actualLong, "Unable to extract long value for string " + str);
+        assertEquals(
+                26315000000253009L,
+                actualLong,
+                "Incorrect key value. Got " + actualLong + " expected " + str);
 
         final String actualString = json.optString("key", "");
-        assert str.equals(actualString)
-                : "Incorrect key value. Got " + actualString + " expected " + str;
+        assertEquals(
+                str,
+                actualString,
+                "Incorrect key value. Got " + actualString + " expected " + str);
     }
 
     /** A PropertyObject can be created with no content */
