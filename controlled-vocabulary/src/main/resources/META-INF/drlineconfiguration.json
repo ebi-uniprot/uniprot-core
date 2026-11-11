@@ -123,12 +123,6 @@
 		]
 	},
 	{
-		"name": "PCDDB",
-		"displayName": "PCDDB",
-		"category": "3DS",
-		"uriLink": "https://pcddb.cryst.bbk.ac.uk/uniprot/%id"
-	},
-	{
 		"name": "SASBDB",
 		"displayName": "SASBDB",
 		"category": "3DS",
@@ -1038,8 +1032,14 @@
 		"name": "MaizeGDB",
 		"displayName": "MaizeGDB",
 		"category": "ORG",
-		"uriLink": "https://www.maizegdb.org/data_center/gene_product?id=%id",
-        "idMappingName": "MAIZEGDB_ID"
+		"uriLink": "https://www.maizegdb.org/gene_center/gene/%id",
+        "idMappingName": "MAIZEGDB_ID",
+		"attributes": [
+			{
+				"name": "GeneName",
+				"xmlTag":"gene designation"
+			}
+		]
 	},
 	{
 		"name": "MalaCards",
@@ -1107,6 +1107,13 @@
 		"uriLink": "https://www.clinpgx.org/gene/%id",
         "idMappingName": "CLINPGX_ID"
     },
+	{
+		"name": "PneumoBrowse",
+		"displayName": "PneumoBrowse",
+		"category": "ORG",
+		"uriLink": "https://pneumobrowse2.veeninglab.com/?config=config.json&searchstrainstring=D39V:%id",
+		"idMappingName": "PNEUMOBROWSE_ID"
+	},
 	{
 		"name": "PomBase",
 		"displayName": "PomBase",
