@@ -271,7 +271,7 @@ class UniProtKBDatabaseTypesTest {
     void testDatabaseFieldSize() {
         verifyGroupSize(UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(SEQUENCE_DATABASES), 7);
         verifyGroupSize(
-                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 14);
+                UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(D3_STRUCTURE_DATABASES), 13);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(
                         PROTEIN_PROTEIN_INTERACTION_DATABASES),
@@ -295,7 +295,7 @@ class UniProtKBDatabaseTypesTest {
                 14);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES),
-                41);
+                42);
         verifyGroupSize(
                 UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(PHYLOGENOMIC_DATABASES), 8);
         verifyGroupSize(
@@ -365,7 +365,7 @@ class UniProtKBDatabaseTypesTest {
     @Test
     void testWithCatgeoryORG() {
         List<UniProtDatabaseDetail> orDBTypes = UniProtDatabaseTypes.INSTANCE.getDBTypesByCategory(ORGANISM_SPECIFIC_DATABASES);
-        assertEquals(41, orDBTypes.size());
+        assertEquals(42, orDBTypes.size());
         List<String> dbNames = orDBTypes.stream().map(UniProtDatabaseDetail::getName).toList();
         assertTrue(dbNames.contains("ClinPGx"));
     }
