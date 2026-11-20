@@ -30,7 +30,7 @@
 		<test.forkCount>1</test.forkCount>
 		<test.reuseForks>true</test.reuseForks>
 		<test.jvm.argLine>--add-opens java.base/java.time=ALL-UNNAMED</test.jvm.argLine>
-		<guava.version>30.0-jre</guava.version>
+		<guava.version>33.7.2-jre</guava.version>
 
 		<!-- Auto-formatting -->
 		<spotless.version>2.43.0</spotless.version>
